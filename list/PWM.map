@@ -1,4 +1,4 @@
-L251 LINKER/LOCATER V4.66.93.0                                                          06/13/2026  13:28:24  PAGE 1
+L251 LINKER/LOCATER V4.66.93.0                                                          06/13/2026  19:06:40  PAGE 1
 
 
 L251 LINKER/LOCATER V4.66.93.0, INVOKED BY:
@@ -60,14 +60,14 @@ BASE        START       END         USED      MEMORY CLASS
 ==========================================================
 000000H     000000H     000FFFH     000148H   EDATA
 000000H     000000H     000FFFH               HDATA
-FF0000H     FF0000H     FFFFFFH     002092H   CODE
+FF0000H     FF0000H     FFFFFFH     002091H   CODE
 000020H.0   000020H.0   00002FH.7   000001H.6 BIT
 000000H     FF0000H     FFFFFFH     000083H   HCONST
 000000H     000000H     00007FH     000008H   DATA
 
 
 MEMORY MAP OF MODULE:  .\list\PWM (main)
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 2
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 2
 
 
 
@@ -135,7 +135,7 @@ FF1EE7H   FF1F0BH   000025H   BYTE   INSEG    CODE           ?PR?OLED_IIC_SENDDA
 FF1F0CH   FF1F2FH   000024H   BYTE   INSEG    CODE           ?PR?UPDATETTIMEACTION?MAIN
 FF1F30H   FF1F53H   000024H   BYTE   INSEG    CODE           ?PR?OLED_IIC_SENDCOMMAND?OLED
 FF1F54H   FF1F74H   000021H   BYTE   INSEG    CODE           ?PR?IIC_SENDDATA?IIC
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 3
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 3
 
 
 FF1F75H   FF1F8FH   00001BH   BYTE   INSEG    CODE           ?PR?READLINEMASK?MAIN
@@ -145,14 +145,14 @@ FF1FC3H   FF1FDAH   000018H   BYTE   INSEG    CODE           ?PR?PWM_RUN?MAIN
 FF1FDBH   FF1FF2H   000018H   BYTE   INSEG    CODE           ?PR?IIC_START?IIC
 FF1FF3H   FF2009H   000017H   BYTE   INSEG    CODE           ?PR?DELAY_MS?STC32G_DELAY
 FF200AH   FF201FH   000016H   BYTE   INSEG    CODE           ?PR?TIMER1_ISR_HANDLER?MAIN
-FF2020H   FF2034H   000015H   BYTE   INSEG    CODE           ?PR?LIMITPERCENT?MAIN
-FF2035H   FF2049H   000015H   BYTE   INSEG    CODE           ?PR?IIC_INIT?IIC
-FF204AH   FF205EH   000015H   BYTE   INSEG    CODE           ?PR?IIC_STOP?IIC
-FF205FH   FF2071H   000013H   BYTE   INSEG    CODE           ?PR?PWM_RIGHT?MAIN
-FF2072H   FF2084H   000013H   BYTE   INSEG    CODE           ?PR?PWM_LEFT?MAIN
-FF2085H   FF2097H   000013H   BYTE   INSEG    CODE           ?PR?IIC_WAIT_ACK?IIC
-FF2098H   FF20A9H   000012H   BYTE   INSEG    CODE           ?PR?APPLYLINEPID?MAIN
-FF20AAH   FF212CH   000083H   BYTE   UNIT     HCONST         ?C_INITEDATA
+FF2020H   FF2034H   000015H   BYTE   INSEG    CODE           ?PR?IIC_INIT?IIC
+FF2035H   FF2049H   000015H   BYTE   INSEG    CODE           ?PR?IIC_STOP?IIC
+FF204AH   FF205DH   000014H   BYTE   INSEG    CODE           ?PR?LIMITPERCENT?MAIN
+FF205EH   FF2070H   000013H   BYTE   INSEG    CODE           ?PR?PWM_RIGHT?MAIN
+FF2071H   FF2083H   000013H   BYTE   INSEG    CODE           ?PR?PWM_LEFT?MAIN
+FF2084H   FF2096H   000013H   BYTE   INSEG    CODE           ?PR?IIC_WAIT_ACK?IIC
+FF2097H   FF20A8H   000012H   BYTE   INSEG    CODE           ?PR?APPLYLINEPID?MAIN
+FF20A9H   FF212BH   000083H   BYTE   UNIT     HCONST         ?C_INITEDATA
 
 * * * * * * * * *   R E M O V E D     S E G M E N T S   * * * * * * * *
    *DEL*:           000001H   BYTE   INSEG    CODE           ?PR?GPIO_CONFIG?MAIN
@@ -203,7 +203,7 @@ FF20AAH   FF212CH   000083H   BYTE   UNIT     HCONST         ?C_INITEDATA
    *DEL*:           00009AH   BYTE   INSEG    CODE           ?PR?OLED_SHOWBMP?OLED
    *DEL*:           00000FH   BYTE   INSEG    CODE           ?PR?OLED_DISPLAY_OFF?OLED
    *DEL*:           0000BBH   BYTE   INSEG    CODE           ?PR?OLED_SHOWCHAR?OLED
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 4
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 4
 
 
    *DEL*:           000069H   BYTE   INSEG    CODE           ?PR?OLED_SHOWCN?OLED
@@ -271,7 +271,7 @@ LimitPercent/main                        ----- -----  ----- -----
 UpdateTTimeAction/main                   ----- -----  ----- -----
   +--> Motor_RunPercent/main
 
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 5
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 5
 
 
 LineControlStep/main                     ----- -----  0008H 0009H
@@ -339,7 +339,7 @@ Timer4_ISR_Handler/STC32G_Timer_Isr      ----- -----  ----- -----
 
 *** NEW ROOT ***************************
 
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 6
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 6
 
 
 ?C_C51STARTUP?3                          ----- -----  ----- -----
@@ -407,7 +407,7 @@ iic_Stop/iic                             ----- -----  ----- -----
 oled_clear/oled                          ----- -----  ----- -----
   +--> oled_IIC_SendCommand/oled
   +--> oled_IIC_SendData/oled
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 7
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 7
 
 
 
@@ -430,7 +430,7 @@ PUBLIC SYMBOLS OF MODULE:  .\list\PWM (main)
       =================================================
       000000FFH   NUMBER   ---       ?C?CODESEG
       00FF1CD0H   CODE     ---       ?C?INITEDATA
-      00FF212BH   HCONST   WORD      ?C?INITEDATA_END
+      00FF212AH   HCONST   WORD      ?C?INITEDATA_END
       00FF184FH   CODE     ---       ?C?LIMUL
       00FF181DH   CODE     ---       ?C?SIDIV
       00FF1858H   CODE     NEAR LAB  ?C?SLDIV
@@ -443,7 +443,7 @@ PUBLIC SYMBOLS OF MODULE:  .\list\PWM (main)
 *SFR* 000000DEH   DATA     BYTE      ADCCFG
 *SFR* 000000C0H.5 DATA     BIT       AIN1
 *SFR* 000000A0H.7 DATA     BIT       AIN2
-      00FF2098H   CODE     ---       ApplyLinePid
+      00FF2097H   CODE     ---       ApplyLinePid
 *SFR* 000000EFH   DATA     BYTE      AUXINTIF
 *SFR* 0000008EH   DATA     BYTE      AUXR
 *SFR* 00000097H   DATA     BYTE      AUXR2
@@ -475,7 +475,7 @@ PUBLIC SYMBOLS OF MODULE:  .\list\PWM (main)
 *SFR* 000000AFH.2 DATA     BIT       ET2
 *SFR* 000000AFH.5 DATA     BIT       ET3
 *SFR* 000000AFH.6 DATA     BIT       ET4
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 8
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 8
 
 
 *SFR* 000000A8H.0 DATA     BIT       EX0
@@ -504,13 +504,13 @@ PUBLIC SYMBOLS OF MODULE:  .\list\PWM (main)
 *SFR* 000000A8H   DATA     BYTE      IE
 *SFR* 000000AFH   DATA     BYTE      IE2
 *DEL*:00000000H   CODE     ---       iic_Ack
-      00FF2035H   CODE     ---       iic_Init
+      00FF2020H   CODE     ---       iic_Init
 *DEL*:00000000H   CODE     ---       iic_NAck
 *DEL*:00000000H   CODE     ---       iic_ReadData
       00FF1F54H   CODE     ---       iic_SendData
       00FF1FDBH   CODE     ---       iic_Start
-      00FF204AH   CODE     ---       iic_Stop
-      00FF2085H   CODE     ---       iic_Wait_Ack
+      00FF2035H   CODE     ---       iic_Stop
+      00FF2084H   CODE     ---       iic_Wait_Ack
 *SFR* 0000008FH   DATA     BYTE      INTCLKO
 *SFR* 000000B8H   DATA     BYTE      IP
 *SFR* 000000B5H   DATA     BYTE      IP2
@@ -520,7 +520,7 @@ PUBLIC SYMBOLS OF MODULE:  .\list\PWM (main)
 *SFR* 000000B7H   DATA     BYTE      IPH
 *SFR* 0000009DH   DATA     BYTE      IRCBAND
       00FF1FAAH   CODE     ---       IsTStateMask
-      00FF2020H   CODE     ---       LimitPercent
+      00FF204AH   CODE     ---       LimitPercent
       00000052H   EDATA    INT       Line_Last_Error
       00000051H   EDATA    BYTE      Line_Last_Left
       00000046H   EDATA    BYTE      Line_Last_Right
@@ -543,7 +543,7 @@ PUBLIC SYMBOLS OF MODULE:  .\list\PWM (main)
 *DEL*:00000000H   CODE     ---       NVIC_CMP_Init
 *DEL*:00000000H   CODE     ---       NVIC_DMA_ADC_Init
 *DEL*:00000000H   CODE     ---       NVIC_DMA_I2CR_Init
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 9
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 9
 
 
 *DEL*:00000000H   CODE     ---       NVIC_DMA_I2CT_Init
@@ -611,7 +611,7 @@ PUBLIC SYMBOLS OF MODULE:  .\list\PWM (main)
 *SFR* 000000C8H   DATA     BYTE      P5
 *SFR* 000000C8H.4 DATA     BIT       P54
 *SFR* 000000CAH   DATA     BYTE      P5M0
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 10
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 10
 
 
 *SFR* 000000C9H   DATA     BYTE      P5M1
@@ -663,9 +663,9 @@ PUBLIC SYMBOLS OF MODULE:  .\list\PWM (main)
       00000020H.3 BIT      BIT       PWM6_Flag
       00FF1B11H   CODE     ---       PWM_config
       00FF0D76H   CODE     ---       PWM_Configuration
-      00FF2072H   CODE     ---       PWM_Left
+      00FF2071H   CODE     ---       PWM_Left
       0000002EH   EDATA    WORD      PWM_Period
-      00FF205FH   CODE     ---       PWM_Right
+      00FF205EH   CODE     ---       PWM_Right
       00FF1FC3H   CODE     ---       PWM_Run
       00FF1A07H   CODE     ---       PWMA_ISR_Handler
       00000030H   EDATA    ---       PWMB_Duty
@@ -679,7 +679,7 @@ PUBLIC SYMBOLS OF MODULE:  .\list\PWM (main)
 *DEL*:00000000H   CODE     ---       ReadPWMB
 *SFR* 000000FFH   DATA     BYTE      RSTCFG
 *SFR* 0000009AH   DATA     BYTE      S2CON
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 11
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 11
 
 
 *SFR* 000000ACH   DATA     BYTE      S3CON
@@ -747,7 +747,7 @@ PUBLIC SYMBOLS OF MODULE:  .\list\PWM (main)
 *SFR* 00000089H   DATA     BYTE      TMOD
       00000042H   EDATA    WORD      Toggle_Count
       00000021H.1 BIT      BIT       Toggle_Start
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 12
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 12
 
 
 *SFR* 00000088H.4 DATA     BIT       TR0
@@ -792,13 +792,13 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF200AH   PUBLIC    CODE     ---       Timer1_ISR_Handler
       00FF1724H   PUBLIC    CODE     ---       Timer2_ISR_Handler
       00FF1F0CH   PUBLIC    CODE     ---       UpdateTTimeAction
-      00FF2098H   PUBLIC    CODE     ---       ApplyLinePid
+      00FF2097H   PUBLIC    CODE     ---       ApplyLinePid
       00FF1EBFH   PUBLIC    CODE     ---       UpdateTState
       00FF1B11H   PUBLIC    CODE     ---       PWM_config
-      00FF205FH   PUBLIC    CODE     ---       PWM_Right
-      00FF2020H   PUBLIC    CODE     ---       LimitPercent
+      00FF205EH   PUBLIC    CODE     ---       PWM_Right
+      00FF204AH   PUBLIC    CODE     ---       LimitPercent
       00FF1E5EH   PUBLIC    CODE     ---       Timer_config
-      00FF2072H   PUBLIC    CODE     ---       PWM_Left
+      00FF2071H   PUBLIC    CODE     ---       PWM_Left
       00FF1D4BH   PUBLIC    CODE     ---       ComputeLineError
       00000020H.0 PUBLIC    BIT      BIT       T_State_45
       00000020H.1 PUBLIC    BIT      BIT       delay_Start
@@ -815,7 +815,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00000022H   PUBLIC    EDATA    INT       Line_Pid_Integral
       00000024H   PUBLIC    EDATA    WORD      end_Count
       00000026H   PUBLIC    EDATA    WORD      T_State_Count
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 13
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 13
 
 
       00000028H   PUBLIC    EDATA    WORD      T_Left_Count
@@ -883,7 +883,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000BAH   SFRSYM    DATA     BYTE      P_SW2
       000000A2H   SFRSYM    DATA     BYTE      P_SW1
       000000A0H.6 SFRSYM    DATA     BIT       BIN2
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 14
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 14
 
 
       000000A0H.7 SFRSYM    DATA     BIT       AIN2
@@ -951,7 +951,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
 
       00FF200AH   BLOCK     CODE     ---       LVL=0
       00FF200AH   LINE      CODE     ---       #217
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 15
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 15
 
 
       00FF200EH   LINE      CODE     ---       #219
@@ -981,18 +981,18 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF1B83H   LINE      CODE     ---       #291
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF2072H   BLOCK     CODE     ---       LVL=0
+      00FF2071H   BLOCK     CODE     ---       LVL=0
       WR2         REGSYM    ---      INT       pwm
-      00FF2072H   LINE      CODE     ---       #299
-      00FF2074H   LINE      CODE     ---       #302
-      00FF2084H   LINE      CODE     ---       #304
+      00FF2071H   LINE      CODE     ---       #299
+      00FF2073H   LINE      CODE     ---       #302
+      00FF2083H   LINE      CODE     ---       #304
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF205FH   BLOCK     CODE     ---       LVL=0
+      00FF205EH   BLOCK     CODE     ---       LVL=0
       WR2         REGSYM    ---      INT       pwm
-      00FF205FH   LINE      CODE     ---       #311
-      00FF2061H   LINE      CODE     ---       #314
-      00FF2071H   LINE      CODE     ---       #316
+      00FF205EH   LINE      CODE     ---       #311
+      00FF2060H   LINE      CODE     ---       #314
+      00FF2070H   LINE      CODE     ---       #316
       ---         BLOCKEND  ---      ---       LVL=0
 
       00FF1FC3H   BLOCK     CODE     ---       LVL=0
@@ -1005,21 +1005,21 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF1FD8H   LINE      CODE     ---       #329
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF2020H   BLOCK     CODE     ---       LVL=0
+      00FF204AH   BLOCK     CODE     ---       LVL=0
       WR6         REGSYM    ---      INT       speed
-      00FF2020H   LINE      CODE     ---       #366
-      00FF2020H   LINE      CODE     ---       #368
-      00FF2026H   LINE      CODE     ---       #370
-      00FF2029H   LINE      CODE     ---       #371
-      00FF2029H   LINE      CODE     ---       #372
-      00FF202FH   LINE      CODE     ---       #374
-      00FF2032H   LINE      CODE     ---       #375
-      00FF2032H   LINE      CODE     ---       #376
-      00FF2034H   LINE      CODE     ---       #377
+      00FF204AH   LINE      CODE     ---       #366
+      00FF204AH   LINE      CODE     ---       #368
+      00FF2050H   LINE      CODE     ---       #370
+      00FF2052H   LINE      CODE     ---       #371
+      00FF2052H   LINE      CODE     ---       #372
+      00FF2058H   LINE      CODE     ---       #374
+      00FF205BH   LINE      CODE     ---       #375
+      00FF205BH   LINE      CODE     ---       #376
+      00FF205DH   LINE      CODE     ---       #377
       ---         BLOCKEND  ---      ---       LVL=0
 
       00FF1B8CH   BLOCK     CODE     ---       LVL=0
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 16
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 16
 
 
       WR4         REGSYM    ---      INT       left
@@ -1087,7 +1087,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF1D66H   LINE      CODE     ---       #454
       00FF1D68H   LINE      CODE     ---       #455
       00FF1D68H   LINE      CODE     ---       #456
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 17
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 17
 
 
       00FF1D6DH   LINE      CODE     ---       #458
@@ -1132,17 +1132,17 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF005EH   LINE      CODE     ---       #509
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF2098H   BLOCK     CODE     ---       LVL=0
+      00FF2097H   BLOCK     CODE     ---       LVL=0
       WR6         REGSYM    ---      INT       error
       WR2         REGSYM    ---      INT       steer
       WR6         REGSYM    ---      INT       left
       WR4         REGSYM    ---      INT       right
-      00FF2098H   LINE      CODE     ---       #516
-      00FF2098H   LINE      CODE     ---       #517
-      00FF2098H   LINE      CODE     ---       #522
-      00FF209DH   LINE      CODE     ---       #523
-      00FF20A1H   LINE      CODE     ---       #524
-      00FF20A7H   LINE      CODE     ---       #526
+      00FF2097H   LINE      CODE     ---       #516
+      00FF2097H   LINE      CODE     ---       #517
+      00FF2097H   LINE      CODE     ---       #522
+      00FF209CH   LINE      CODE     ---       #523
+      00FF20A0H   LINE      CODE     ---       #524
+      00FF20A6H   LINE      CODE     ---       #526
       ---         BLOCKEND  ---      ---       LVL=0
 
       00FF1C55H   BLOCK     CODE     ---       LVL=0
@@ -1155,7 +1155,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF1C75H   LINE      CODE     ---       #544
       00FF1C7FH   LINE      CODE     ---       #546
       00FF1C85H   LINE      CODE     ---       #547
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 18
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 18
 
 
       00FF1C87H   LINE      CODE     ---       #548
@@ -1223,7 +1223,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF1F0CH   BLOCK     CODE     ---       LVL=0
       00FF1F0CH   LINE      CODE     ---       #641
       00FF1F0CH   LINE      CODE     ---       #643
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 19
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 19
 
 
       00FF1F12H   LINE      CODE     ---       #645
@@ -1291,7 +1291,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF178DH   LINE      CODE     ---       #732
       00FF1793H   LINE      CODE     ---       #733
       00FF1795H   LINE      CODE     ---       #736
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 20
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 20
 
 
       00FF1797H   LINE      CODE     ---       #737
@@ -1359,7 +1359,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF1C53H   LINE      CODE     ---       #824
       00FF1C53H   LINE      CODE     ---       #891
       ---         BLOCKEND  ---      ---       LVL=0
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 21
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 21
 
 
 
@@ -1427,7 +1427,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00000093H   SFRSYM    DATA     BYTE      P0M1
       R10         REGSYM    ---      BYTE      GPIO
       REG=0       REGSYM    ---      ---       GPIOx
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 22
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 22
 
 
 
@@ -1495,7 +1495,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000AFH.1 SFRSYM    DATA     BIT       ESPI
       000000F1H   SFRSYM    DATA     BYTE      CANICR
       00000087H   SFRSYM    DATA     BYTE      PCON
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 23
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 23
 
 
       000000B5H.5 SFRSYM    DATA     BIT       PCMP
@@ -1563,7 +1563,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF1F90H   BLOCK     CODE     ---       LVL=0
       R7          REGSYM    ---      BYTE      State
       00FF1F90H   LINE      CODE     ---       #54
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 24
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 24
 
 
       00FF1F92H   LINE      CODE     ---       #56
@@ -1631,7 +1631,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       R3          REGSYM    ---      BYTE      Priority
       R10         REGSYM    ---      BYTE      Bus_Priority
       R9          REGSYM    ---      BYTE      State
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 25
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 25
 
 
       R3          REGSYM    ---      BYTE      Priority
@@ -1699,7 +1699,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000F9H   SFRSYM    DATA     BYTE      LINICR
       0000008EH   SFRSYM    DATA     BYTE      AUXR
       000000AFH   SFRSYM    DATA     BYTE      IE2
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 26
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 26
 
 
       00000088H   SFRSYM    DATA     BYTE      TCON
@@ -1767,7 +1767,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF0E9DH   LINE      CODE     ---       #71
       00FF0EA5H   LINE      CODE     ---       #72
       00FF0EB5H   LINE      CODE     ---       #73
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 27
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 27
 
 
       00FF0EB5H   LINE      CODE     ---       #74
@@ -1835,7 +1835,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF1105H   LINE      CODE     ---       #169
       00FF1115H   LINE      CODE     ---       #170
       00FF1125H   LINE      CODE     ---       #171
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 28
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 28
 
 
       00FF1133H   LINE      CODE     ---       #173
@@ -1903,7 +1903,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
 
       00FF15A9H   BLOCK     CODE     ---       LVL=0
       R11         REGSYM    ---      BYTE      PWM
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 29
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 29
 
 
       REG=7       REGSYM    ---      ---       PWMx
@@ -1971,7 +1971,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000FDH   SFRSYM    DATA     BYTE      S4CON
       000000ACH   SFRSYM    DATA     BYTE      S3CON
       0000009AH   SFRSYM    DATA     BYTE      S2CON
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 30
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 30
 
 
       000000B7H   SFRSYM    DATA     BYTE      IPH
@@ -2039,7 +2039,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF1A77H   LINE      CODE     ---       #61
       00FF1A7DH   LINE      CODE     ---       #63
       00FF1A85H   LINE      CODE     ---       #65
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 31
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 31
 
 
       ---         BLOCKEND  ---      ---       LVL=0
@@ -2107,7 +2107,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000D4H   SFRSYM    DATA     BYTE      T3H
       000000D6H   SFRSYM    DATA     BYTE      T2H
       0000008DH   SFRSYM    DATA     BYTE      TH1
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 32
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 32
 
 
       0000008CH   SFRSYM    DATA     BYTE      TH0
@@ -2175,7 +2175,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF141AH   LINE      CODE     ---       #43
       00FF1429H   LINE      CODE     ---       #44
       00FF1435H   LINE      CODE     ---       #45
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 33
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 33
 
 
       00FF1452H   LINE      CODE     ---       #46
@@ -2243,7 +2243,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000AFH   SFRSYM    DATA     BYTE      IE2
       000000E8H.4 SFRSYM    DATA     BIT       P64
       000000E8H.3 SFRSYM    DATA     BIT       P63
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 34
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 34
 
 
       00000088H   SFRSYM    DATA     BYTE      TCON
@@ -2311,7 +2311,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000C7H   SFRSYM    DATA     BYTE      IAP_CONTR
       000000F9H   SFRSYM    DATA     BYTE      LINICR
       0000008EH   SFRSYM    DATA     BYTE      AUXR
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 35
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 35
 
 
       000000AFH   SFRSYM    DATA     BYTE      IE2
@@ -2379,7 +2379,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000C7H   SFRSYM    DATA     BYTE      IAP_CONTR
       000000F9H   SFRSYM    DATA     BYTE      LINICR
       0000008EH   SFRSYM    DATA     BYTE      AUXR
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 36
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 36
 
 
       000000AFH   SFRSYM    DATA     BYTE      IE2
@@ -2447,7 +2447,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       0000008FH   SFRSYM    DATA     BYTE      INTCLKO
       000000EEH   SFRSYM    DATA     BYTE      IP3H
       000000B6H   SFRSYM    DATA     BYTE      IP2H
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 37
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 37
 
 
       000000A8H   SFRSYM    DATA     BYTE      IE
@@ -2515,7 +2515,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF1975H   LINE      CODE     ---       #48
       00FF1978H   LINE      CODE     ---       #49
       00FF197FH   LINE      CODE     ---       #50
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 38
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 38
 
 
       00FF1984H   LINE      CODE     ---       #52
@@ -2571,11 +2571,11 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       REG=3       REGSYM    ---      ---       BMP
 
       ---         MODULE    ---      ---       iic
-      00FF2085H   PUBLIC    CODE     ---       iic_Wait_Ack
+      00FF2084H   PUBLIC    CODE     ---       iic_Wait_Ack
       00FF1F54H   PUBLIC    CODE     ---       iic_SendData
       00FF1FDBH   PUBLIC    CODE     ---       iic_Start
-      00FF2035H   PUBLIC    CODE     ---       iic_Init
-      00FF204AH   PUBLIC    CODE     ---       iic_Stop
+      00FF2020H   PUBLIC    CODE     ---       iic_Init
+      00FF2035H   PUBLIC    CODE     ---       iic_Stop
       000000D0H   SFRSYM    DATA     BYTE      PSW
       0000009DH   SFRSYM    DATA     BYTE      IRCBAND
       00000097H   SFRSYM    DATA     BYTE      AUXR2
@@ -2583,7 +2583,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000FDH   SFRSYM    DATA     BYTE      S4CON
       000000ACH   SFRSYM    DATA     BYTE      S3CON
       0000009AH   SFRSYM    DATA     BYTE      S2CON
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 39
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 39
 
 
       000000B7H   SFRSYM    DATA     BYTE      IPH
@@ -2631,16 +2631,16 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000B2H   SFRSYM    DATA     BYTE      P3M0
       00000080H   SFRSYM    DATA     BYTE      P0
 
-      00FF2035H   BLOCK     CODE     ---       LVL=0
-      00FF2035H   LINE      CODE     ---       #4
-      00FF2035H   LINE      CODE     ---       #14
-      00FF2038H   LINE      CODE     ---       #15
-      00FF203BH   LINE      CODE     ---       #17
-      00FF203EH   LINE      CODE     ---       #18
-      00FF2041H   LINE      CODE     ---       #21
-      00FF2043H   LINE      CODE     ---       #22
-      00FF2045H   LINE      CODE     ---       #24
-      00FF2049H   LINE      CODE     ---       #25
+      00FF2020H   BLOCK     CODE     ---       LVL=0
+      00FF2020H   LINE      CODE     ---       #4
+      00FF2020H   LINE      CODE     ---       #14
+      00FF2023H   LINE      CODE     ---       #15
+      00FF2026H   LINE      CODE     ---       #17
+      00FF2029H   LINE      CODE     ---       #18
+      00FF202CH   LINE      CODE     ---       #21
+      00FF202EH   LINE      CODE     ---       #22
+      00FF2030H   LINE      CODE     ---       #24
+      00FF2034H   LINE      CODE     ---       #25
       ---         BLOCKEND  ---      ---       LVL=0
 
       00FF1FDBH   BLOCK     CODE     ---       LVL=0
@@ -2651,42 +2651,42 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF1FE4H   LINE      CODE     ---       #33
       00FF1FE9H   LINE      CODE     ---       #34
       00FF1FEBH   LINE      CODE     ---       #35
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 40
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 40
 
 
       00FF1FF0H   LINE      CODE     ---       #36
       00FF1FF2H   LINE      CODE     ---       #37
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF204AH   BLOCK     CODE     ---       LVL=0
-      00FF204AH   LINE      CODE     ---       #40
-      00FF204AH   LINE      CODE     ---       #42
-      00FF204CH   LINE      CODE     ---       #43
-      00FF2050H   LINE      CODE     ---       #44
-      00FF2052H   LINE      CODE     ---       #45
-      00FF2057H   LINE      CODE     ---       #46
-      00FF2059H   LINE      CODE     ---       #47
-      00FF205EH   LINE      CODE     ---       #48
+      00FF2035H   BLOCK     CODE     ---       LVL=0
+      00FF2035H   LINE      CODE     ---       #40
+      00FF2035H   LINE      CODE     ---       #42
+      00FF2037H   LINE      CODE     ---       #43
+      00FF203BH   LINE      CODE     ---       #44
+      00FF203DH   LINE      CODE     ---       #45
+      00FF2042H   LINE      CODE     ---       #46
+      00FF2044H   LINE      CODE     ---       #47
+      00FF2049H   LINE      CODE     ---       #48
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF2085H   BLOCK     CODE     ---       LVL=0
+      00FF2084H   BLOCK     CODE     ---       LVL=0
       R11         REGSYM    ---      BYTE      ACK
-      00FF2085H   LINE      CODE     ---       #70
-      00FF2085H   LINE      CODE     ---       #71
-      00FF2085H   LINE      CODE     ---       #72
-      00FF2085H   LINE      CODE     ---       #73
-      00FF2087H   LINE      CODE     ---       #74
-      00FF2088H   LINE      CODE     ---       #75
-      00FF208AH   LINE      CODE     ---       #76
-      00FF208BH   LINE      CODE     ---       #77
-      00FF208EH   LINE      CODE     ---       #79
-      00FF2090H   LINE      CODE     ---       #80
-      00FF2092H   LINE      CODE     ---       #83
-      00FF2093H   LINE      CODE     ---       #84
-      00FF2093H   LINE      CODE     ---       #85
-      00FF2095H   LINE      CODE     ---       #86
-      00FF2097H   LINE      CODE     ---       #87
-      00FF2097H   LINE      CODE     ---       #88
+      00FF2084H   LINE      CODE     ---       #70
+      00FF2084H   LINE      CODE     ---       #71
+      00FF2084H   LINE      CODE     ---       #72
+      00FF2084H   LINE      CODE     ---       #73
+      00FF2086H   LINE      CODE     ---       #74
+      00FF2087H   LINE      CODE     ---       #75
+      00FF2089H   LINE      CODE     ---       #76
+      00FF208AH   LINE      CODE     ---       #77
+      00FF208DH   LINE      CODE     ---       #79
+      00FF208FH   LINE      CODE     ---       #80
+      00FF2091H   LINE      CODE     ---       #83
+      00FF2092H   LINE      CODE     ---       #84
+      00FF2092H   LINE      CODE     ---       #85
+      00FF2094H   LINE      CODE     ---       #86
+      00FF2096H   LINE      CODE     ---       #87
+      00FF2096H   LINE      CODE     ---       #88
       ---         BLOCKEND  ---      ---       LVL=0
 
       00FF1F54H   BLOCK     CODE     ---       LVL=0
@@ -2719,7 +2719,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       0000009DH   SFRSYM    DATA     BYTE      IRCBAND
       000000D0H.5 SFRSYM    DATA     BIT       F0
       00000097H   SFRSYM    DATA     BYTE      AUXR2
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 41
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 41
 
 
       000000EFH   SFRSYM    DATA     BYTE      AUXINTIF
@@ -2787,18 +2787,18 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       ---         MODULE    ---      ---       ?C?LIMUL
       00FF184FH   PUBLIC    CODE     ---       ?C?LIMUL
 
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 42
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  19:06:40  PAGE 42
 
 
       ---         MODULE    ---      ---       ?C?SLDIV
       00FF1858H   PUBLIC    CODE     NEAR LAB  ?C?SLDIV
 
       ---         MODULE    ---      ---       ?C?INITEDATA_END
-      00FF212BH   PUBLIC    HCONST   WORD      ?C?INITEDATA_END
+      00FF212AH   PUBLIC    HCONST   WORD      ?C?INITEDATA_END
 
       ---         MODULE    ---      ---       ?C?ULDIV
       00FF188EH   PUBLIC    CODE     NEAR LAB  ?C?ULDIV
       00FF188CH   PUBLIC    CODE     NEAR LAB  ?C?ULIDIV
 
-Program Size: data=9.6 edata+hdata=328 xdata=0 const=131 code=8338
+Program Size: data=9.6 edata+hdata=328 xdata=0 const=131 code=8337
 L251 RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

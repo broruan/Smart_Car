@@ -111,7 +111,7 @@ bit Toggle_Start = 0;
 #define T_LEFT_TICKS 8000 // T型左转保持时间，Timer2 100us tick，当前保留未启用
 #define U_TICKS 12000  // 掉头动作保持时间，Timer2 100us tick，当前保留未启用
 #define YOU_TICKS 1000  // T型右转保持时间，Timer2 100us tick，约100ms
-#define TOGGLE_TICKS 5000  // 左右轮反转延迟
+#define TOGGLE_TICKS 1000  // 左右轮反转延迟
 
 #define LINE_CTRL_DIVIDER      1  // Timer2每1次中断执行一次PID，100us*1=100us
 #define LINE_BASE_SPEED        75 // PID正常循迹基础速度百分比
@@ -367,7 +367,7 @@ u8 LimitPercent(int16 speed)
 {
 	if(speed < 0)
 	{
-		return -75;
+		return 0;
 	}
 	if(speed > LINE_MAX_SPEED)
 	{
@@ -445,12 +445,12 @@ bit ComputeLineError(u8 mask, int16 *error)
 
 	if(mask & 0x10)
 	{
-		sum -= 40;
+		sum -= 120;
 		count++;
 	}
 	if(mask & 0x08)
 	{
-		sum -= 10;
+		sum -= 30;
 		count++;
 	}
 	if(mask & 0x04)
@@ -459,12 +459,12 @@ bit ComputeLineError(u8 mask, int16 *error)
 	}
 	if(mask & 0x02)
 	{
-		sum += 10;
+		sum += 30;
 		count++;
 	}
 	if(mask & 0x01)
 	{
-		sum += 40;
+		sum += 120;
 		count++;
 	}
 
