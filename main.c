@@ -117,7 +117,7 @@ bit Toggle_Start = 0;
 #define LINE_BASE_SPEED        75 // PID正常循迹基础速度百分比
 #define LINE_MAX_SPEED         85  // PWM输出限幅最大速度百分比
 #define LINE_SEARCH_SPEED      75  // 全白丢线后的低速搜索速度百分比
-#define LINE_LOST_HOLD_TICKS   80  // 丢线后先保持上次输出的时间，按100us循迹周期约8ms
+#define LINE_LOST_HOLD_TICKS   800  // 丢线后先保持上次输出的时间，按100us循迹周期约8ms
 #define LINE_PID_KP            80  // PID比例系数，放大后由LINE_PID_SCALE缩放
 #define LINE_PID_KI            0  // PID积分系数，默认0避免低速抖动和积分饱和
 #define LINE_PID_KD            0  // PID微分系数，用于抑制转向过冲
@@ -445,7 +445,7 @@ bit ComputeLineError(u8 mask, int16 *error)
 
 	if(mask & 0x10)
 	{
-		sum -= 120;
+		sum -= 95;
 		count++;
 	}
 	if(mask & 0x08)
@@ -464,7 +464,7 @@ bit ComputeLineError(u8 mask, int16 *error)
 	}
 	if(mask & 0x01)
 	{
-		sum += 120;
+		sum += 110;
 		count++;
 	}
 
@@ -541,21 +541,21 @@ void LineLostSearch(void)
 		return;
 	}
 
-	if(Line_Last_Error < 0)
-	{
-		Motor_RunPercent(0, LINE_SEARCH_SPEED);
-	}
-	else if(Line_Last_Error > 0)
-	{
-		Motor_RunPercent(LINE_SEARCH_SPEED, 0);
-	}
+//	if(Line_Last_Error < 0)
+//	{
+//		Motor_RunPercent(0, LINE_SEARCH_SPEED);
+//	}
+//	else if(Line_Last_Error > 0)
+//	{
+//		Motor_RunPercent(LINE_SEARCH_SPEED, 0);
+//	}
 	else
 	{
-		AIN1=0;
-		AIN2=1;
-		BIN1=0;
-		BIN2=1;
-		Motor_RunPercent(LINE_SEARCH_SPEED, LINE_SEARCH_SPEED);
+//		AIN1=0;
+//		AIN2=1;
+//		BIN1=0;
+//		BIN2=1;
+		Motor_RunPercent(LINE_SEARCH_SPEED, -LINE_SEARCH_SPEED);
 	}
 }
 
