@@ -1,4 +1,4 @@
-L251 LINKER/LOCATER V4.66.93.0                                                          06/13/2026  12:51:45  PAGE 1
+L251 LINKER/LOCATER V4.66.93.0                                                          06/13/2026  13:28:24  PAGE 1
 
 
 L251 LINKER/LOCATER V4.66.93.0, INVOKED BY:
@@ -60,14 +60,14 @@ BASE        START       END         USED      MEMORY CLASS
 ==========================================================
 000000H     000000H     000FFFH     000148H   EDATA
 000000H     000000H     000FFFH               HDATA
-FF0000H     FF0000H     FFFFFFH     002081H   CODE
+FF0000H     FF0000H     FFFFFFH     002092H   CODE
 000020H.0   000020H.0   00002FH.7   000001H.6 BIT
 000000H     FF0000H     FFFFFFH     000083H   HCONST
 000000H     000000H     00007FH     000008H   DATA
 
 
 MEMORY MAP OF MODULE:  .\list\PWM (main)
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 2
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 2
 
 
 
@@ -109,50 +109,50 @@ FF00DEH   FF0D75H   000C98H   BYTE   UNIT     CODE           ?CO?FONT
 FF0D76H   FF138FH   00061AH   BYTE   INSEG    CODE           ?PR?PWM_CONFIGURATION?STC32G_PWM
 FF1390H   FF15A8H   000219H   BYTE   INSEG    CODE           ?PR?TIMER_INILIZE?STC32G_TIMER
 FF15A9H   FF1723H   00017BH   BYTE   INSEG    CODE           ?PR?UPDATEPWM?STC32G_PWM
-FF1724H   FF1801H   0000DEH   BYTE   INSEG    CODE           ?PR?TIMER2_ISR_HANDLER?MAIN
-FF1802H   FF18C3H   0000C2H   BYTE   UNIT     CODE           ?C?LIB_CODE
-FF18C4H   FF1959H   000096H   BYTE   INSEG    CODE           ?PR?NVIC_PWM_INIT?STC32G_NVIC
-FF195AH   FF19EBH   000092H   BYTE   INSEG    CODE           ?PR?OLED_INIT?OLED
-FF19ECH   FF1A70H   000085H   BYTE   INSEG    CODE           ?PR?PWMA_ISR_HANDLER?STC32G_PWM_ISR
-FF1A71H   FF1AF5H   000085H   BYTE   INSEG    CODE           ?PR?PWMB_ISR_HANDLER?STC32G_PWM_ISR
-FF1AF6H   FF1B73H   00007EH   BYTE   INSEG    CODE           ?PR?MOTOR_RUNPERCENT?MAIN
-FF1B74H   FF1BEEH   00007BH   BYTE   INSEG    CODE           ?PR?PWM_CONFIG?MAIN
-FF1BEFH   FF1C43H   000055H   BYTE   INSEG    CODE           ?PR?MAIN?MAIN
-FF1C44H   FF1C97H   000054H   BYTE   INSEG    CODE           ?PR?LINELOSTSEARCH?MAIN
-FF1C98H   FF1CAAH   000013H   BYTE   UNIT     CODE           ?C_C51STARTUP
-FF1CABH   FF1CBEH   000014H   BYTE   UNIT     CODE           ?C_C51STARTUP?1
-FF1CBFH   FF1CE7H   000029H   BYTE   UNIT     CODE           ?C_C51STARTUP?2
-FF1CE8H   FF1CEAH   000003H   BYTE   UNIT     CODE           ?C_C51STARTUP?3
-FF1CEBH   FF1D39H   00004FH   BYTE   INSEG    CODE           ?PR?LINECONTROLSTEP?MAIN
-FF1D3AH   FF1D83H   00004AH   BYTE   INSEG    CODE           ?PR?COMPUTELINEERROR?MAIN
-FF1D84H   FF1DCBH   000048H   BYTE   INSEG    CODE           ?PR?NVIC_TIMER0_INIT?STC32G_NVIC
-FF1DCCH   FF1E13H   000048H   BYTE   INSEG    CODE           ?PR?NVIC_TIMER1_INIT?STC32G_NVIC
-FF1E14H   FF1E4CH   000039H   BYTE   INSEG    CODE           ?PR?HANDLESPECIALLINESTATE?MAIN
-FF1E4DH   FF1E7DH   000031H   BYTE   INSEG    CODE           ?PR?TIMER_CONFIG?MAIN
-FF1E7EH   FF1EADH   000030H   BYTE   INSEG    CODE           ?PR?TIMER1_CONFIG?MAIN
-FF1EAEH   FF1ED5H   000028H   BYTE   INSEG    CODE           ?PR?UPDATETSTATE?MAIN
-FF1ED6H   FF1EFAH   000025H   BYTE   INSEG    CODE           ?PR?OLED_IIC_SENDDATA?OLED
-FF1EFBH   FF1F1EH   000024H   BYTE   INSEG    CODE           ?PR?UPDATETTIMEACTION?MAIN
-FF1F1FH   FF1F42H   000024H   BYTE   INSEG    CODE           ?PR?OLED_IIC_SENDCOMMAND?OLED
-FF1F43H   FF1F63H   000021H   BYTE   INSEG    CODE           ?PR?IIC_SENDDATA?IIC
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 3
+FF1724H   FF181CH   0000F9H   BYTE   INSEG    CODE           ?PR?TIMER2_ISR_HANDLER?MAIN
+FF181DH   FF18DEH   0000C2H   BYTE   UNIT     CODE           ?C?LIB_CODE
+FF18DFH   FF1974H   000096H   BYTE   INSEG    CODE           ?PR?NVIC_PWM_INIT?STC32G_NVIC
+FF1975H   FF1A06H   000092H   BYTE   INSEG    CODE           ?PR?OLED_INIT?OLED
+FF1A07H   FF1A8BH   000085H   BYTE   INSEG    CODE           ?PR?PWMA_ISR_HANDLER?STC32G_PWM_ISR
+FF1A8CH   FF1B10H   000085H   BYTE   INSEG    CODE           ?PR?PWMB_ISR_HANDLER?STC32G_PWM_ISR
+FF1B11H   FF1B8BH   00007BH   BYTE   INSEG    CODE           ?PR?PWM_CONFIG?MAIN
+FF1B8CH   FF1BFFH   000074H   BYTE   INSEG    CODE           ?PR?MOTOR_RUNPERCENT?MAIN
+FF1C00H   FF1C54H   000055H   BYTE   INSEG    CODE           ?PR?MAIN?MAIN
+FF1C55H   FF1CA8H   000054H   BYTE   INSEG    CODE           ?PR?LINELOSTSEARCH?MAIN
+FF1CA9H   FF1CBBH   000013H   BYTE   UNIT     CODE           ?C_C51STARTUP
+FF1CBCH   FF1CCFH   000014H   BYTE   UNIT     CODE           ?C_C51STARTUP?1
+FF1CD0H   FF1CF8H   000029H   BYTE   UNIT     CODE           ?C_C51STARTUP?2
+FF1CF9H   FF1CFBH   000003H   BYTE   UNIT     CODE           ?C_C51STARTUP?3
+FF1CFCH   FF1D4AH   00004FH   BYTE   INSEG    CODE           ?PR?LINECONTROLSTEP?MAIN
+FF1D4BH   FF1D94H   00004AH   BYTE   INSEG    CODE           ?PR?COMPUTELINEERROR?MAIN
+FF1D95H   FF1DDCH   000048H   BYTE   INSEG    CODE           ?PR?NVIC_TIMER0_INIT?STC32G_NVIC
+FF1DDDH   FF1E24H   000048H   BYTE   INSEG    CODE           ?PR?NVIC_TIMER1_INIT?STC32G_NVIC
+FF1E25H   FF1E5DH   000039H   BYTE   INSEG    CODE           ?PR?HANDLESPECIALLINESTATE?MAIN
+FF1E5EH   FF1E8EH   000031H   BYTE   INSEG    CODE           ?PR?TIMER_CONFIG?MAIN
+FF1E8FH   FF1EBEH   000030H   BYTE   INSEG    CODE           ?PR?TIMER1_CONFIG?MAIN
+FF1EBFH   FF1EE6H   000028H   BYTE   INSEG    CODE           ?PR?UPDATETSTATE?MAIN
+FF1EE7H   FF1F0BH   000025H   BYTE   INSEG    CODE           ?PR?OLED_IIC_SENDDATA?OLED
+FF1F0CH   FF1F2FH   000024H   BYTE   INSEG    CODE           ?PR?UPDATETTIMEACTION?MAIN
+FF1F30H   FF1F53H   000024H   BYTE   INSEG    CODE           ?PR?OLED_IIC_SENDCOMMAND?OLED
+FF1F54H   FF1F74H   000021H   BYTE   INSEG    CODE           ?PR?IIC_SENDDATA?IIC
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 3
 
 
-FF1F64H   FF1F7EH   00001BH   BYTE   INSEG    CODE           ?PR?READLINEMASK?MAIN
-FF1F7FH   FF1F98H   00001AH   BYTE   INSEG    CODE           ?PR?NVIC_TIMER2_INIT?STC32G_NVIC
-FF1F99H   FF1FB1H   000019H   BYTE   INSEG    CODE           ?PR?ISTSTATEMASK?MAIN
-FF1FB2H   FF1FC9H   000018H   BYTE   INSEG    CODE           ?PR?PWM_RUN?MAIN
-FF1FCAH   FF1FE1H   000018H   BYTE   INSEG    CODE           ?PR?IIC_START?IIC
-FF1FE2H   FF1FF8H   000017H   BYTE   INSEG    CODE           ?PR?DELAY_MS?STC32G_DELAY
-FF1FF9H   FF200EH   000016H   BYTE   INSEG    CODE           ?PR?TIMER1_ISR_HANDLER?MAIN
-FF200FH   FF2023H   000015H   BYTE   INSEG    CODE           ?PR?LIMITPERCENT?MAIN
-FF2024H   FF2038H   000015H   BYTE   INSEG    CODE           ?PR?IIC_INIT?IIC
-FF2039H   FF204DH   000015H   BYTE   INSEG    CODE           ?PR?IIC_STOP?IIC
-FF204EH   FF2060H   000013H   BYTE   INSEG    CODE           ?PR?PWM_RIGHT?MAIN
-FF2061H   FF2073H   000013H   BYTE   INSEG    CODE           ?PR?PWM_LEFT?MAIN
-FF2074H   FF2086H   000013H   BYTE   INSEG    CODE           ?PR?IIC_WAIT_ACK?IIC
-FF2087H   FF2098H   000012H   BYTE   INSEG    CODE           ?PR?APPLYLINEPID?MAIN
-FF2099H   FF211BH   000083H   BYTE   UNIT     HCONST         ?C_INITEDATA
+FF1F75H   FF1F8FH   00001BH   BYTE   INSEG    CODE           ?PR?READLINEMASK?MAIN
+FF1F90H   FF1FA9H   00001AH   BYTE   INSEG    CODE           ?PR?NVIC_TIMER2_INIT?STC32G_NVIC
+FF1FAAH   FF1FC2H   000019H   BYTE   INSEG    CODE           ?PR?ISTSTATEMASK?MAIN
+FF1FC3H   FF1FDAH   000018H   BYTE   INSEG    CODE           ?PR?PWM_RUN?MAIN
+FF1FDBH   FF1FF2H   000018H   BYTE   INSEG    CODE           ?PR?IIC_START?IIC
+FF1FF3H   FF2009H   000017H   BYTE   INSEG    CODE           ?PR?DELAY_MS?STC32G_DELAY
+FF200AH   FF201FH   000016H   BYTE   INSEG    CODE           ?PR?TIMER1_ISR_HANDLER?MAIN
+FF2020H   FF2034H   000015H   BYTE   INSEG    CODE           ?PR?LIMITPERCENT?MAIN
+FF2035H   FF2049H   000015H   BYTE   INSEG    CODE           ?PR?IIC_INIT?IIC
+FF204AH   FF205EH   000015H   BYTE   INSEG    CODE           ?PR?IIC_STOP?IIC
+FF205FH   FF2071H   000013H   BYTE   INSEG    CODE           ?PR?PWM_RIGHT?MAIN
+FF2072H   FF2084H   000013H   BYTE   INSEG    CODE           ?PR?PWM_LEFT?MAIN
+FF2085H   FF2097H   000013H   BYTE   INSEG    CODE           ?PR?IIC_WAIT_ACK?IIC
+FF2098H   FF20A9H   000012H   BYTE   INSEG    CODE           ?PR?APPLYLINEPID?MAIN
+FF20AAH   FF212CH   000083H   BYTE   UNIT     HCONST         ?C_INITEDATA
 
 * * * * * * * * *   R E M O V E D     S E G M E N T S   * * * * * * * *
    *DEL*:           000001H   BYTE   INSEG    CODE           ?PR?GPIO_CONFIG?MAIN
@@ -203,7 +203,7 @@ FF2099H   FF211BH   000083H   BYTE   UNIT     HCONST         ?C_INITEDATA
    *DEL*:           00009AH   BYTE   INSEG    CODE           ?PR?OLED_SHOWBMP?OLED
    *DEL*:           00000FH   BYTE   INSEG    CODE           ?PR?OLED_DISPLAY_OFF?OLED
    *DEL*:           0000BBH   BYTE   INSEG    CODE           ?PR?OLED_SHOWCHAR?OLED
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 4
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 4
 
 
    *DEL*:           000069H   BYTE   INSEG    CODE           ?PR?OLED_SHOWCN?OLED
@@ -271,7 +271,7 @@ LimitPercent/main                        ----- -----  ----- -----
 UpdateTTimeAction/main                   ----- -----  ----- -----
   +--> Motor_RunPercent/main
 
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 5
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 5
 
 
 LineControlStep/main                     ----- -----  0008H 0009H
@@ -339,7 +339,7 @@ Timer4_ISR_Handler/STC32G_Timer_Isr      ----- -----  ----- -----
 
 *** NEW ROOT ***************************
 
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 6
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 6
 
 
 ?C_C51STARTUP?3                          ----- -----  ----- -----
@@ -407,7 +407,7 @@ iic_Stop/iic                             ----- -----  ----- -----
 oled_clear/oled                          ----- -----  ----- -----
   +--> oled_IIC_SendCommand/oled
   +--> oled_IIC_SendData/oled
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 7
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 7
 
 
 
@@ -429,21 +429,21 @@ PUBLIC SYMBOLS OF MODULE:  .\list\PWM (main)
       VALUE       CLASS    TYPE      PUBLIC SYMBOL NAME
       =================================================
       000000FFH   NUMBER   ---       ?C?CODESEG
-      00FF1CBFH   CODE     ---       ?C?INITEDATA
-      00FF211AH   HCONST   WORD      ?C?INITEDATA_END
-      00FF1834H   CODE     ---       ?C?LIMUL
-      00FF1802H   CODE     ---       ?C?SIDIV
-      00FF183DH   CODE     NEAR LAB  ?C?SLDIV
+      00FF1CD0H   CODE     ---       ?C?INITEDATA
+      00FF212BH   HCONST   WORD      ?C?INITEDATA_END
+      00FF184FH   CODE     ---       ?C?LIMUL
+      00FF181DH   CODE     ---       ?C?SIDIV
+      00FF1858H   CODE     NEAR LAB  ?C?SLDIV
       00FF0000H   CODE     ---       ?C?STARTUP
-      00FF1873H   CODE     NEAR LAB  ?C?ULDIV
-      00FF1871H   CODE     NEAR LAB  ?C?ULIDIV
+      00FF188EH   CODE     NEAR LAB  ?C?ULDIV
+      00FF188CH   CODE     NEAR LAB  ?C?ULIDIV
       00000001H   NUMBER   ---       ?C?XDATASEG
       00FF0000H   CODE     ---       ?C_STARTUP
 *SFR* 000000BCH   DATA     BYTE      ADC_CONTR
 *SFR* 000000DEH   DATA     BYTE      ADCCFG
 *SFR* 000000C0H.5 DATA     BIT       AIN1
 *SFR* 000000A0H.7 DATA     BIT       AIN2
-      00FF2087H   CODE     ---       ApplyLinePid
+      00FF2098H   CODE     ---       ApplyLinePid
 *SFR* 000000EFH   DATA     BYTE      AUXINTIF
 *SFR* 0000008EH   DATA     BYTE      AUXR
 *SFR* 00000097H   DATA     BYTE      AUXR2
@@ -456,9 +456,9 @@ PUBLIC SYMBOLS OF MODULE:  .\list\PWM (main)
 *SFR* 000000EAH   DATA     BYTE      CKCON
 *SFR* 000000E6H   DATA     BYTE      CMPCR1
 *SFR* 000000E7H   DATA     BYTE      CMPCR2
-      00FF1D3AH   CODE     ---       ComputeLineError
+      00FF1D4BH   CODE     ---       ComputeLineError
       00000049H   EDATA    WORD      dalay_Start_Count
-      00FF1FE2H   CODE     ---       delay_ms
+      00FF1FF3H   CODE     ---       delay_ms
       00000020H.1 BIT      BIT       delay_Start
 *SFR* 000000A8H.7 DATA     BIT       EA
 *SFR* 000000A8H.5 DATA     BIT       EADC
@@ -475,7 +475,7 @@ PUBLIC SYMBOLS OF MODULE:  .\list\PWM (main)
 *SFR* 000000AFH.2 DATA     BIT       ET2
 *SFR* 000000AFH.5 DATA     BIT       ET3
 *SFR* 000000AFH.6 DATA     BIT       ET4
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 8
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 8
 
 
 *SFR* 000000A8H.0 DATA     BIT       EX0
@@ -491,7 +491,7 @@ PUBLIC SYMBOLS OF MODULE:  .\list\PWM (main)
       00000020H.4 BIT      BIT       Force_Turn_Enable
 *DEL*:00000000H   CODE     ---       GPIO_config
 *DEL*:00000000H   CODE     ---       GPIO_Inilize
-      00FF1E14H   CODE     ---       HandleSpecialLineState
+      00FF1E25H   CODE     ---       HandleSpecialLineState
 *DEL*:00000000H   CODE     ---       HSPWM_Configuration
       00FF0706H   CODE     ---       Hzk
 *DEL*:00000000H   CODE     ---       I2C_Check_ACK
@@ -504,13 +504,13 @@ PUBLIC SYMBOLS OF MODULE:  .\list\PWM (main)
 *SFR* 000000A8H   DATA     BYTE      IE
 *SFR* 000000AFH   DATA     BYTE      IE2
 *DEL*:00000000H   CODE     ---       iic_Ack
-      00FF2024H   CODE     ---       iic_Init
+      00FF2035H   CODE     ---       iic_Init
 *DEL*:00000000H   CODE     ---       iic_NAck
 *DEL*:00000000H   CODE     ---       iic_ReadData
-      00FF1F43H   CODE     ---       iic_SendData
-      00FF1FCAH   CODE     ---       iic_Start
-      00FF2039H   CODE     ---       iic_Stop
-      00FF2074H   CODE     ---       iic_Wait_Ack
+      00FF1F54H   CODE     ---       iic_SendData
+      00FF1FDBH   CODE     ---       iic_Start
+      00FF204AH   CODE     ---       iic_Stop
+      00FF2085H   CODE     ---       iic_Wait_Ack
 *SFR* 0000008FH   DATA     BYTE      INTCLKO
 *SFR* 000000B8H   DATA     BYTE      IP
 *SFR* 000000B5H   DATA     BYTE      IP2
@@ -519,22 +519,22 @@ PUBLIC SYMBOLS OF MODULE:  .\list\PWM (main)
 *SFR* 000000EEH   DATA     BYTE      IP3H
 *SFR* 000000B7H   DATA     BYTE      IPH
 *SFR* 0000009DH   DATA     BYTE      IRCBAND
-      00FF1F99H   CODE     ---       IsTStateMask
-      00FF200FH   CODE     ---       LimitPercent
+      00FF1FAAH   CODE     ---       IsTStateMask
+      00FF2020H   CODE     ---       LimitPercent
       00000052H   EDATA    INT       Line_Last_Error
       00000051H   EDATA    BYTE      Line_Last_Left
       00000046H   EDATA    BYTE      Line_Last_Right
       00000056H   EDATA    WORD      Line_Lost_Count
       00000022H   EDATA    INT       Line_Pid_Integral
       0000004BH   EDATA    INT       Line_Pid_Last_Error
-      00FF1CEBH   CODE     ---       LineControlStep
-      00FF1C44H   CODE     ---       LineLostSearch
+      00FF1CFCH   CODE     ---       LineControlStep
+      00FF1C55H   CODE     ---       LineLostSearch
       00FF001EH   CODE     ---       LinePidUpdate
 *SFR* 000000F9H   DATA     BYTE      LINICR
 *SFR* 000000F9H.1 DATA     BIT       LINIE
-      00FF1BEFH   CODE     ---       main
+      00FF1C00H   CODE     ---       main
       00000021H.0 BIT      BIT       measuring
-      00FF1AF6H   CODE     ---       Motor_RunPercent
+      00FF1B8CH   CODE     ---       Motor_RunPercent
 *DEL*:00000000H   CODE     ---       Motor_SetForward
       0000004DH   EDATA    DWORD     n
 *SFR* 000000E6H.4 DATA     BIT       NIE
@@ -543,7 +543,7 @@ PUBLIC SYMBOLS OF MODULE:  .\list\PWM (main)
 *DEL*:00000000H   CODE     ---       NVIC_CMP_Init
 *DEL*:00000000H   CODE     ---       NVIC_DMA_ADC_Init
 *DEL*:00000000H   CODE     ---       NVIC_DMA_I2CR_Init
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 9
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 9
 
 
 *DEL*:00000000H   CODE     ---       NVIC_DMA_I2CT_Init
@@ -566,12 +566,12 @@ PUBLIC SYMBOLS OF MODULE:  .\list\PWM (main)
 *DEL*:00000000H   CODE     ---       NVIC_INT4_Init
 *DEL*:00000000H   CODE     ---       NVIC_LCM_Init
 *DEL*:00000000H   CODE     ---       NVIC_LIN_Init
-      00FF18C4H   CODE     ---       NVIC_PWM_Init
+      00FF18DFH   CODE     ---       NVIC_PWM_Init
 *DEL*:00000000H   CODE     ---       NVIC_RTC_Init
 *DEL*:00000000H   CODE     ---       NVIC_SPI_Init
-      00FF1D84H   CODE     ---       NVIC_Timer0_Init
-      00FF1DCCH   CODE     ---       NVIC_Timer1_Init
-      00FF1F7FH   CODE     ---       NVIC_Timer2_Init
+      00FF1D95H   CODE     ---       NVIC_Timer0_Init
+      00FF1DDDH   CODE     ---       NVIC_Timer1_Init
+      00FF1F90H   CODE     ---       NVIC_Timer2_Init
 *DEL*:00000000H   CODE     ---       NVIC_Timer3_Init
 *DEL*:00000000H   CODE     ---       NVIC_Timer4_Init
 *DEL*:00000000H   CODE     ---       NVIC_UART1_Init
@@ -582,9 +582,9 @@ PUBLIC SYMBOLS OF MODULE:  .\list\PWM (main)
       00FF00A6H   CODE     ---       oled_clear
 *DEL*:00000000H   CODE     ---       oled_Display_OFF
 *DEL*:00000000H   CODE     ---       oled_Display_ON
-      00FF1F1FH   CODE     ---       oled_IIC_SendCommand
-      00FF1ED6H   CODE     ---       oled_IIC_SendData
-      00FF195AH   CODE     ---       oled_Init
+      00FF1F30H   CODE     ---       oled_IIC_SendCommand
+      00FF1EE7H   CODE     ---       oled_IIC_SendData
+      00FF1975H   CODE     ---       oled_Init
 *DEL*:00000000H   CODE     ---       oled_Pow
 *DEL*:00000000H   CODE     ---       oled_SetPos
 *DEL*:00000000H   CODE     ---       oled_ShowBMP
@@ -611,7 +611,7 @@ PUBLIC SYMBOLS OF MODULE:  .\list\PWM (main)
 *SFR* 000000C8H   DATA     BYTE      P5
 *SFR* 000000C8H.4 DATA     BIT       P54
 *SFR* 000000CAH   DATA     BYTE      P5M0
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 10
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 10
 
 
 *SFR* 000000C9H   DATA     BYTE      P5M1
@@ -661,25 +661,25 @@ PUBLIC SYMBOLS OF MODULE:  .\list\PWM (main)
 *SFR* 000000B7H.3 DATA     BIT       PT1H
       00000020H.2 BIT      BIT       PWM5_Flag
       00000020H.3 BIT      BIT       PWM6_Flag
-      00FF1B74H   CODE     ---       PWM_config
+      00FF1B11H   CODE     ---       PWM_config
       00FF0D76H   CODE     ---       PWM_Configuration
-      00FF2061H   CODE     ---       PWM_Left
+      00FF2072H   CODE     ---       PWM_Left
       0000002EH   EDATA    WORD      PWM_Period
-      00FF204EH   CODE     ---       PWM_Right
-      00FF1FB2H   CODE     ---       PWM_Run
-      00FF19ECH   CODE     ---       PWMA_ISR_Handler
+      00FF205FH   CODE     ---       PWM_Right
+      00FF1FC3H   CODE     ---       PWM_Run
+      00FF1A07H   CODE     ---       PWMA_ISR_Handler
       00000030H   EDATA    ---       PWMB_Duty
-      00FF1A71H   CODE     ---       PWMB_ISR_Handler
+      00FF1A8CH   CODE     ---       PWMB_ISR_Handler
 *SFR* 000000B8H.0 DATA     BIT       PX0
 *SFR* 000000B7H.0 DATA     BIT       PX0H
 *SFR* 000000B8H.2 DATA     BIT       PX1
 *SFR* 000000B7H.2 DATA     BIT       PX1H
-      00FF1F64H   CODE     ---       ReadLineMask
+      00FF1F75H   CODE     ---       ReadLineMask
 *DEL*:00000000H   CODE     ---       ReadPWMA
 *DEL*:00000000H   CODE     ---       ReadPWMB
 *SFR* 000000FFH   DATA     BYTE      RSTCFG
 *SFR* 0000009AH   DATA     BYTE      S2CON
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 11
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 11
 
 
 *SFR* 000000ACH   DATA     BYTE      S3CON
@@ -734,20 +734,20 @@ PUBLIC SYMBOLS OF MODULE:  .\list\PWM (main)
 *SFR* 0000008DH   DATA     BYTE      TH1
       00000054H   EDATA    WORD      time_us
       00FF0015H   CODE     ---       Timer0_ISR_Handler
-      00FF1E7EH   CODE     ---       Timer1_config
-      00FF1FF9H   CODE     ---       Timer1_ISR_Handler
+      00FF1E8FH   CODE     ---       Timer1_config
+      00FF200AH   CODE     ---       Timer1_ISR_Handler
       00FF0066H   CODE     ---       Timer2_config
       00FF1724H   CODE     ---       Timer2_ISR_Handler
       00FF0003H   CODE     ---       Timer3_ISR_Handler
       00FF000EH   CODE     ---       Timer4_ISR_Handler
-      00FF1E4DH   CODE     ---       Timer_config
+      00FF1E5EH   CODE     ---       Timer_config
       00FF1390H   CODE     ---       Timer_Inilize
 *SFR* 0000008AH   DATA     BYTE      TL0
 *SFR* 0000008BH   DATA     BYTE      TL1
 *SFR* 00000089H   DATA     BYTE      TMOD
       00000042H   EDATA    WORD      Toggle_Count
       00000021H.1 BIT      BIT       Toggle_Start
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 12
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 12
 
 
 *SFR* 00000088H.4 DATA     BIT       TR0
@@ -758,8 +758,8 @@ PUBLIC SYMBOLS OF MODULE:  .\list\PWM (main)
 *DEL*:00000000H   CODE     ---       Ultrasonic_GetDistance
 *DEL*:00000000H   CODE     ---       UpdateHSPwm
       00FF15A9H   CODE     ---       UpdatePwm
-      00FF1EAEH   CODE     ---       UpdateTState
-      00FF1EFBH   CODE     ---       UpdateTTimeAction
+      00FF1EBFH   CODE     ---       UpdateTState
+      00FF1F0CH   CODE     ---       UpdateTTimeAction
 *SFR* 000000F4H   DATA     BYTE      USBCON
 *SFR* 000000C1H   DATA     BYTE      WDT_CONTR
 *DEL*:00000000H   CODE     ---       WritePWMA
@@ -778,28 +778,28 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       VALUE       REP       CLASS    TYPE      SYMBOL NAME
       ====================================================
       ---         MODULE    ---      ---       main
-      00FF1AF6H   PUBLIC    CODE     ---       Motor_RunPercent
-      00FF1C44H   PUBLIC    CODE     ---       LineLostSearch
-      00FF1FB2H   PUBLIC    CODE     ---       PWM_Run
-      00FF1E7EH   PUBLIC    CODE     ---       Timer1_config
-      00FF1CEBH   PUBLIC    CODE     ---       LineControlStep
+      00FF1B8CH   PUBLIC    CODE     ---       Motor_RunPercent
+      00FF1C55H   PUBLIC    CODE     ---       LineLostSearch
+      00FF1FC3H   PUBLIC    CODE     ---       PWM_Run
+      00FF1E8FH   PUBLIC    CODE     ---       Timer1_config
+      00FF1CFCH   PUBLIC    CODE     ---       LineControlStep
       00FF0066H   PUBLIC    CODE     ---       Timer2_config
       00FF001EH   PUBLIC    CODE     ---       LinePidUpdate
-      00FF1F64H   PUBLIC    CODE     ---       ReadLineMask
-      00FF1F99H   PUBLIC    CODE     ---       IsTStateMask
-      00FF1E14H   PUBLIC    CODE     ---       HandleSpecialLineState
-      00FF1BEFH   PUBLIC    CODE     ---       main
-      00FF1FF9H   PUBLIC    CODE     ---       Timer1_ISR_Handler
+      00FF1F75H   PUBLIC    CODE     ---       ReadLineMask
+      00FF1FAAH   PUBLIC    CODE     ---       IsTStateMask
+      00FF1E25H   PUBLIC    CODE     ---       HandleSpecialLineState
+      00FF1C00H   PUBLIC    CODE     ---       main
+      00FF200AH   PUBLIC    CODE     ---       Timer1_ISR_Handler
       00FF1724H   PUBLIC    CODE     ---       Timer2_ISR_Handler
-      00FF1EFBH   PUBLIC    CODE     ---       UpdateTTimeAction
-      00FF2087H   PUBLIC    CODE     ---       ApplyLinePid
-      00FF1EAEH   PUBLIC    CODE     ---       UpdateTState
-      00FF1B74H   PUBLIC    CODE     ---       PWM_config
-      00FF204EH   PUBLIC    CODE     ---       PWM_Right
-      00FF200FH   PUBLIC    CODE     ---       LimitPercent
-      00FF1E4DH   PUBLIC    CODE     ---       Timer_config
-      00FF2061H   PUBLIC    CODE     ---       PWM_Left
-      00FF1D3AH   PUBLIC    CODE     ---       ComputeLineError
+      00FF1F0CH   PUBLIC    CODE     ---       UpdateTTimeAction
+      00FF2098H   PUBLIC    CODE     ---       ApplyLinePid
+      00FF1EBFH   PUBLIC    CODE     ---       UpdateTState
+      00FF1B11H   PUBLIC    CODE     ---       PWM_config
+      00FF205FH   PUBLIC    CODE     ---       PWM_Right
+      00FF2020H   PUBLIC    CODE     ---       LimitPercent
+      00FF1E5EH   PUBLIC    CODE     ---       Timer_config
+      00FF2072H   PUBLIC    CODE     ---       PWM_Left
+      00FF1D4BH   PUBLIC    CODE     ---       ComputeLineError
       00000020H.0 PUBLIC    BIT      BIT       T_State_45
       00000020H.1 PUBLIC    BIT      BIT       delay_Start
       00000020H.2 PUBLIC    BIT      BIT       PWM5_Flag
@@ -815,7 +815,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00000022H   PUBLIC    EDATA    INT       Line_Pid_Integral
       00000024H   PUBLIC    EDATA    WORD      end_Count
       00000026H   PUBLIC    EDATA    WORD      T_State_Count
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 13
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 13
 
 
       00000028H   PUBLIC    EDATA    WORD      T_Left_Count
@@ -883,7 +883,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000BAH   SFRSYM    DATA     BYTE      P_SW2
       000000A2H   SFRSYM    DATA     BYTE      P_SW1
       000000A0H.6 SFRSYM    DATA     BIT       BIN2
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 14
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 14
 
 
       000000A0H.7 SFRSYM    DATA     BIT       AIN2
@@ -907,32 +907,32 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00000092H   SFRSYM    DATA     BYTE      P1M0
       00000093H   SFRSYM    DATA     BYTE      P0M1
 
-      00FF1E4DH   BLOCK     CODE     ---       LVL=0
+      00FF1E5EH   BLOCK     CODE     ---       LVL=0
       0000000AH   SYMBOL    EDATA    ---       TIM_InitStructure
-      00FF1E4DH   LINE      CODE     ---       #158
-      00FF1E4DH   LINE      CODE     ---       #159
-      00FF1E4DH   LINE      CODE     ---       #161
-      00FF1E52H   LINE      CODE     ---       #162
-      00FF1E58H   LINE      CODE     ---       #163
-      00FF1E5DH   LINE      CODE     ---       #164
-      00FF1E65H   LINE      CODE     ---       #165
-      00FF1E69H   LINE      CODE     ---       #166
-      00FF1E6FH   LINE      CODE     ---       #167
-      00FF1E77H   LINE      CODE     ---       #168
+      00FF1E5EH   LINE      CODE     ---       #158
+      00FF1E5EH   LINE      CODE     ---       #159
+      00FF1E5EH   LINE      CODE     ---       #161
+      00FF1E63H   LINE      CODE     ---       #162
+      00FF1E69H   LINE      CODE     ---       #163
+      00FF1E6EH   LINE      CODE     ---       #164
+      00FF1E76H   LINE      CODE     ---       #165
+      00FF1E7AH   LINE      CODE     ---       #166
+      00FF1E80H   LINE      CODE     ---       #167
+      00FF1E88H   LINE      CODE     ---       #168
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF1E7EH   BLOCK     CODE     ---       LVL=0
+      00FF1E8FH   BLOCK     CODE     ---       LVL=0
       0000000AH   SYMBOL    EDATA    ---       TIM_InitStructure
-      00FF1E7EH   LINE      CODE     ---       #176
-      00FF1E7EH   LINE      CODE     ---       #177
-      00FF1E7EH   LINE      CODE     ---       #180
-      00FF1E83H   LINE      CODE     ---       #181
-      00FF1E89H   LINE      CODE     ---       #182
-      00FF1E8EH   LINE      CODE     ---       #183
-      00FF1E96H   LINE      CODE     ---       #184
-      00FF1E9AH   LINE      CODE     ---       #185
-      00FF1EA0H   LINE      CODE     ---       #187
-      00FF1EA7H   LINE      CODE     ---       #188
+      00FF1E8FH   LINE      CODE     ---       #176
+      00FF1E8FH   LINE      CODE     ---       #177
+      00FF1E8FH   LINE      CODE     ---       #180
+      00FF1E94H   LINE      CODE     ---       #181
+      00FF1E9AH   LINE      CODE     ---       #182
+      00FF1E9FH   LINE      CODE     ---       #183
+      00FF1EA7H   LINE      CODE     ---       #184
+      00FF1EABH   LINE      CODE     ---       #185
+      00FF1EB1H   LINE      CODE     ---       #187
+      00FF1EB8H   LINE      CODE     ---       #188
       ---         BLOCKEND  ---      ---       LVL=0
 
       00FF0066H   BLOCK     CODE     ---       LVL=0
@@ -949,163 +949,163 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF0091H   LINE      CODE     ---       #208
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF1FF9H   BLOCK     CODE     ---       LVL=0
-      00FF1FF9H   LINE      CODE     ---       #217
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 15
+      00FF200AH   BLOCK     CODE     ---       LVL=0
+      00FF200AH   LINE      CODE     ---       #217
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 15
 
 
-      00FF1FFDH   LINE      CODE     ---       #219
-      00FF200AH   LINE      CODE     ---       #220
+      00FF200EH   LINE      CODE     ---       #219
+      00FF201BH   LINE      CODE     ---       #220
       ---         BLOCKEND  ---      ---       LVL=0
       WR6         REGSYM    ---      WORD      Distance_mm
 
-      00FF1B74H   BLOCK     CODE     ---       LVL=0
+      00FF1B11H   BLOCK     CODE     ---       LVL=0
       0000000AH   SYMBOL    EDATA    ---       PWMx_InitStructure
-      00FF1B74H   LINE      CODE     ---       #263
-      00FF1B74H   LINE      CODE     ---       #264
-      00FF1B74H   LINE      CODE     ---       #271
-      00FF1B7AH   LINE      CODE     ---       #272
-      00FF1B82H   LINE      CODE     ---       #273
-      00FF1B88H   LINE      CODE     ---       #274
-      00FF1B91H   LINE      CODE     ---       #276
-      00FF1B97H   LINE      CODE     ---       #277
-      00FF1B9FH   LINE      CODE     ---       #278
-      00FF1BA5H   LINE      CODE     ---       #279
-      00FF1BAEH   LINE      CODE     ---       #282
-      00FF1BB6H   LINE      CODE     ---       #283
-      00FF1BBBH   LINE      CODE     ---       #284
-      00FF1BC1H   LINE      CODE     ---       #285
-      00FF1BC5H   LINE      CODE     ---       #286
-      00FF1BCEH   LINE      CODE     ---       #289
-      00FF1BDEH   LINE      CODE     ---       #290
-      00FF1BE6H   LINE      CODE     ---       #291
+      00FF1B11H   LINE      CODE     ---       #263
+      00FF1B11H   LINE      CODE     ---       #264
+      00FF1B11H   LINE      CODE     ---       #271
+      00FF1B17H   LINE      CODE     ---       #272
+      00FF1B1FH   LINE      CODE     ---       #273
+      00FF1B25H   LINE      CODE     ---       #274
+      00FF1B2EH   LINE      CODE     ---       #276
+      00FF1B34H   LINE      CODE     ---       #277
+      00FF1B3CH   LINE      CODE     ---       #278
+      00FF1B42H   LINE      CODE     ---       #279
+      00FF1B4BH   LINE      CODE     ---       #282
+      00FF1B53H   LINE      CODE     ---       #283
+      00FF1B58H   LINE      CODE     ---       #284
+      00FF1B5EH   LINE      CODE     ---       #285
+      00FF1B62H   LINE      CODE     ---       #286
+      00FF1B6BH   LINE      CODE     ---       #289
+      00FF1B7BH   LINE      CODE     ---       #290
+      00FF1B83H   LINE      CODE     ---       #291
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF2061H   BLOCK     CODE     ---       LVL=0
+      00FF2072H   BLOCK     CODE     ---       LVL=0
       WR2         REGSYM    ---      INT       pwm
-      00FF2061H   LINE      CODE     ---       #299
-      00FF2063H   LINE      CODE     ---       #302
-      00FF2073H   LINE      CODE     ---       #304
+      00FF2072H   LINE      CODE     ---       #299
+      00FF2074H   LINE      CODE     ---       #302
+      00FF2084H   LINE      CODE     ---       #304
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF204EH   BLOCK     CODE     ---       LVL=0
+      00FF205FH   BLOCK     CODE     ---       LVL=0
       WR2         REGSYM    ---      INT       pwm
-      00FF204EH   LINE      CODE     ---       #311
-      00FF2050H   LINE      CODE     ---       #314
-      00FF2060H   LINE      CODE     ---       #316
+      00FF205FH   LINE      CODE     ---       #311
+      00FF2061H   LINE      CODE     ---       #314
+      00FF2071H   LINE      CODE     ---       #316
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF1FB2H   BLOCK     CODE     ---       LVL=0
+      00FF1FC3H   BLOCK     CODE     ---       LVL=0
       WR6         REGSYM    ---      INT       pwm1
       WR14        REGSYM    ---      INT       pwm2
-      00FF1FB2H   LINE      CODE     ---       #324
-      00FF1FB6H   LINE      CODE     ---       #326
-      00FF1FB9H   LINE      CODE     ---       #327
-      00FF1FBEH   LINE      CODE     ---       #328
-      00FF1FC7H   LINE      CODE     ---       #329
+      00FF1FC3H   LINE      CODE     ---       #324
+      00FF1FC7H   LINE      CODE     ---       #326
+      00FF1FCAH   LINE      CODE     ---       #327
+      00FF1FCFH   LINE      CODE     ---       #328
+      00FF1FD8H   LINE      CODE     ---       #329
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF200FH   BLOCK     CODE     ---       LVL=0
+      00FF2020H   BLOCK     CODE     ---       LVL=0
       WR6         REGSYM    ---      INT       speed
-      00FF200FH   LINE      CODE     ---       #366
-      00FF200FH   LINE      CODE     ---       #368
-      00FF2015H   LINE      CODE     ---       #370
-      00FF2018H   LINE      CODE     ---       #371
-      00FF2018H   LINE      CODE     ---       #372
-      00FF201EH   LINE      CODE     ---       #374
-      00FF2021H   LINE      CODE     ---       #375
-      00FF2021H   LINE      CODE     ---       #376
-      00FF2023H   LINE      CODE     ---       #377
+      00FF2020H   LINE      CODE     ---       #366
+      00FF2020H   LINE      CODE     ---       #368
+      00FF2026H   LINE      CODE     ---       #370
+      00FF2029H   LINE      CODE     ---       #371
+      00FF2029H   LINE      CODE     ---       #372
+      00FF202FH   LINE      CODE     ---       #374
+      00FF2032H   LINE      CODE     ---       #375
+      00FF2032H   LINE      CODE     ---       #376
+      00FF2034H   LINE      CODE     ---       #377
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF1AF6H   BLOCK     CODE     ---       LVL=0
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 16
+      00FF1B8CH   BLOCK     CODE     ---       LVL=0
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 16
 
 
-      WR12        REGSYM    ---      INT       left
+      WR4         REGSYM    ---      INT       left
       WR14        REGSYM    ---      INT       right
-      00FF1AF6H   LINE      CODE     ---       #384
-      00FF1AFCH   LINE      CODE     ---       #387
-      00FF1B02H   LINE      CODE     ---       #389
-      00FF1B04H   LINE      CODE     ---       #390
-      00FF1B06H   LINE      CODE     ---       #391
-      00FF1B08H   LINE      CODE     ---       #392
-      00FF1B0AH   LINE      CODE     ---       #393
-      00FF1B0AH   LINE      CODE     ---       #394
-      00FF1B0AH   LINE      CODE     ---       #395
-      00FF1B0CH   LINE      CODE     ---       #396
-      00FF1B14H   LINE      CODE     ---       #398
-      00FF1B16H   LINE      CODE     ---       #399
-      00FF1B18H   LINE      CODE     ---       #400
-      00FF1B1AH   LINE      CODE     ---       #401
-      00FF1B1CH   LINE      CODE     ---       #402
-      00FF1B1EH   LINE      CODE     ---       #403
-      00FF1B26H   LINE      CODE     ---       #404
-      00FF1B28H   LINE      CODE     ---       #405
-      00FF1B2AH   LINE      CODE     ---       #406
-      00FF1B2CH   LINE      CODE     ---       #407
-      00FF1B2EH   LINE      CODE     ---       #408
-      00FF1B30H   LINE      CODE     ---       #409
-      00FF1B32H   LINE      CODE     ---       #410
-      00FF1B32H   LINE      CODE     ---       #411
-      00FF1B4CH   LINE      CODE     ---       #412
-      00FF1B66H   LINE      CODE     ---       #413
-      00FF1B71H   LINE      CODE     ---       #414
+      00FF1B8CH   LINE      CODE     ---       #384
+      00FF1B92H   LINE      CODE     ---       #386
+      00FF1B98H   LINE      CODE     ---       #388
+      00FF1B9AH   LINE      CODE     ---       #389
+      00FF1B9CH   LINE      CODE     ---       #390
+      00FF1B9EH   LINE      CODE     ---       #391
+      00FF1BA0H   LINE      CODE     ---       #392
+      00FF1BA0H   LINE      CODE     ---       #393
+      00FF1BA0H   LINE      CODE     ---       #394
+      00FF1BA2H   LINE      CODE     ---       #395
+      00FF1BA8H   LINE      CODE     ---       #397
+      00FF1BAAH   LINE      CODE     ---       #398
+      00FF1BACH   LINE      CODE     ---       #399
+      00FF1BAEH   LINE      CODE     ---       #400
+      00FF1BB0H   LINE      CODE     ---       #401
+      00FF1BB2H   LINE      CODE     ---       #402
+      00FF1BBAH   LINE      CODE     ---       #403
+      00FF1BBCH   LINE      CODE     ---       #406
+      00FF1BBEH   LINE      CODE     ---       #407
+      00FF1BC0H   LINE      CODE     ---       #408
+      00FF1BC2H   LINE      CODE     ---       #409
+      00FF1BC4H   LINE      CODE     ---       #410
+      00FF1BC6H   LINE      CODE     ---       #411
+      00FF1BC6H   LINE      CODE     ---       #413
+      00FF1BDCH   LINE      CODE     ---       #414
+      00FF1BF2H   LINE      CODE     ---       #415
+      00FF1BFDH   LINE      CODE     ---       #416
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF1F64H   BLOCK     CODE     ---       LVL=0
+      00FF1F75H   BLOCK     CODE     ---       LVL=0
       R11         REGSYM    ---      BYTE      mask
-      00FF1F64H   LINE      CODE     ---       #421
-      00FF1F64H   LINE      CODE     ---       #422
-      00FF1F64H   LINE      CODE     ---       #423
-      00FF1F65H   LINE      CODE     ---       #425
-      00FF1F6AH   LINE      CODE     ---       #426
-      00FF1F6FH   LINE      CODE     ---       #427
-      00FF1F74H   LINE      CODE     ---       #428
-      00FF1F79H   LINE      CODE     ---       #429
-      00FF1F7EH   LINE      CODE     ---       #431
-      00FF1F7EH   LINE      CODE     ---       #432
+      00FF1F75H   LINE      CODE     ---       #423
+      00FF1F75H   LINE      CODE     ---       #424
+      00FF1F75H   LINE      CODE     ---       #425
+      00FF1F76H   LINE      CODE     ---       #427
+      00FF1F7BH   LINE      CODE     ---       #428
+      00FF1F80H   LINE      CODE     ---       #429
+      00FF1F85H   LINE      CODE     ---       #430
+      00FF1F8AH   LINE      CODE     ---       #431
+      00FF1F8FH   LINE      CODE     ---       #433
+      00FF1F8FH   LINE      CODE     ---       #434
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF1D3AH   BLOCK     CODE     ---       LVL=0
+      00FF1D4BH   BLOCK     CODE     ---       LVL=0
       R10         REGSYM    ---      BYTE      mask
       REG=7       REGSYM    ---      ---       error
-      00FF1D3EH   BLOCK     CODE     NEAR LAB  LVL=1
+      00FF1D4FH   BLOCK     CODE     NEAR LAB  LVL=1
       WR6         REGSYM    ---      INT       sum
       R5          REGSYM    ---      BYTE      count
       ---         BLOCKEND  ---      ---       LVL=1
-      00FF1D3AH   LINE      CODE     ---       #439
-      00FF1D3EH   LINE      CODE     ---       #440
-      00FF1D3EH   LINE      CODE     ---       #441
-      00FF1D40H   LINE      CODE     ---       #442
-      00FF1D42H   LINE      CODE     ---       #444
-      00FF1D45H   LINE      CODE     ---       #446
-      00FF1D49H   LINE      CODE     ---       #447
-      00FF1D4CH   LINE      CODE     ---       #448
-      00FF1D4CH   LINE      CODE     ---       #449
-      00FF1D51H   LINE      CODE     ---       #451
-      00FF1D55H   LINE      CODE     ---       #452
-      00FF1D57H   LINE      CODE     ---       #453
-      00FF1D57H   LINE      CODE     ---       #454
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 17
+      00FF1D4BH   LINE      CODE     ---       #441
+      00FF1D4FH   LINE      CODE     ---       #442
+      00FF1D4FH   LINE      CODE     ---       #443
+      00FF1D51H   LINE      CODE     ---       #444
+      00FF1D53H   LINE      CODE     ---       #446
+      00FF1D56H   LINE      CODE     ---       #448
+      00FF1D5AH   LINE      CODE     ---       #449
+      00FF1D5DH   LINE      CODE     ---       #450
+      00FF1D5DH   LINE      CODE     ---       #451
+      00FF1D62H   LINE      CODE     ---       #453
+      00FF1D66H   LINE      CODE     ---       #454
+      00FF1D68H   LINE      CODE     ---       #455
+      00FF1D68H   LINE      CODE     ---       #456
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 17
 
 
-      00FF1D5CH   LINE      CODE     ---       #456
-      00FF1D5EH   LINE      CODE     ---       #457
-      00FF1D5EH   LINE      CODE     ---       #458
-      00FF1D63H   LINE      CODE     ---       #460
-      00FF1D67H   LINE      CODE     ---       #461
-      00FF1D69H   LINE      CODE     ---       #462
-      00FF1D69H   LINE      CODE     ---       #463
-      00FF1D6EH   LINE      CODE     ---       #465
-      00FF1D72H   LINE      CODE     ---       #466
-      00FF1D74H   LINE      CODE     ---       #467
-      00FF1D74H   LINE      CODE     ---       #469
-      00FF1D78H   LINE      CODE     ---       #471
-      00FF1D7AH   LINE      CODE     ---       #472
-      00FF1D7AH   LINE      CODE     ---       #474
-      00FF1D82H   LINE      CODE     ---       #475
-      00FF1D83H   LINE      CODE     ---       #476
+      00FF1D6DH   LINE      CODE     ---       #458
+      00FF1D6FH   LINE      CODE     ---       #459
+      00FF1D6FH   LINE      CODE     ---       #460
+      00FF1D74H   LINE      CODE     ---       #462
+      00FF1D78H   LINE      CODE     ---       #463
+      00FF1D7AH   LINE      CODE     ---       #464
+      00FF1D7AH   LINE      CODE     ---       #465
+      00FF1D7FH   LINE      CODE     ---       #467
+      00FF1D83H   LINE      CODE     ---       #468
+      00FF1D85H   LINE      CODE     ---       #469
+      00FF1D85H   LINE      CODE     ---       #471
+      00FF1D89H   LINE      CODE     ---       #473
+      00FF1D8BH   LINE      CODE     ---       #474
+      00FF1D8BH   LINE      CODE     ---       #476
+      00FF1D93H   LINE      CODE     ---       #477
+      00FF1D94H   LINE      CODE     ---       #478
       ---         BLOCKEND  ---      ---       LVL=0
 
       00FF001EH   BLOCK     CODE     ---       LVL=0
@@ -1113,152 +1113,152 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF0020H   BLOCK     CODE     NEAR LAB  LVL=1
       DR4         REGSYM    ---      LONG      output
       ---         BLOCKEND  ---      ---       LVL=1
-      00FF001EH   LINE      CODE     ---       #483
-      00FF0020H   LINE      CODE     ---       #484
-      00FF0020H   LINE      CODE     ---       #488
-      00FF0028H   LINE      CODE     ---       #489
-      00FF002EH   LINE      CODE     ---       #491
-      00FF0036H   LINE      CODE     ---       #492
-      00FF0038H   LINE      CODE     ---       #493
-      00FF003EH   LINE      CODE     ---       #495
-      00FF0046H   LINE      CODE     ---       #496
+      00FF001EH   LINE      CODE     ---       #485
+      00FF0020H   LINE      CODE     ---       #486
+      00FF0020H   LINE      CODE     ---       #490
+      00FF0028H   LINE      CODE     ---       #491
+      00FF002EH   LINE      CODE     ---       #493
+      00FF0036H   LINE      CODE     ---       #494
+      00FF0038H   LINE      CODE     ---       #495
+      00FF003EH   LINE      CODE     ---       #497
       00FF0046H   LINE      CODE     ---       #498
-      00FF0046H   LINE      CODE     ---       #499
-      00FF004AH   LINE      CODE     ---       #501
-      00FF0057H   LINE      CODE     ---       #502
-      00FF0057H   LINE      CODE     ---       #503
+      00FF0046H   LINE      CODE     ---       #500
+      00FF0046H   LINE      CODE     ---       #501
+      00FF004AH   LINE      CODE     ---       #503
       00FF0057H   LINE      CODE     ---       #504
-      00FF005EH   LINE      CODE     ---       #506
-      00FF005EH   LINE      CODE     ---       #507
+      00FF0057H   LINE      CODE     ---       #505
+      00FF0057H   LINE      CODE     ---       #506
+      00FF005EH   LINE      CODE     ---       #508
+      00FF005EH   LINE      CODE     ---       #509
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF2087H   BLOCK     CODE     ---       LVL=0
+      00FF2098H   BLOCK     CODE     ---       LVL=0
       WR6         REGSYM    ---      INT       error
       WR2         REGSYM    ---      INT       steer
       WR6         REGSYM    ---      INT       left
       WR4         REGSYM    ---      INT       right
-      00FF2087H   LINE      CODE     ---       #514
-      00FF2087H   LINE      CODE     ---       #515
-      00FF2087H   LINE      CODE     ---       #520
-      00FF208CH   LINE      CODE     ---       #521
-      00FF2090H   LINE      CODE     ---       #522
-      00FF2096H   LINE      CODE     ---       #524
+      00FF2098H   LINE      CODE     ---       #516
+      00FF2098H   LINE      CODE     ---       #517
+      00FF2098H   LINE      CODE     ---       #522
+      00FF209DH   LINE      CODE     ---       #523
+      00FF20A1H   LINE      CODE     ---       #524
+      00FF20A7H   LINE      CODE     ---       #526
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF1C44H   BLOCK     CODE     ---       LVL=0
-      00FF1C44H   LINE      CODE     ---       #532
-      00FF1C46H   LINE      CODE     ---       #534
-      00FF1C4CH   LINE      CODE     ---       #536
-      00FF1C56H   LINE      CODE     ---       #538
-      00FF1C62H   LINE      CODE     ---       #539
-      00FF1C64H   LINE      CODE     ---       #540
-      00FF1C64H   LINE      CODE     ---       #542
-      00FF1C6EH   LINE      CODE     ---       #544
-      00FF1C74H   LINE      CODE     ---       #545
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 18
+      00FF1C55H   BLOCK     CODE     ---       LVL=0
+      00FF1C55H   LINE      CODE     ---       #534
+      00FF1C57H   LINE      CODE     ---       #536
+      00FF1C5DH   LINE      CODE     ---       #538
+      00FF1C67H   LINE      CODE     ---       #540
+      00FF1C73H   LINE      CODE     ---       #541
+      00FF1C75H   LINE      CODE     ---       #542
+      00FF1C75H   LINE      CODE     ---       #544
+      00FF1C7FH   LINE      CODE     ---       #546
+      00FF1C85H   LINE      CODE     ---       #547
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 18
 
 
-      00FF1C76H   LINE      CODE     ---       #546
-      00FF1C7CH   LINE      CODE     ---       #548
-      00FF1C82H   LINE      CODE     ---       #549
-      00FF1C84H   LINE      CODE     ---       #552
-      00FF1C86H   LINE      CODE     ---       #553
-      00FF1C88H   LINE      CODE     ---       #554
-      00FF1C8AH   LINE      CODE     ---       #555
-      00FF1C8CH   LINE      CODE     ---       #556
-      00FF1C95H   LINE      CODE     ---       #557
-      00FF1C95H   LINE      CODE     ---       #558
+      00FF1C87H   LINE      CODE     ---       #548
+      00FF1C8DH   LINE      CODE     ---       #550
+      00FF1C93H   LINE      CODE     ---       #551
+      00FF1C95H   LINE      CODE     ---       #554
+      00FF1C97H   LINE      CODE     ---       #555
+      00FF1C99H   LINE      CODE     ---       #556
+      00FF1C9BH   LINE      CODE     ---       #557
+      00FF1C9DH   LINE      CODE     ---       #558
+      00FF1CA6H   LINE      CODE     ---       #559
+      00FF1CA6H   LINE      CODE     ---       #560
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF1F99H   BLOCK     CODE     ---       LVL=0
+      00FF1FAAH   BLOCK     CODE     ---       LVL=0
       R7          REGSYM    ---      BYTE      mask
-      00FF1F99H   LINE      CODE     ---       #565
-      00FF1F9BH   LINE      CODE     ---       #567
-      00FF1FB1H   LINE      CODE     ---       #571
+      00FF1FAAH   LINE      CODE     ---       #567
+      00FF1FACH   LINE      CODE     ---       #569
+      00FF1FC2H   LINE      CODE     ---       #573
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF1EAEH   BLOCK     CODE     ---       LVL=0
+      00FF1EBFH   BLOCK     CODE     ---       LVL=0
       R7          REGSYM    ---      BYTE      mask
       00000021H.5 SYMBOL    BIT      BIT       T_State_Now
-      00FF1EAEH   LINE      CODE     ---       #578
-      00FF1EAEH   LINE      CODE     ---       #579
-      00FF1EAEH   LINE      CODE     ---       #582
-      00FF1EB3H   LINE      CODE     ---       #584
-      00FF1EB9H   LINE      CODE     ---       #586
-      00FF1EC3H   LINE      CODE     ---       #587
-      00FF1EC9H   LINE      CODE     ---       #588
-      00FF1ECBH   LINE      CODE     ---       #589
-      00FF1ECDH   LINE      CODE     ---       #590
-      00FF1ECDH   LINE      CODE     ---       #592
-      00FF1ED0H   LINE      CODE     ---       #594
-      00FF1ED2H   LINE      CODE     ---       #595
-      00FF1ED3H   LINE      CODE     ---       #598
-      00FF1ED5H   LINE      CODE     ---       #599
-      00FF1ED5H   LINE      CODE     ---       #600
+      00FF1EBFH   LINE      CODE     ---       #580
+      00FF1EBFH   LINE      CODE     ---       #581
+      00FF1EBFH   LINE      CODE     ---       #584
+      00FF1EC4H   LINE      CODE     ---       #586
+      00FF1ECAH   LINE      CODE     ---       #588
+      00FF1ED4H   LINE      CODE     ---       #589
+      00FF1EDAH   LINE      CODE     ---       #590
+      00FF1EDCH   LINE      CODE     ---       #591
+      00FF1EDEH   LINE      CODE     ---       #592
+      00FF1EDEH   LINE      CODE     ---       #594
+      00FF1EE1H   LINE      CODE     ---       #596
+      00FF1EE3H   LINE      CODE     ---       #597
+      00FF1EE4H   LINE      CODE     ---       #600
+      00FF1EE6H   LINE      CODE     ---       #601
+      00FF1EE6H   LINE      CODE     ---       #602
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF1E14H   BLOCK     CODE     ---       LVL=0
+      00FF1E25H   BLOCK     CODE     ---       LVL=0
       R7          REGSYM    ---      BYTE      mask
-      00FF1E14H   LINE      CODE     ---       #607
-      00FF1E16H   LINE      CODE     ---       #609
-      00FF1E1AH   LINE      CODE     ---       #611
-      00FF1E1AH   LINE      CODE     ---       #612
-      00FF1E1CH   LINE      CODE     ---       #613
-      00FF1E1CH   LINE      CODE     ---       #615
-      00FF1E20H   LINE      CODE     ---       #617
-      00FF1E22H   LINE      CODE     ---       #618
-      00FF1E2AH   LINE      CODE     ---       #619
-      00FF1E30H   LINE      CODE     ---       #620
-      00FF1E32H   LINE      CODE     ---       #621
-      00FF1E32H   LINE      CODE     ---       #623
-      00FF1E36H   LINE      CODE     ---       #625
-      00FF1E38H   LINE      CODE     ---       #626
-      00FF1E40H   LINE      CODE     ---       #627
+      00FF1E25H   LINE      CODE     ---       #609
+      00FF1E27H   LINE      CODE     ---       #611
+      00FF1E2BH   LINE      CODE     ---       #613
+      00FF1E2BH   LINE      CODE     ---       #614
+      00FF1E2DH   LINE      CODE     ---       #615
+      00FF1E2DH   LINE      CODE     ---       #617
+      00FF1E31H   LINE      CODE     ---       #619
+      00FF1E33H   LINE      CODE     ---       #620
+      00FF1E3BH   LINE      CODE     ---       #621
+      00FF1E41H   LINE      CODE     ---       #622
+      00FF1E43H   LINE      CODE     ---       #623
+      00FF1E43H   LINE      CODE     ---       #625
+      00FF1E47H   LINE      CODE     ---       #627
       00FF1E49H   LINE      CODE     ---       #628
-      00FF1E4BH   LINE      CODE     ---       #629
-      00FF1E4BH   LINE      CODE     ---       #631
-      00FF1E4CH   LINE      CODE     ---       #632
+      00FF1E51H   LINE      CODE     ---       #629
+      00FF1E5AH   LINE      CODE     ---       #630
+      00FF1E5CH   LINE      CODE     ---       #631
+      00FF1E5CH   LINE      CODE     ---       #633
+      00FF1E5DH   LINE      CODE     ---       #634
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF1EFBH   BLOCK     CODE     ---       LVL=0
-      00FF1EFBH   LINE      CODE     ---       #639
-      00FF1EFBH   LINE      CODE     ---       #641
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 19
+      00FF1F0CH   BLOCK     CODE     ---       LVL=0
+      00FF1F0CH   LINE      CODE     ---       #641
+      00FF1F0CH   LINE      CODE     ---       #643
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 19
 
 
-      00FF1F01H   LINE      CODE     ---       #643
-      00FF1F0BH   LINE      CODE     ---       #645
-      00FF1F11H   LINE      CODE     ---       #647
-      00FF1F13H   LINE      CODE     ---       #648
-      00FF1F15H   LINE      CODE     ---       #649
-      00FF1F1EH   LINE      CODE     ---       #650
-      00FF1F1EH   LINE      CODE     ---       #652
+      00FF1F12H   LINE      CODE     ---       #645
+      00FF1F1CH   LINE      CODE     ---       #647
+      00FF1F22H   LINE      CODE     ---       #649
+      00FF1F24H   LINE      CODE     ---       #650
+      00FF1F26H   LINE      CODE     ---       #651
+      00FF1F2FH   LINE      CODE     ---       #652
+      00FF1F2FH   LINE      CODE     ---       #654
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF1CEBH   BLOCK     CODE     ---       LVL=0
-      00FF1CEDH   BLOCK     CODE     NEAR LAB  LVL=1
+      00FF1CFCH   BLOCK     CODE     ---       LVL=0
+      00FF1CFEH   BLOCK     CODE     NEAR LAB  LVL=1
       R15         REGSYM    ---      BYTE      mask
       00000008H   SYMBOL    EDATA    INT       error
       ---         BLOCKEND  ---      ---       LVL=1
-      00FF1CEBH   LINE      CODE     ---       #659
-      00FF1CEDH   LINE      CODE     ---       #660
-      00FF1CEDH   LINE      CODE     ---       #664
-      00FF1CF2H   LINE      CODE     ---       #665
-      00FF1CF5H   LINE      CODE     ---       #667
-      00FF1CFCH   LINE      CODE     ---       #669
-      00FF1D02H   LINE      CODE     ---       #670
-      00FF1D06H   LINE      CODE     ---       #671
-      00FF1D08H   LINE      CODE     ---       #672
-      00FF1D08H   LINE      CODE     ---       #674
-      00FF1D0CH   LINE      CODE     ---       #676
-      00FF1D16H   LINE      CODE     ---       #677
-      00FF1D19H   LINE      CODE     ---       #678
-      00FF1D1BH   LINE      CODE     ---       #679
-      00FF1D1BH   LINE      CODE     ---       #681
-      00FF1D21H   LINE      CODE     ---       #682
-      00FF1D2CH   LINE      CODE     ---       #684
-      00FF1D34H   LINE      CODE     ---       #685
-      00FF1D37H   LINE      CODE     ---       #686
+      00FF1CFCH   LINE      CODE     ---       #661
+      00FF1CFEH   LINE      CODE     ---       #662
+      00FF1CFEH   LINE      CODE     ---       #666
+      00FF1D03H   LINE      CODE     ---       #667
+      00FF1D06H   LINE      CODE     ---       #669
+      00FF1D0DH   LINE      CODE     ---       #671
+      00FF1D13H   LINE      CODE     ---       #672
+      00FF1D17H   LINE      CODE     ---       #673
+      00FF1D19H   LINE      CODE     ---       #674
+      00FF1D19H   LINE      CODE     ---       #676
+      00FF1D1DH   LINE      CODE     ---       #678
+      00FF1D27H   LINE      CODE     ---       #679
+      00FF1D2AH   LINE      CODE     ---       #680
+      00FF1D2CH   LINE      CODE     ---       #681
+      00FF1D2CH   LINE      CODE     ---       #683
+      00FF1D32H   LINE      CODE     ---       #684
+      00FF1D3DH   LINE      CODE     ---       #686
+      00FF1D45H   LINE      CODE     ---       #687
+      00FF1D48H   LINE      CODE     ---       #688
       ---         BLOCKEND  ---      ---       LVL=0
 
       00FF1724H   BLOCK     CODE     ---       LVL=0
@@ -1266,91 +1266,102 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       0000005CH   SYMBOL    EDATA    WORD      delay_Start_Count
       0000005EH   SYMBOL    EDATA    BYTE      line_ctrl_tick
       ---         BLOCKEND  ---      ---       LVL=1
-      00FF1724H   LINE      CODE     ---       #694
-      00FF173AH   LINE      CODE     ---       #695
-      00FF173AH   LINE      CODE     ---       #711
-      00FF173DH   LINE      CODE     ---       #713
-      00FF1744H   LINE      CODE     ---       #714
-      00FF174EH   LINE      CODE     ---       #716
-      00FF1754H   LINE      CODE     ---       #717
-      00FF1757H   LINE      CODE     ---       #720
-      00FF1759H   LINE      CODE     ---       #721
-      00FF1759H   LINE      CODE     ---       #722
-      00FF175CH   LINE      CODE     ---       #723
-      00FF175CH   LINE      CODE     ---       #725
-      00FF175FH   LINE      CODE     ---       #727
-      00FF1768H   LINE      CODE     ---       #728
-      00FF1772H   LINE      CODE     ---       #730
-      00FF1778H   LINE      CODE     ---       #731
-      00FF177AH   LINE      CODE     ---       #734
-      00FF177CH   LINE      CODE     ---       #735
-      00FF177CH   LINE      CODE     ---       #736
-      00FF177EH   LINE      CODE     ---       #737
-      00FF177EH   LINE      CODE     ---       #739
-      00FF1781H   LINE      CODE     ---       #741
-      00FF178CH   LINE      CODE     ---       #742
-      00FF1796H   LINE      CODE     ---       #744
-      00FF179CH   LINE      CODE     ---       #745
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 20
+      00FF1724H   LINE      CODE     ---       #696
+      00FF173AH   LINE      CODE     ---       #697
+      00FF173AH   LINE      CODE     ---       #701
+      00FF173DH   LINE      CODE     ---       #703
+      00FF1747H   LINE      CODE     ---       #705
+      00FF174DH   LINE      CODE     ---       #706
+      00FF1750H   LINE      CODE     ---       #709
+      00FF1752H   LINE      CODE     ---       #710
+      00FF1752H   LINE      CODE     ---       #711
+      00FF1755H   LINE      CODE     ---       #712
+      00FF1755H   LINE      CODE     ---       #713
+      00FF1758H   LINE      CODE     ---       #715
+      00FF175FH   LINE      CODE     ---       #716
+      00FF1769H   LINE      CODE     ---       #718
+      00FF176FH   LINE      CODE     ---       #719
+      00FF1772H   LINE      CODE     ---       #722
+      00FF1774H   LINE      CODE     ---       #723
+      00FF1774H   LINE      CODE     ---       #724
+      00FF1777H   LINE      CODE     ---       #725
+      00FF1777H   LINE      CODE     ---       #727
+      00FF177AH   LINE      CODE     ---       #729
+      00FF1783H   LINE      CODE     ---       #730
+      00FF178DH   LINE      CODE     ---       #732
+      00FF1793H   LINE      CODE     ---       #733
+      00FF1795H   LINE      CODE     ---       #736
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 20
 
 
-      00FF179EH   LINE      CODE     ---       #748
-      00FF17A0H   LINE      CODE     ---       #749
-      00FF17A0H   LINE      CODE     ---       #750
-      00FF17A2H   LINE      CODE     ---       #751
-      00FF17A2H   LINE      CODE     ---       #753
-      00FF17A5H   LINE      CODE     ---       #755
-      00FF17AEH   LINE      CODE     ---       #756
-      00FF17B8H   LINE      CODE     ---       #758
-      00FF17BEH   LINE      CODE     ---       #759
-      00FF17C0H   LINE      CODE     ---       #762
-      00FF17C2H   LINE      CODE     ---       #763
-      00FF17C2H   LINE      CODE     ---       #764
-      00FF17C4H   LINE      CODE     ---       #765
-      00FF17C4H   LINE      CODE     ---       #767
-      00FF17C7H   LINE      CODE     ---       #769
-      00FF17D0H   LINE      CODE     ---       #770
-      00FF17D9H   LINE      CODE     ---       #772
-      00FF17DEH   LINE      CODE     ---       #773
-      00FF17E1H   LINE      CODE     ---       #774
-      00FF17E1H   LINE      CODE     ---       #776
-      00FF17EBH   LINE      CODE     ---       #777
+      00FF1797H   LINE      CODE     ---       #737
+      00FF1797H   LINE      CODE     ---       #738
+      00FF1799H   LINE      CODE     ---       #739
+      00FF1799H   LINE      CODE     ---       #741
+      00FF179CH   LINE      CODE     ---       #743
+      00FF17A7H   LINE      CODE     ---       #744
+      00FF17B1H   LINE      CODE     ---       #746
+      00FF17B7H   LINE      CODE     ---       #747
+      00FF17B9H   LINE      CODE     ---       #750
+      00FF17BBH   LINE      CODE     ---       #751
+      00FF17BBH   LINE      CODE     ---       #752
+      00FF17BDH   LINE      CODE     ---       #753
+      00FF17BDH   LINE      CODE     ---       #755
+      00FF17C0H   LINE      CODE     ---       #757
+      00FF17C9H   LINE      CODE     ---       #758
+      00FF17D3H   LINE      CODE     ---       #760
+      00FF17D9H   LINE      CODE     ---       #761
+      00FF17DBH   LINE      CODE     ---       #764
+      00FF17DDH   LINE      CODE     ---       #765
+      00FF17DDH   LINE      CODE     ---       #766
+      00FF17DFH   LINE      CODE     ---       #767
+      00FF17DFH   LINE      CODE     ---       #769
+      00FF17E2H   LINE      CODE     ---       #771
+      00FF17EBH   LINE      CODE     ---       #772
+      00FF17F4H   LINE      CODE     ---       #774
+      00FF17F9H   LINE      CODE     ---       #775
+      00FF17FCH   LINE      CODE     ---       #776
+      00FF17FCH   LINE      CODE     ---       #778
+      00FF1806H   LINE      CODE     ---       #779
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF1BEFH   BLOCK     CODE     ---       LVL=0
-      00FF1BEFH   LINE      CODE     ---       #785
-      00FF1BEFH   LINE      CODE     ---       #788
-      00FF1BF2H   LINE      CODE     ---       #789
-      00FF1BF5H   LINE      CODE     ---       #790
-      00FF1BF8H   LINE      CODE     ---       #792
-      00FF1BFBH   LINE      CODE     ---       #793
-      00FF1BFEH   LINE      CODE     ---       #794
-      00FF1C01H   LINE      CODE     ---       #795
-      00FF1C04H   LINE      CODE     ---       #796
-      00FF1C07H   LINE      CODE     ---       #797
-      00FF1C0AH   LINE      CODE     ---       #798
-      00FF1C0DH   LINE      CODE     ---       #799
-      00FF1C10H   LINE      CODE     ---       #800
-      00FF1C13H   LINE      CODE     ---       #801
-      00FF1C16H   LINE      CODE     ---       #802
-      00FF1C19H   LINE      CODE     ---       #803
-      00FF1C1CH   LINE      CODE     ---       #804
-      00FF1C1FH   LINE      CODE     ---       #806
-      00FF1C22H   LINE      CODE     ---       #807
-      00FF1C25H   LINE      CODE     ---       #808
-      00FF1C28H   LINE      CODE     ---       #809
-      00FF1C2BH   LINE      CODE     ---       #810
-      00FF1C2EH   LINE      CODE     ---       #812
-      00FF1C30H   LINE      CODE     ---       #814
-      00FF1C32H   LINE      CODE     ---       #815
-      00FF1C34H   LINE      CODE     ---       #816
-      00FF1C36H   LINE      CODE     ---       #817
-      00FF1C38H   LINE      CODE     ---       #819
-      00FF1C3AH   LINE      CODE     ---       #820
-      00FF1C3CH   LINE      CODE     ---       #821
-      00FF1C42H   LINE      CODE     ---       #822
-      00FF1C42H   LINE      CODE     ---       #889
+      00FF1C00H   BLOCK     CODE     ---       LVL=0
+      00FF1C00H   LINE      CODE     ---       #787
+      00FF1C00H   LINE      CODE     ---       #790
+      00FF1C03H   LINE      CODE     ---       #791
+      00FF1C06H   LINE      CODE     ---       #792
+      00FF1C09H   LINE      CODE     ---       #794
+      00FF1C0CH   LINE      CODE     ---       #795
+      00FF1C0FH   LINE      CODE     ---       #796
+      00FF1C12H   LINE      CODE     ---       #797
+      00FF1C15H   LINE      CODE     ---       #798
+      00FF1C18H   LINE      CODE     ---       #799
+      00FF1C1BH   LINE      CODE     ---       #800
+      00FF1C1EH   LINE      CODE     ---       #801
+      00FF1C21H   LINE      CODE     ---       #802
+      00FF1C24H   LINE      CODE     ---       #803
+      00FF1C27H   LINE      CODE     ---       #804
+      00FF1C2AH   LINE      CODE     ---       #805
+      00FF1C2DH   LINE      CODE     ---       #806
+      00FF1C30H   LINE      CODE     ---       #808
+      00FF1C33H   LINE      CODE     ---       #809
+      00FF1C36H   LINE      CODE     ---       #810
+      00FF1C39H   LINE      CODE     ---       #811
+      00FF1C3CH   LINE      CODE     ---       #812
+      00FF1C3FH   LINE      CODE     ---       #814
+      00FF1C41H   LINE      CODE     ---       #816
+      00FF1C43H   LINE      CODE     ---       #817
+      00FF1C45H   LINE      CODE     ---       #818
+      00FF1C47H   LINE      CODE     ---       #819
+      00FF1C49H   LINE      CODE     ---       #821
+      00FF1C4BH   LINE      CODE     ---       #822
+      00FF1C4DH   LINE      CODE     ---       #823
+      00FF1C53H   LINE      CODE     ---       #824
+      00FF1C53H   LINE      CODE     ---       #891
       ---         BLOCKEND  ---      ---       LVL=0
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 21
+
+
 
       ---         MODULE    ---      ---       STC32G_GPIO
       00000094H   SFRSYM    DATA     BYTE      P0M0
@@ -1359,9 +1370,6 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00000097H   SFRSYM    DATA     BYTE      AUXR2
       000000EFH   SFRSYM    DATA     BYTE      AUXINTIF
       000000FDH   SFRSYM    DATA     BYTE      S4CON
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 21
-
-
       000000ACH   SFRSYM    DATA     BYTE      S3CON
       0000009AH   SFRSYM    DATA     BYTE      S2CON
       000000B7H   SFRSYM    DATA     BYTE      IPH
@@ -1419,17 +1427,17 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00000093H   SFRSYM    DATA     BYTE      P0M1
       R10         REGSYM    ---      BYTE      GPIO
       REG=0       REGSYM    ---      ---       GPIOx
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 22
+
+
 
       ---         MODULE    ---      ---       STC32G_NVIC
-      00FF1D84H   PUBLIC    CODE     ---       NVIC_Timer0_Init
-      00FF1DCCH   PUBLIC    CODE     ---       NVIC_Timer1_Init
-      00FF1F7FH   PUBLIC    CODE     ---       NVIC_Timer2_Init
-      00FF18C4H   PUBLIC    CODE     ---       NVIC_PWM_Init
+      00FF1D95H   PUBLIC    CODE     ---       NVIC_Timer0_Init
+      00FF1DDDH   PUBLIC    CODE     ---       NVIC_Timer1_Init
+      00FF1F90H   PUBLIC    CODE     ---       NVIC_Timer2_Init
+      00FF18DFH   PUBLIC    CODE     ---       NVIC_PWM_Init
       000000F9H.3 SFRSYM    DATA     BIT       PLINH
       000000D0H   SFRSYM    DATA     BYTE      PSW
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 22
-
-
       000000B6H.5 SFRSYM    DATA     BIT       PCMPH
       0000009DH   SFRSYM    DATA     BYTE      IRCBAND
       00000097H   SFRSYM    DATA     BYTE      AUXR2
@@ -1487,6 +1495,9 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000AFH.1 SFRSYM    DATA     BIT       ESPI
       000000F1H   SFRSYM    DATA     BYTE      CANICR
       00000087H   SFRSYM    DATA     BYTE      PCON
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 23
+
+
       000000B5H.5 SFRSYM    DATA     BIT       PCMP
       000000BCH   SFRSYM    DATA     BYTE      ADC_CONTR
       000000E7H   SFRSYM    DATA     BYTE      CMPCR2
@@ -1495,9 +1506,6 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000B7H.2 SFRSYM    DATA     BIT       PX1H
       000000F1H.4 SFRSYM    DATA     BIT       PCAN2L
       000000B7H.0 SFRSYM    DATA     BIT       PX0H
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 23
-
-
       000000EEH.1 SFRSYM    DATA     BIT       PS4H
       000000EEH.0 SFRSYM    DATA     BIT       PS3H
       000000B6H.0 SFRSYM    DATA     BIT       PS2H
@@ -1532,40 +1540,40 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000F9H.0 SFRSYM    DATA     BIT       PLINL
       00000080H   SFRSYM    DATA     BYTE      P0
 
-      00FF1D84H   BLOCK     CODE     ---       LVL=0
+      00FF1D95H   BLOCK     CODE     ---       LVL=0
       R7          REGSYM    ---      BYTE      State
       R6          REGSYM    ---      BYTE      Priority
-      00FF1D84H   LINE      CODE     ---       #24
-      00FF1D88H   LINE      CODE     ---       #26
-      00FF1D9CH   LINE      CODE     ---       #27
-      00FF1DCAH   LINE      CODE     ---       #28
-      00FF1DCBH   LINE      CODE     ---       #29
+      00FF1D95H   LINE      CODE     ---       #24
+      00FF1D99H   LINE      CODE     ---       #26
+      00FF1DADH   LINE      CODE     ---       #27
+      00FF1DDBH   LINE      CODE     ---       #28
+      00FF1DDCH   LINE      CODE     ---       #29
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF1DCCH   BLOCK     CODE     ---       LVL=0
+      00FF1DDDH   BLOCK     CODE     ---       LVL=0
       R7          REGSYM    ---      BYTE      State
       R6          REGSYM    ---      BYTE      Priority
-      00FF1DCCH   LINE      CODE     ---       #39
-      00FF1DD0H   LINE      CODE     ---       #41
-      00FF1DE4H   LINE      CODE     ---       #42
-      00FF1E12H   LINE      CODE     ---       #43
-      00FF1E13H   LINE      CODE     ---       #44
+      00FF1DDDH   LINE      CODE     ---       #39
+      00FF1DE1H   LINE      CODE     ---       #41
+      00FF1DF5H   LINE      CODE     ---       #42
+      00FF1E23H   LINE      CODE     ---       #43
+      00FF1E24H   LINE      CODE     ---       #44
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF1F7FH   BLOCK     CODE     ---       LVL=0
+      00FF1F90H   BLOCK     CODE     ---       LVL=0
       R7          REGSYM    ---      BYTE      State
-      00FF1F7FH   LINE      CODE     ---       #54
-      00FF1F81H   LINE      CODE     ---       #56
-      00FF1F97H   LINE      CODE     ---       #57
-      00FF1F97H   LINE      CODE     ---       #58
-      00FF1F98H   LINE      CODE     ---       #59
+      00FF1F90H   LINE      CODE     ---       #54
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 24
+
+
+      00FF1F92H   LINE      CODE     ---       #56
+      00FF1FA8H   LINE      CODE     ---       #57
+      00FF1FA8H   LINE      CODE     ---       #58
+      00FF1FA9H   LINE      CODE     ---       #59
       ---         BLOCKEND  ---      ---       LVL=0
       R7          REGSYM    ---      BYTE      State
       R7          REGSYM    ---      BYTE      State
       R7          REGSYM    ---      BYTE      State
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 24
-
-
       R6          REGSYM    ---      BYTE      Priority
       R7          REGSYM    ---      BYTE      State
       R6          REGSYM    ---      BYTE      Priority
@@ -1592,29 +1600,29 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       R3          REGSYM    ---      BYTE      State
       R10         REGSYM    ---      BYTE      Priority
 
-      00FF18C4H   BLOCK     CODE     ---       LVL=0
+      00FF18DFH   BLOCK     CODE     ---       LVL=0
       R6          REGSYM    ---      BYTE      Channel
       R3          REGSYM    ---      BYTE      State
       R2          REGSYM    ---      BYTE      Priority
-      00FF18C4H   LINE      CODE     ---       #329
-      00FF18CAH   LINE      CODE     ---       #331
-      00FF18D2H   LINE      CODE     ---       #332
-      00FF18DAH   LINE      CODE     ---       #333
-      00FF18E3H   LINE      CODE     ---       #335
-      00FF18E3H   LINE      CODE     ---       #336
-      00FF18EEH   LINE      CODE     ---       #337
-      00FF1916H   LINE      CODE     ---       #338
-      00FF1918H   LINE      CODE     ---       #340
-      00FF1918H   LINE      CODE     ---       #341
-      00FF1923H   LINE      CODE     ---       #342
-      00FF194BH   LINE      CODE     ---       #343
-      00FF194DH   LINE      CODE     ---       #345
-      00FF194DH   LINE      CODE     ---       #346
-      00FF1958H   LINE      CODE     ---       #347
-      00FF1958H   LINE      CODE     ---       #348
-      00FF1958H   LINE      CODE     ---       #349
-      00FF1958H   LINE      CODE     ---       #350
-      00FF1959H   LINE      CODE     ---       #351
+      00FF18DFH   LINE      CODE     ---       #329
+      00FF18E5H   LINE      CODE     ---       #331
+      00FF18EDH   LINE      CODE     ---       #332
+      00FF18F5H   LINE      CODE     ---       #333
+      00FF18FEH   LINE      CODE     ---       #335
+      00FF18FEH   LINE      CODE     ---       #336
+      00FF1909H   LINE      CODE     ---       #337
+      00FF1931H   LINE      CODE     ---       #338
+      00FF1933H   LINE      CODE     ---       #340
+      00FF1933H   LINE      CODE     ---       #341
+      00FF193EH   LINE      CODE     ---       #342
+      00FF1966H   LINE      CODE     ---       #343
+      00FF1968H   LINE      CODE     ---       #345
+      00FF1968H   LINE      CODE     ---       #346
+      00FF1973H   LINE      CODE     ---       #347
+      00FF1973H   LINE      CODE     ---       #348
+      00FF1973H   LINE      CODE     ---       #349
+      00FF1973H   LINE      CODE     ---       #350
+      00FF1974H   LINE      CODE     ---       #351
       ---         BLOCKEND  ---      ---       LVL=0
       R9          REGSYM    ---      BYTE      State
       R3          REGSYM    ---      BYTE      Priority
@@ -1623,6 +1631,9 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       R3          REGSYM    ---      BYTE      Priority
       R10         REGSYM    ---      BYTE      Bus_Priority
       R9          REGSYM    ---      BYTE      State
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 25
+
+
       R3          REGSYM    ---      BYTE      Priority
       R10         REGSYM    ---      BYTE      Bus_Priority
       R9          REGSYM    ---      BYTE      State
@@ -1631,9 +1642,6 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       R9          REGSYM    ---      BYTE      State
       R3          REGSYM    ---      BYTE      Priority
       R10         REGSYM    ---      BYTE      Bus_Priority
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 25
-
-
       R9          REGSYM    ---      BYTE      State
       R3          REGSYM    ---      BYTE      Priority
       R10         REGSYM    ---      BYTE      Bus_Priority
@@ -1691,6 +1699,9 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000F9H   SFRSYM    DATA     BYTE      LINICR
       0000008EH   SFRSYM    DATA     BYTE      AUXR
       000000AFH   SFRSYM    DATA     BYTE      IE2
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 26
+
+
       00000088H   SFRSYM    DATA     BYTE      TCON
       00000089H   SFRSYM    DATA     BYTE      TMOD
       00000098H   SFRSYM    DATA     BYTE      SCON
@@ -1699,9 +1710,6 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000BCH   SFRSYM    DATA     BYTE      ADC_CONTR
       000000E7H   SFRSYM    DATA     BYTE      CMPCR2
       000000E6H   SFRSYM    DATA     BYTE      CMPCR1
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 26
-
-
       000000DEH   SFRSYM    DATA     BYTE      ADCCFG
       000000B8H   SFRSYM    DATA     BYTE      IP
       0000008FH   SFRSYM    DATA     BYTE      INTCLKO
@@ -1759,6 +1767,9 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF0E9DH   LINE      CODE     ---       #71
       00FF0EA5H   LINE      CODE     ---       #72
       00FF0EB5H   LINE      CODE     ---       #73
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 27
+
+
       00FF0EB5H   LINE      CODE     ---       #74
       00FF0EBAH   LINE      CODE     ---       #76
       00FF0EC2H   LINE      CODE     ---       #77
@@ -1767,9 +1778,6 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF0EDCH   LINE      CODE     ---       #82
       00FF0EECH   LINE      CODE     ---       #83
       00FF0EECH   LINE      CODE     ---       #85
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 27
-
-
       00FF0EFFH   LINE      CODE     ---       #86
       00FF0F02H   LINE      CODE     ---       #87
       00FF0F02H   LINE      CODE     ---       #89
@@ -1827,6 +1835,9 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF1105H   LINE      CODE     ---       #169
       00FF1115H   LINE      CODE     ---       #170
       00FF1125H   LINE      CODE     ---       #171
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 28
+
+
       00FF1133H   LINE      CODE     ---       #173
       00FF113AH   LINE      CODE     ---       #175
       00FF1142H   LINE      CODE     ---       #176
@@ -1835,9 +1846,6 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF115CH   LINE      CODE     ---       #181
       00FF116CH   LINE      CODE     ---       #182
       00FF116CH   LINE      CODE     ---       #184
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 28
-
-
       00FF117FH   LINE      CODE     ---       #185
       00FF1182H   LINE      CODE     ---       #186
       00FF1182H   LINE      CODE     ---       #188
@@ -1895,6 +1903,9 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
 
       00FF15A9H   BLOCK     CODE     ---       LVL=0
       R11         REGSYM    ---      BYTE      PWM
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 29
+
+
       REG=7       REGSYM    ---      ---       PWMx
       00FF15A9H   LINE      CODE     ---       #275
       00FF15ABH   LINE      CODE     ---       #277
@@ -1903,9 +1914,6 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF15ECH   LINE      CODE     ---       #281
       00FF15EFH   LINE      CODE     ---       #283
       00FF15EFH   LINE      CODE     ---       #284
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 29
-
-
       00FF1602H   LINE      CODE     ---       #285
       00FF1605H   LINE      CODE     ---       #287
       00FF1605H   LINE      CODE     ---       #288
@@ -1954,8 +1962,8 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       REG=3       REGSYM    ---      ---       PWMx
 
       ---         MODULE    ---      ---       STC32G_PWM_Isr
-      00FF19ECH   PUBLIC    CODE     ---       PWMA_ISR_Handler
-      00FF1A71H   PUBLIC    CODE     ---       PWMB_ISR_Handler
+      00FF1A07H   PUBLIC    CODE     ---       PWMA_ISR_Handler
+      00FF1A8CH   PUBLIC    CODE     ---       PWMB_ISR_Handler
       000000D0H   SFRSYM    DATA     BYTE      PSW
       0000009DH   SFRSYM    DATA     BYTE      IRCBAND
       00000097H   SFRSYM    DATA     BYTE      AUXR2
@@ -1963,6 +1971,9 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000FDH   SFRSYM    DATA     BYTE      S4CON
       000000ACH   SFRSYM    DATA     BYTE      S3CON
       0000009AH   SFRSYM    DATA     BYTE      S2CON
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 30
+
+
       000000B7H   SFRSYM    DATA     BYTE      IPH
       000000CDH   SFRSYM    DATA     BYTE      SPSTAT
       000000DDH   SFRSYM    DATA     BYTE      T4T3M
@@ -1971,9 +1982,6 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000F4H   SFRSYM    DATA     BYTE      USBCON
       000000B5H   SFRSYM    DATA     BYTE      IP2
       000000FFH   SFRSYM    DATA     BYTE      RSTCFG
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 30
-
-
       000000C7H   SFRSYM    DATA     BYTE      IAP_CONTR
       000000F9H   SFRSYM    DATA     BYTE      LINICR
       0000008EH   SFRSYM    DATA     BYTE      AUXR
@@ -2005,63 +2013,63 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00000090H   SFRSYM    DATA     BYTE      P1
       00000080H   SFRSYM    DATA     BYTE      P0
 
-      00FF19ECH   BLOCK     CODE     ---       LVL=0
-      00FF19ECH   LINE      CODE     ---       #23
-      00FF19F2H   LINE      CODE     ---       #26
-      00FF1A00H   LINE      CODE     ---       #28
-      00FF1A08H   LINE      CODE     ---       #30
-      00FF1A08H   LINE      CODE     ---       #31
-      00FF1A0EH   LINE      CODE     ---       #33
-      00FF1A16H   LINE      CODE     ---       #35
-      00FF1A16H   LINE      CODE     ---       #36
-      00FF1A1CH   LINE      CODE     ---       #38
-      00FF1A24H   LINE      CODE     ---       #40
-      00FF1A24H   LINE      CODE     ---       #41
-      00FF1A2AH   LINE      CODE     ---       #43
-      00FF1A32H   LINE      CODE     ---       #45
-      00FF1A32H   LINE      CODE     ---       #46
-      00FF1A38H   LINE      CODE     ---       #48
-      00FF1A40H   LINE      CODE     ---       #50
-      00FF1A40H   LINE      CODE     ---       #51
-      00FF1A46H   LINE      CODE     ---       #53
-      00FF1A4EH   LINE      CODE     ---       #55
-      00FF1A4EH   LINE      CODE     ---       #56
-      00FF1A54H   LINE      CODE     ---       #58
-      00FF1A5CH   LINE      CODE     ---       #60
-      00FF1A5CH   LINE      CODE     ---       #61
-      00FF1A62H   LINE      CODE     ---       #63
-      00FF1A6AH   LINE      CODE     ---       #65
+      00FF1A07H   BLOCK     CODE     ---       LVL=0
+      00FF1A07H   LINE      CODE     ---       #23
+      00FF1A0DH   LINE      CODE     ---       #26
+      00FF1A1BH   LINE      CODE     ---       #28
+      00FF1A23H   LINE      CODE     ---       #30
+      00FF1A23H   LINE      CODE     ---       #31
+      00FF1A29H   LINE      CODE     ---       #33
+      00FF1A31H   LINE      CODE     ---       #35
+      00FF1A31H   LINE      CODE     ---       #36
+      00FF1A37H   LINE      CODE     ---       #38
+      00FF1A3FH   LINE      CODE     ---       #40
+      00FF1A3FH   LINE      CODE     ---       #41
+      00FF1A45H   LINE      CODE     ---       #43
+      00FF1A4DH   LINE      CODE     ---       #45
+      00FF1A4DH   LINE      CODE     ---       #46
+      00FF1A53H   LINE      CODE     ---       #48
+      00FF1A5BH   LINE      CODE     ---       #50
+      00FF1A5BH   LINE      CODE     ---       #51
+      00FF1A61H   LINE      CODE     ---       #53
+      00FF1A69H   LINE      CODE     ---       #55
+      00FF1A69H   LINE      CODE     ---       #56
+      00FF1A6FH   LINE      CODE     ---       #58
+      00FF1A77H   LINE      CODE     ---       #60
+      00FF1A77H   LINE      CODE     ---       #61
+      00FF1A7DH   LINE      CODE     ---       #63
+      00FF1A85H   LINE      CODE     ---       #65
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 31
+
+
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF1A71H   BLOCK     CODE     ---       LVL=0
-      00FF1A71H   LINE      CODE     ---       #75
-      00FF1A77H   LINE      CODE     ---       #78
-      00FF1A85H   LINE      CODE     ---       #80
-      00FF1A8DH   LINE      CODE     ---       #82
-      00FF1A8DH   LINE      CODE     ---       #83
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 31
-
-
-      00FF1A93H   LINE      CODE     ---       #85
-      00FF1A9BH   LINE      CODE     ---       #87
-      00FF1A9BH   LINE      CODE     ---       #88
-      00FF1AA1H   LINE      CODE     ---       #90
-      00FF1AA9H   LINE      CODE     ---       #92
-      00FF1AA9H   LINE      CODE     ---       #93
-      00FF1AAFH   LINE      CODE     ---       #95
-      00FF1AB7H   LINE      CODE     ---       #97
-      00FF1AB7H   LINE      CODE     ---       #98
-      00FF1ABDH   LINE      CODE     ---       #100
-      00FF1AC5H   LINE      CODE     ---       #102
-      00FF1AC5H   LINE      CODE     ---       #103
-      00FF1ACBH   LINE      CODE     ---       #105
-      00FF1AD3H   LINE      CODE     ---       #107
-      00FF1AD3H   LINE      CODE     ---       #108
-      00FF1AD9H   LINE      CODE     ---       #110
-      00FF1AE1H   LINE      CODE     ---       #112
-      00FF1AE1H   LINE      CODE     ---       #113
-      00FF1AE7H   LINE      CODE     ---       #115
-      00FF1AEFH   LINE      CODE     ---       #117
+      00FF1A8CH   BLOCK     CODE     ---       LVL=0
+      00FF1A8CH   LINE      CODE     ---       #75
+      00FF1A92H   LINE      CODE     ---       #78
+      00FF1AA0H   LINE      CODE     ---       #80
+      00FF1AA8H   LINE      CODE     ---       #82
+      00FF1AA8H   LINE      CODE     ---       #83
+      00FF1AAEH   LINE      CODE     ---       #85
+      00FF1AB6H   LINE      CODE     ---       #87
+      00FF1AB6H   LINE      CODE     ---       #88
+      00FF1ABCH   LINE      CODE     ---       #90
+      00FF1AC4H   LINE      CODE     ---       #92
+      00FF1AC4H   LINE      CODE     ---       #93
+      00FF1ACAH   LINE      CODE     ---       #95
+      00FF1AD2H   LINE      CODE     ---       #97
+      00FF1AD2H   LINE      CODE     ---       #98
+      00FF1AD8H   LINE      CODE     ---       #100
+      00FF1AE0H   LINE      CODE     ---       #102
+      00FF1AE0H   LINE      CODE     ---       #103
+      00FF1AE6H   LINE      CODE     ---       #105
+      00FF1AEEH   LINE      CODE     ---       #107
+      00FF1AEEH   LINE      CODE     ---       #108
+      00FF1AF4H   LINE      CODE     ---       #110
+      00FF1AFCH   LINE      CODE     ---       #112
+      00FF1AFCH   LINE      CODE     ---       #113
+      00FF1B02H   LINE      CODE     ---       #115
+      00FF1B0AH   LINE      CODE     ---       #117
       ---         BLOCKEND  ---      ---       LVL=0
 
       ---         MODULE    ---      ---       STC32G_Timer
@@ -2099,6 +2107,9 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000D4H   SFRSYM    DATA     BYTE      T3H
       000000D6H   SFRSYM    DATA     BYTE      T2H
       0000008DH   SFRSYM    DATA     BYTE      TH1
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 32
+
+
       0000008CH   SFRSYM    DATA     BYTE      TH0
       000000DFH   SFRSYM    DATA     BYTE      IP3
       000000F4H   SFRSYM    DATA     BYTE      USBCON
@@ -2107,9 +2118,6 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000C7H   SFRSYM    DATA     BYTE      IAP_CONTR
       000000F9H   SFRSYM    DATA     BYTE      LINICR
       0000008EH   SFRSYM    DATA     BYTE      AUXR
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 32
-
-
       000000AFH   SFRSYM    DATA     BYTE      IE2
       00000088H   SFRSYM    DATA     BYTE      TCON
       00000089H   SFRSYM    DATA     BYTE      TMOD
@@ -2167,6 +2175,9 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF141AH   LINE      CODE     ---       #43
       00FF1429H   LINE      CODE     ---       #44
       00FF1435H   LINE      CODE     ---       #45
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 33
+
+
       00FF1452H   LINE      CODE     ---       #46
       00FF145CH   LINE      CODE     ---       #47
       00FF1468H   LINE      CODE     ---       #48
@@ -2175,9 +2186,6 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF1485H   LINE      CODE     ---       #51
       00FF1485H   LINE      CODE     ---       #53
       00FF1489H   LINE      CODE     ---       #55
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 33
-
-
       00FF148CH   LINE      CODE     ---       #56
       00FF14A7H   LINE      CODE     ---       #57
       00FF14B1H   LINE      CODE     ---       #59
@@ -2235,6 +2243,9 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000AFH   SFRSYM    DATA     BYTE      IE2
       000000E8H.4 SFRSYM    DATA     BIT       P64
       000000E8H.3 SFRSYM    DATA     BIT       P63
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 34
+
+
       00000088H   SFRSYM    DATA     BYTE      TCON
       00000089H   SFRSYM    DATA     BYTE      TMOD
       00000098H   SFRSYM    DATA     BYTE      SCON
@@ -2243,9 +2254,6 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000BCH   SFRSYM    DATA     BYTE      ADC_CONTR
       000000E7H   SFRSYM    DATA     BYTE      CMPCR2
       000000E6H   SFRSYM    DATA     BYTE      CMPCR1
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 34
-
-
       000000DEH   SFRSYM    DATA     BYTE      ADCCFG
       000000B8H   SFRSYM    DATA     BYTE      IP
       0000008FH   SFRSYM    DATA     BYTE      INTCLKO
@@ -2284,7 +2292,7 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       ---         BLOCKEND  ---      ---       LVL=0
 
       ---         MODULE    ---      ---       STC32G_Delay
-      00FF1FE2H   PUBLIC    CODE     ---       delay_ms
+      00FF1FF3H   PUBLIC    CODE     ---       delay_ms
       000000D0H   SFRSYM    DATA     BYTE      PSW
       0000009DH   SFRSYM    DATA     BYTE      IRCBAND
       00000097H   SFRSYM    DATA     BYTE      AUXR2
@@ -2303,6 +2311,9 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000C7H   SFRSYM    DATA     BYTE      IAP_CONTR
       000000F9H   SFRSYM    DATA     BYTE      LINICR
       0000008EH   SFRSYM    DATA     BYTE      AUXR
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 35
+
+
       000000AFH   SFRSYM    DATA     BYTE      IE2
       00000088H   SFRSYM    DATA     BYTE      TCON
       00000089H   SFRSYM    DATA     BYTE      TMOD
@@ -2311,9 +2322,6 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00000087H   SFRSYM    DATA     BYTE      PCON
       000000BCH   SFRSYM    DATA     BYTE      ADC_CONTR
       000000E7H   SFRSYM    DATA     BYTE      CMPCR2
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 35
-
-
       000000E6H   SFRSYM    DATA     BYTE      CMPCR1
       000000DEH   SFRSYM    DATA     BYTE      ADCCFG
       000000B8H   SFRSYM    DATA     BYTE      IP
@@ -2334,18 +2342,18 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00000090H   SFRSYM    DATA     BYTE      P1
       00000080H   SFRSYM    DATA     BYTE      P0
 
-      00FF1FE2H   BLOCK     CODE     ---       LVL=0
+      00FF1FF3H   BLOCK     CODE     ---       LVL=0
       WR4         REGSYM    ---      WORD      ms
-      00FF1FE4H   BLOCK     CODE     NEAR LAB  LVL=1
+      00FF1FF5H   BLOCK     CODE     NEAR LAB  LVL=1
       WR6         REGSYM    ---      WORD      i
       ---         BLOCKEND  ---      ---       LVL=1
-      00FF1FE2H   LINE      CODE     ---       #25
-      00FF1FE4H   LINE      CODE     ---       #26
-      00FF1FE4H   LINE      CODE     ---       #28
-      00FF1FE4H   LINE      CODE     ---       #29
-      00FF1FE8H   LINE      CODE     ---       #30
-      00FF1FF0H   LINE      CODE     ---       #31
-      00FF1FF8H   LINE      CODE     ---       #32
+      00FF1FF3H   LINE      CODE     ---       #25
+      00FF1FF5H   LINE      CODE     ---       #26
+      00FF1FF5H   LINE      CODE     ---       #28
+      00FF1FF5H   LINE      CODE     ---       #29
+      00FF1FF9H   LINE      CODE     ---       #30
+      00FF2001H   LINE      CODE     ---       #31
+      00FF2009H   LINE      CODE     ---       #32
       ---         BLOCKEND  ---      ---       LVL=0
 
       ---         MODULE    ---      ---       font
@@ -2371,6 +2379,9 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000C7H   SFRSYM    DATA     BYTE      IAP_CONTR
       000000F9H   SFRSYM    DATA     BYTE      LINICR
       0000008EH   SFRSYM    DATA     BYTE      AUXR
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 36
+
+
       000000AFH   SFRSYM    DATA     BYTE      IE2
       00000088H   SFRSYM    DATA     BYTE      TCON
       00000089H   SFRSYM    DATA     BYTE      TMOD
@@ -2379,9 +2390,6 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00000087H   SFRSYM    DATA     BYTE      PCON
       000000BCH   SFRSYM    DATA     BYTE      ADC_CONTR
       000000E7H   SFRSYM    DATA     BYTE      CMPCR2
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 36
-
-
       000000E6H   SFRSYM    DATA     BYTE      CMPCR1
       000000DEH   SFRSYM    DATA     BYTE      ADCCFG
       000000B8H   SFRSYM    DATA     BYTE      IP
@@ -2403,10 +2411,10 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00000080H   SFRSYM    DATA     BYTE      P0
 
       ---         MODULE    ---      ---       oled
-      00FF1F1FH   PUBLIC    CODE     ---       oled_IIC_SendCommand
+      00FF1F30H   PUBLIC    CODE     ---       oled_IIC_SendCommand
       00FF00A6H   PUBLIC    CODE     ---       oled_clear
-      00FF195AH   PUBLIC    CODE     ---       oled_Init
-      00FF1ED6H   PUBLIC    CODE     ---       oled_IIC_SendData
+      00FF1975H   PUBLIC    CODE     ---       oled_Init
+      00FF1EE7H   PUBLIC    CODE     ---       oled_IIC_SendData
       000000D0H   SFRSYM    DATA     BYTE      PSW
       0000009DH   SFRSYM    DATA     BYTE      IRCBAND
       00000097H   SFRSYM    DATA     BYTE      AUXR2
@@ -2439,6 +2447,9 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       0000008FH   SFRSYM    DATA     BYTE      INTCLKO
       000000EEH   SFRSYM    DATA     BYTE      IP3H
       000000B6H   SFRSYM    DATA     BYTE      IP2H
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 37
+
+
       000000A8H   SFRSYM    DATA     BYTE      IE
       000000BBH   SFRSYM    DATA     BYTE      P_SW3
       000000BAH   SFRSYM    DATA     BYTE      P_SW2
@@ -2447,41 +2458,38 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000F8H   SFRSYM    DATA     BYTE      P7
       000000E8H   SFRSYM    DATA     BYTE      P6
       000000C8H   SFRSYM    DATA     BYTE      P5
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 37
-
-
       000000C0H   SFRSYM    DATA     BYTE      P4
       000000B0H   SFRSYM    DATA     BYTE      P3
       000000A0H   SFRSYM    DATA     BYTE      P2
       00000090H   SFRSYM    DATA     BYTE      P1
       00000080H   SFRSYM    DATA     BYTE      P0
 
-      00FF1F1FH   BLOCK     CODE     ---       LVL=0
+      00FF1F30H   BLOCK     CODE     ---       LVL=0
       R15         REGSYM    ---      BYTE      IIC_Command
-      00FF1F1FH   LINE      CODE     ---       #4
-      00FF1F23H   LINE      CODE     ---       #6
-      00FF1F26H   LINE      CODE     ---       #7
-      00FF1F2BH   LINE      CODE     ---       #8
-      00FF1F2EH   LINE      CODE     ---       #9
-      00FF1F32H   LINE      CODE     ---       #10
-      00FF1F35H   LINE      CODE     ---       #11
-      00FF1F3AH   LINE      CODE     ---       #12
-      00FF1F3DH   LINE      CODE     ---       #13
-      00FF1F40H   LINE      CODE     ---       #14
+      00FF1F30H   LINE      CODE     ---       #4
+      00FF1F34H   LINE      CODE     ---       #6
+      00FF1F37H   LINE      CODE     ---       #7
+      00FF1F3CH   LINE      CODE     ---       #8
+      00FF1F3FH   LINE      CODE     ---       #9
+      00FF1F43H   LINE      CODE     ---       #10
+      00FF1F46H   LINE      CODE     ---       #11
+      00FF1F4BH   LINE      CODE     ---       #12
+      00FF1F4EH   LINE      CODE     ---       #13
+      00FF1F51H   LINE      CODE     ---       #14
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF1ED6H   BLOCK     CODE     ---       LVL=0
+      00FF1EE7H   BLOCK     CODE     ---       LVL=0
       R15         REGSYM    ---      BYTE      IIC_Data
-      00FF1ED6H   LINE      CODE     ---       #17
-      00FF1EDAH   LINE      CODE     ---       #19
-      00FF1EDDH   LINE      CODE     ---       #20
-      00FF1EE2H   LINE      CODE     ---       #21
-      00FF1EE5H   LINE      CODE     ---       #22
-      00FF1EEAH   LINE      CODE     ---       #23
-      00FF1EEDH   LINE      CODE     ---       #24
-      00FF1EF2H   LINE      CODE     ---       #25
-      00FF1EF5H   LINE      CODE     ---       #26
-      00FF1EF8H   LINE      CODE     ---       #27
+      00FF1EE7H   LINE      CODE     ---       #17
+      00FF1EEBH   LINE      CODE     ---       #19
+      00FF1EEEH   LINE      CODE     ---       #20
+      00FF1EF3H   LINE      CODE     ---       #21
+      00FF1EF6H   LINE      CODE     ---       #22
+      00FF1EFBH   LINE      CODE     ---       #23
+      00FF1EFEH   LINE      CODE     ---       #24
+      00FF1F03H   LINE      CODE     ---       #25
+      00FF1F06H   LINE      CODE     ---       #26
+      00FF1F09H   LINE      CODE     ---       #27
       ---         BLOCKEND  ---      ---       LVL=0
 
       00FF00A6H   BLOCK     CODE     ---       LVL=0
@@ -2502,41 +2510,41 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF00CEH   LINE      CODE     ---       #43
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF195AH   BLOCK     CODE     ---       LVL=0
-      00FF195AH   LINE      CODE     ---       #46
-      00FF195AH   LINE      CODE     ---       #48
-      00FF195DH   LINE      CODE     ---       #49
-      00FF1964H   LINE      CODE     ---       #50
-      00FF1969H   LINE      CODE     ---       #52
-      00FF196EH   LINE      CODE     ---       #53
-      00FF1973H   LINE      CODE     ---       #55
-      00FF1978H   LINE      CODE     ---       #56
-      00FF197DH   LINE      CODE     ---       #58
-      00FF1982H   LINE      CODE     ---       #59
-      00FF1986H   LINE      CODE     ---       #61
-      00FF198AH   LINE      CODE     ---       #62
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 38
+      00FF1975H   BLOCK     CODE     ---       LVL=0
+      00FF1975H   LINE      CODE     ---       #46
+      00FF1975H   LINE      CODE     ---       #48
+      00FF1978H   LINE      CODE     ---       #49
+      00FF197FH   LINE      CODE     ---       #50
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 38
 
 
-      00FF198FH   LINE      CODE     ---       #63
-      00FF1994H   LINE      CODE     ---       #65
-      00FF1999H   LINE      CODE     ---       #66
-      00FF199EH   LINE      CODE     ---       #68
-      00FF19A3H   LINE      CODE     ---       #69
-      00FF19A8H   LINE      CODE     ---       #71
-      00FF19ADH   LINE      CODE     ---       #73
-      00FF19B2H   LINE      CODE     ---       #74
-      00FF19B7H   LINE      CODE     ---       #75
-      00FF19BCH   LINE      CODE     ---       #77
-      00FF19C1H   LINE      CODE     ---       #78
-      00FF19C6H   LINE      CODE     ---       #80
-      00FF19CBH   LINE      CODE     ---       #81
-      00FF19D0H   LINE      CODE     ---       #83
-      00FF19D5H   LINE      CODE     ---       #84
-      00FF19DAH   LINE      CODE     ---       #86
-      00FF19DFH   LINE      CODE     ---       #87
-      00FF19E4H   LINE      CODE     ---       #88
-      00FF19E9H   LINE      CODE     ---       #89
+      00FF1984H   LINE      CODE     ---       #52
+      00FF1989H   LINE      CODE     ---       #53
+      00FF198EH   LINE      CODE     ---       #55
+      00FF1993H   LINE      CODE     ---       #56
+      00FF1998H   LINE      CODE     ---       #58
+      00FF199DH   LINE      CODE     ---       #59
+      00FF19A1H   LINE      CODE     ---       #61
+      00FF19A5H   LINE      CODE     ---       #62
+      00FF19AAH   LINE      CODE     ---       #63
+      00FF19AFH   LINE      CODE     ---       #65
+      00FF19B4H   LINE      CODE     ---       #66
+      00FF19B9H   LINE      CODE     ---       #68
+      00FF19BEH   LINE      CODE     ---       #69
+      00FF19C3H   LINE      CODE     ---       #71
+      00FF19C8H   LINE      CODE     ---       #73
+      00FF19CDH   LINE      CODE     ---       #74
+      00FF19D2H   LINE      CODE     ---       #75
+      00FF19D7H   LINE      CODE     ---       #77
+      00FF19DCH   LINE      CODE     ---       #78
+      00FF19E1H   LINE      CODE     ---       #80
+      00FF19E6H   LINE      CODE     ---       #81
+      00FF19EBH   LINE      CODE     ---       #83
+      00FF19F0H   LINE      CODE     ---       #84
+      00FF19F5H   LINE      CODE     ---       #86
+      00FF19FAH   LINE      CODE     ---       #87
+      00FF19FFH   LINE      CODE     ---       #88
+      00FF1A04H   LINE      CODE     ---       #89
       ---         BLOCKEND  ---      ---       LVL=0
       R15         REGSYM    ---      BYTE      fill_Data
       R14         REGSYM    ---      BYTE      i
@@ -2563,11 +2571,11 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       REG=3       REGSYM    ---      ---       BMP
 
       ---         MODULE    ---      ---       iic
-      00FF2074H   PUBLIC    CODE     ---       iic_Wait_Ack
-      00FF1F43H   PUBLIC    CODE     ---       iic_SendData
-      00FF1FCAH   PUBLIC    CODE     ---       iic_Start
-      00FF2024H   PUBLIC    CODE     ---       iic_Init
-      00FF2039H   PUBLIC    CODE     ---       iic_Stop
+      00FF2085H   PUBLIC    CODE     ---       iic_Wait_Ack
+      00FF1F54H   PUBLIC    CODE     ---       iic_SendData
+      00FF1FDBH   PUBLIC    CODE     ---       iic_Start
+      00FF2035H   PUBLIC    CODE     ---       iic_Init
+      00FF204AH   PUBLIC    CODE     ---       iic_Stop
       000000D0H   SFRSYM    DATA     BYTE      PSW
       0000009DH   SFRSYM    DATA     BYTE      IRCBAND
       00000097H   SFRSYM    DATA     BYTE      AUXR2
@@ -2575,6 +2583,9 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000FDH   SFRSYM    DATA     BYTE      S4CON
       000000ACH   SFRSYM    DATA     BYTE      S3CON
       0000009AH   SFRSYM    DATA     BYTE      S2CON
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 39
+
+
       000000B7H   SFRSYM    DATA     BYTE      IPH
       000000CDH   SFRSYM    DATA     BYTE      SPSTAT
       000000DDH   SFRSYM    DATA     BYTE      T4T3M
@@ -2583,9 +2594,6 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000F4H   SFRSYM    DATA     BYTE      USBCON
       000000B5H   SFRSYM    DATA     BYTE      IP2
       000000FFH   SFRSYM    DATA     BYTE      RSTCFG
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 39
-
-
       000000C7H   SFRSYM    DATA     BYTE      IAP_CONTR
       000000F9H   SFRSYM    DATA     BYTE      LINICR
       0000008EH   SFRSYM    DATA     BYTE      AUXR
@@ -2623,85 +2631,85 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000B2H   SFRSYM    DATA     BYTE      P3M0
       00000080H   SFRSYM    DATA     BYTE      P0
 
-      00FF2024H   BLOCK     CODE     ---       LVL=0
-      00FF2024H   LINE      CODE     ---       #4
-      00FF2024H   LINE      CODE     ---       #14
-      00FF2027H   LINE      CODE     ---       #15
-      00FF202AH   LINE      CODE     ---       #17
-      00FF202DH   LINE      CODE     ---       #18
-      00FF2030H   LINE      CODE     ---       #21
-      00FF2032H   LINE      CODE     ---       #22
-      00FF2034H   LINE      CODE     ---       #24
-      00FF2038H   LINE      CODE     ---       #25
+      00FF2035H   BLOCK     CODE     ---       LVL=0
+      00FF2035H   LINE      CODE     ---       #4
+      00FF2035H   LINE      CODE     ---       #14
+      00FF2038H   LINE      CODE     ---       #15
+      00FF203BH   LINE      CODE     ---       #17
+      00FF203EH   LINE      CODE     ---       #18
+      00FF2041H   LINE      CODE     ---       #21
+      00FF2043H   LINE      CODE     ---       #22
+      00FF2045H   LINE      CODE     ---       #24
+      00FF2049H   LINE      CODE     ---       #25
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF1FCAH   BLOCK     CODE     ---       LVL=0
-      00FF1FCAH   LINE      CODE     ---       #28
-      00FF1FCAH   LINE      CODE     ---       #30
-      00FF1FCCH   LINE      CODE     ---       #31
-      00FF1FD1H   LINE      CODE     ---       #32
-      00FF1FD3H   LINE      CODE     ---       #33
-      00FF1FD8H   LINE      CODE     ---       #34
-      00FF1FDAH   LINE      CODE     ---       #35
-      00FF1FDFH   LINE      CODE     ---       #36
-      00FF1FE1H   LINE      CODE     ---       #37
+      00FF1FDBH   BLOCK     CODE     ---       LVL=0
+      00FF1FDBH   LINE      CODE     ---       #28
+      00FF1FDBH   LINE      CODE     ---       #30
+      00FF1FDDH   LINE      CODE     ---       #31
+      00FF1FE2H   LINE      CODE     ---       #32
+      00FF1FE4H   LINE      CODE     ---       #33
+      00FF1FE9H   LINE      CODE     ---       #34
+      00FF1FEBH   LINE      CODE     ---       #35
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 40
+
+
+      00FF1FF0H   LINE      CODE     ---       #36
+      00FF1FF2H   LINE      CODE     ---       #37
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF2039H   BLOCK     CODE     ---       LVL=0
-      00FF2039H   LINE      CODE     ---       #40
-      00FF2039H   LINE      CODE     ---       #42
-      00FF203BH   LINE      CODE     ---       #43
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 40
-
-
-      00FF203FH   LINE      CODE     ---       #44
-      00FF2041H   LINE      CODE     ---       #45
-      00FF2046H   LINE      CODE     ---       #46
-      00FF2048H   LINE      CODE     ---       #47
-      00FF204DH   LINE      CODE     ---       #48
+      00FF204AH   BLOCK     CODE     ---       LVL=0
+      00FF204AH   LINE      CODE     ---       #40
+      00FF204AH   LINE      CODE     ---       #42
+      00FF204CH   LINE      CODE     ---       #43
+      00FF2050H   LINE      CODE     ---       #44
+      00FF2052H   LINE      CODE     ---       #45
+      00FF2057H   LINE      CODE     ---       #46
+      00FF2059H   LINE      CODE     ---       #47
+      00FF205EH   LINE      CODE     ---       #48
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF2074H   BLOCK     CODE     ---       LVL=0
+      00FF2085H   BLOCK     CODE     ---       LVL=0
       R11         REGSYM    ---      BYTE      ACK
-      00FF2074H   LINE      CODE     ---       #70
-      00FF2074H   LINE      CODE     ---       #71
-      00FF2074H   LINE      CODE     ---       #72
-      00FF2074H   LINE      CODE     ---       #73
-      00FF2076H   LINE      CODE     ---       #74
-      00FF2077H   LINE      CODE     ---       #75
-      00FF2079H   LINE      CODE     ---       #76
-      00FF207AH   LINE      CODE     ---       #77
-      00FF207DH   LINE      CODE     ---       #79
-      00FF207FH   LINE      CODE     ---       #80
-      00FF2081H   LINE      CODE     ---       #83
-      00FF2082H   LINE      CODE     ---       #84
-      00FF2082H   LINE      CODE     ---       #85
-      00FF2084H   LINE      CODE     ---       #86
-      00FF2086H   LINE      CODE     ---       #87
-      00FF2086H   LINE      CODE     ---       #88
+      00FF2085H   LINE      CODE     ---       #70
+      00FF2085H   LINE      CODE     ---       #71
+      00FF2085H   LINE      CODE     ---       #72
+      00FF2085H   LINE      CODE     ---       #73
+      00FF2087H   LINE      CODE     ---       #74
+      00FF2088H   LINE      CODE     ---       #75
+      00FF208AH   LINE      CODE     ---       #76
+      00FF208BH   LINE      CODE     ---       #77
+      00FF208EH   LINE      CODE     ---       #79
+      00FF2090H   LINE      CODE     ---       #80
+      00FF2092H   LINE      CODE     ---       #83
+      00FF2093H   LINE      CODE     ---       #84
+      00FF2093H   LINE      CODE     ---       #85
+      00FF2095H   LINE      CODE     ---       #86
+      00FF2097H   LINE      CODE     ---       #87
+      00FF2097H   LINE      CODE     ---       #88
       ---         BLOCKEND  ---      ---       LVL=0
 
-      00FF1F43H   BLOCK     CODE     ---       LVL=0
+      00FF1F54H   BLOCK     CODE     ---       LVL=0
       R6          REGSYM    ---      BYTE      dat
-      00FF1F45H   BLOCK     CODE     NEAR LAB  LVL=1
+      00FF1F56H   BLOCK     CODE     NEAR LAB  LVL=1
       R7          REGSYM    ---      BYTE      i
       ---         BLOCKEND  ---      ---       LVL=1
-      00FF1F43H   LINE      CODE     ---       #91
-      00FF1F45H   LINE      CODE     ---       #92
-      00FF1F45H   LINE      CODE     ---       #94
-      00FF1F48H   LINE      CODE     ---       #96
-      00FF1F4DH   LINE      CODE     ---       #98
-      00FF1F4FH   LINE      CODE     ---       #99
-      00FF1F51H   LINE      CODE     ---       #102
-      00FF1F53H   LINE      CODE     ---       #103
-      00FF1F53H   LINE      CODE     ---       #104
-      00FF1F55H   LINE      CODE     ---       #105
-      00FF1F57H   LINE      CODE     ---       #106
-      00FF1F59H   LINE      CODE     ---       #107
-      00FF1F5BH   LINE      CODE     ---       #108
-      00FF1F5DH   LINE      CODE     ---       #109
-      00FF1F5FH   LINE      CODE     ---       #110
-      00FF1F63H   LINE      CODE     ---       #111
+      00FF1F54H   LINE      CODE     ---       #91
+      00FF1F56H   LINE      CODE     ---       #92
+      00FF1F56H   LINE      CODE     ---       #94
+      00FF1F59H   LINE      CODE     ---       #96
+      00FF1F5EH   LINE      CODE     ---       #98
+      00FF1F60H   LINE      CODE     ---       #99
+      00FF1F62H   LINE      CODE     ---       #102
+      00FF1F64H   LINE      CODE     ---       #103
+      00FF1F64H   LINE      CODE     ---       #104
+      00FF1F66H   LINE      CODE     ---       #105
+      00FF1F68H   LINE      CODE     ---       #106
+      00FF1F6AH   LINE      CODE     ---       #107
+      00FF1F6CH   LINE      CODE     ---       #108
+      00FF1F6EH   LINE      CODE     ---       #109
+      00FF1F70H   LINE      CODE     ---       #110
+      00FF1F74H   LINE      CODE     ---       #111
       ---         BLOCKEND  ---      ---       LVL=0
       R7          REGSYM    ---      BYTE      i
       R10         REGSYM    ---      BYTE      receive
@@ -2711,6 +2719,9 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       0000009DH   SFRSYM    DATA     BYTE      IRCBAND
       000000D0H.5 SFRSYM    DATA     BIT       F0
       00000097H   SFRSYM    DATA     BYTE      AUXR2
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 41
+
+
       000000EFH   SFRSYM    DATA     BYTE      AUXINTIF
       000000FDH   SFRSYM    DATA     BYTE      S4CON
       000000ACH   SFRSYM    DATA     BYTE      S3CON
@@ -2719,9 +2730,6 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       000000B7H   SFRSYM    DATA     BYTE      IPH
       000000CDH   SFRSYM    DATA     BYTE      SPSTAT
       000000DDH   SFRSYM    DATA     BYTE      T4T3M
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 41
-
-
       000000C1H   SFRSYM    DATA     BYTE      WDT_CONTR
       00000080H.1 SFRSYM    DATA     BIT       SDA
       000000DFH   SFRSYM    DATA     BYTE      IP3
@@ -2771,26 +2779,26 @@ SYMBOL TABLE OF MODULE:  .\list\PWM (main)
       00FF0000H   PUBLIC    CODE     ---       ?C_STARTUP
 
       ---         MODULE    ---      ---       ?C?INITEDATA
-      00FF1CBFH   PUBLIC    CODE     ---       ?C?INITEDATA
+      00FF1CD0H   PUBLIC    CODE     ---       ?C?INITEDATA
 
       ---         MODULE    ---      ---       ?C?SIDIV
-      00FF1802H   PUBLIC    CODE     ---       ?C?SIDIV
+      00FF181DH   PUBLIC    CODE     ---       ?C?SIDIV
 
       ---         MODULE    ---      ---       ?C?LIMUL
-      00FF1834H   PUBLIC    CODE     ---       ?C?LIMUL
+      00FF184FH   PUBLIC    CODE     ---       ?C?LIMUL
+
+L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  13:28:24  PAGE 42
+
 
       ---         MODULE    ---      ---       ?C?SLDIV
-      00FF183DH   PUBLIC    CODE     NEAR LAB  ?C?SLDIV
+      00FF1858H   PUBLIC    CODE     NEAR LAB  ?C?SLDIV
 
       ---         MODULE    ---      ---       ?C?INITEDATA_END
-      00FF211AH   PUBLIC    HCONST   WORD      ?C?INITEDATA_END
+      00FF212BH   PUBLIC    HCONST   WORD      ?C?INITEDATA_END
 
       ---         MODULE    ---      ---       ?C?ULDIV
-      00FF1873H   PUBLIC    CODE     NEAR LAB  ?C?ULDIV
-L251 LINKER/LOCATER V4.66.93.0                                                        06/13/2026  12:51:45  PAGE 42
+      00FF188EH   PUBLIC    CODE     NEAR LAB  ?C?ULDIV
+      00FF188CH   PUBLIC    CODE     NEAR LAB  ?C?ULIDIV
 
-
-      00FF1871H   PUBLIC    CODE     NEAR LAB  ?C?ULIDIV
-
-Program Size: data=9.6 edata+hdata=328 xdata=0 const=131 code=8321
+Program Size: data=9.6 edata+hdata=328 xdata=0 const=131 code=8338
 L251 RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

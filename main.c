@@ -383,34 +383,36 @@ u8 LimitPercent(int16 speed)
  */
 void Motor_RunPercent(int16 left, int16 right)
 {
-//	Motor_SetForward();
-	if(LimitPercent(left) == -75) 
-	{
-		AIN1 = 1;
-		AIN2 = 0;
-		BIN1 = 1;
-		BIN2 = 0;
-		Toggle_Start = 1;
-		Toggle_Count = TOGGLE_TICKS;
-	}		
-	else if(LimitPercent(right) == -75)
-	{
-		AIN1 = 0;
-		AIN2 = 1;
-		BIN1 = 0;
-		BIN2 = 1;
-		Toggle_Start = 1;
-		Toggle_Count = TOGGLE_TICKS;
-	}else {
-		AIN1 = 0;
-		AIN2 = 1;
-		BIN1 = 1;
-		BIN2 = 0;
-		Toggle_Start = 0;
-	}
-	Line_Last_Left = LimitPercent(left) > 0 ? LimitPercent(left) : 75;
-	Line_Last_Right = LimitPercent(right) > 0 ? LimitPercent(right) : 75;
-	PWM_Run(Line_Last_Left, Line_Last_Right);
+    if(left < 0)
+    {
+        AIN1 = 1;
+        AIN2 = 0;
+        BIN1 = 1;
+        BIN2 = 0;
+        Toggle_Start = 1;
+        Toggle_Count = TOGGLE_TICKS;
+    }
+    else if(right < 0)
+    {
+        AIN1 = 0;
+        AIN2 = 1;
+        BIN1 = 0;
+        BIN2 = 1;
+        Toggle_Start = 1;
+        Toggle_Count = TOGGLE_TICKS;
+    }
+    else
+    {
+        AIN1 = 0;
+        AIN2 = 1;
+        BIN1 = 1;
+        BIN2 = 0;
+        Toggle_Start = 0;
+    }
+
+    Line_Last_Left = left < 0 ? 75 : LimitPercent(left);
+    Line_Last_Right = right < 0 ? 75 : LimitPercent(right);
+    PWM_Run(Line_Last_Left, Line_Last_Right);
 }
 
 /*
@@ -696,18 +698,18 @@ void Timer2_ISR_Handler (void) interrupt TMR2_VECTOR
 	static u16 delay_Start_Count = DELAY_START_TICKS;
 	static u8 line_ctrl_tick = 0;
 
-//	if(Toggle_Start)
-//	{
-//		if(Toggle_Count > 0)
-//		{
-//			Toggle_Count--;
-//		}
-//		else
-//		{
-//			Toggle_Start = 0;
-//		}
-//		return;
-//	}
+	if(Toggle_Start)
+	{
+		if(Toggle_Count > 0)
+		{
+			Toggle_Count--;
+		}
+		else
+		{
+			Toggle_Start = 0;
+		}
+		return;
+	}
 	if(delay_Start)
 	{
 		PWM_Run(0, 0);
