@@ -1,0 +1,269 @@
+C251 COMPILER V5.60.0,  MPU6050                                                            12/06/26  21:36:31  PAGE 1   
+
+
+C251 COMPILER V5.60.0, COMPILATION OF MODULE MPU6050
+OBJECT MODULE PLACED IN .\list\MPU6050.obj
+COMPILER INVOKED BY: C:\Keil_v5\C251\BIN\C251.EXE MPU6050\MPU6050.c XSMALL INTR2 BROWSE INCDIR(../include) DEBUG PRINT(.
+                    -\list\MPU6050.lst) TABS(2) OBJECT(.\list\MPU6050.obj) 
+
+stmt  level    source
+
+    1          #include <stdio.h>
+    2          #include <math.h>
+    3          #include "MPU6050.h"
+*** ERROR C25 IN LINE 102 OF MPU6050\inv_mpu.h: syntax error near ','
+*** ERROR C25 IN LINE 103 OF MPU6050\inv_mpu.h: syntax error near ','
+*** ERROR C25 IN LINE 104 OF MPU6050\inv_mpu.h: syntax error near ','
+*** ERROR C25 IN LINE 105 OF MPU6050\inv_mpu.h: syntax error near ','
+*** ERROR C25 IN LINE 106 OF MPU6050\inv_mpu.h: syntax error near ','
+*** ERROR C25 IN LINE 111 OF MPU6050\inv_mpu.h: syntax error near ','
+*** ERROR C25 IN LINE 116 OF MPU6050\inv_mpu.h: syntax error near ')'
+*** ERROR C25 IN LINE 118 OF MPU6050\inv_mpu.h: syntax error near ')'
+*** ERROR C25 IN LINE 123 OF MPU6050\inv_mpu.h: syntax error near ')'
+*** ERROR C318 IN LINE 3 OF MPU6050\MPU6050.h: can't open file 'STM32_I2C.h'
+*** ERROR C42 IN LINE 10 OF MPU6050\MPU6050.h: 'fAX': not in formal parameter list
+*** ERROR C42 IN LINE 10 OF MPU6050\MPU6050.h: 'fAY': not in formal parameter list
+*** ERROR C42 IN LINE 10 OF MPU6050\MPU6050.h: 'fAZ': not in formal parameter list
+*** ERROR C29 IN LINE 11 OF MPU6050\MPU6050.h: formal/parameter has illegal storage class
+*** ERROR C33 IN LINE 11 OF MPU6050\MPU6050.h: '__IO': invalid storage class
+*** ERROR C25 IN LINE 11 OF MPU6050\MPU6050.h: syntax error near 'short'
+    4          
+    5          /* Starting sampling rate. */
+    6          #define DEFAULT_MPU_HZ  (50)
+    7          #define q30  1073741824.0f
+    8          float q0=1.0f,q1=0.0f,q2=0.0f,q3=0.0f;
+    9          __IO float fAX = 0.0f, fAY = 0.0f, fAZ = 0.0f;
+   10          __IO short ax, ay, az, gx, gy, gz;
+   11          
+   12          /* The sensors can be mounted onto the board in any orientation. The mounting
+   13           * matrix seen below tells the MPL how to rotate the raw data from thei
+   14           * driver(s).
+   15           * TODO: The following matrices refer to the configuration on an internal test
+   16           * board at Invensense. If needed, please modify the matrices to match the
+   17           * chip-to-body matrix for your particular set up.
+   18           */
+   19          static signed char gyro_orientation[9] = {-1, 0, 0,
+   20                                                     0,-1, 0,
+   21                                                     0, 0, 1};
+   22          
+   23          enum packet_type_e {
+   24              PACKET_TYPE_ACCEL,
+   25              PACKET_TYPE_GYRO,
+   26              PACKET_TYPE_QUAT,
+   27              PACKET_TYPE_TAP,
+   28              PACKET_TYPE_ANDROID_ORIENT,
+   29              PACKET_TYPE_PEDO,
+   30              PACKET_TYPE_MISC
+   31          };
+   32          
+   33          /* These next two functions converts the orientation matrix (see
+   34           * gyro_orientation) to a scalar representation for use by the DMP.
+   35           * NOTE: These functions are borrowed from Invensense's MPL.
+   36           */
+   37          static  unsigned short inv_row_2_scale(const signed char *row)
+*** ERROR C33 IN LINE 37 OF MPU6050\MPU6050.c: 'row': invalid storage class
+   38          {
+   39              unsigned short b;
+   40          
+   41              if (row[0] > 0)
+C251 COMPILER V5.60.0,  MPU6050                                                            12/06/26  21:36:31  PAGE 2   
+
+   42                  b = 0;
+   43              else if (row[0] < 0)
+   44                  b = 4;
+   45              else if (row[1] > 0)
+   46                  b = 1;
+   47              else if (row[1] < 0)
+   48                  b = 5;
+   49              else if (row[2] > 0)
+   50                  b = 2;
+   51              else if (row[2] < 0)
+   52                  b = 6;
+   53              else
+   54                  b = 7;      // error
+   55              return b;
+   56          }
+   57          
+   58          static  unsigned short inv_orientation_matrix_to_scalar(
+   59              const signed char *mtx)
+*** ERROR C33 IN LINE 59 OF MPU6050\MPU6050.c: 'mtx': invalid storage class
+   60          {
+   61              unsigned short scalar;
+   62          
+   63              /*
+   64                 XYZ  010_001_000 Identity Matrix
+   65                 XZY  001_010_000
+   66                 YXZ  010_000_001
+   67                 YZX  000_010_001
+   68                 ZXY  001_000_010
+   69                 ZYX  000_001_010
+   70               */
+   71          
+   72              scalar = inv_row_2_scale(mtx);
+   73              scalar |= inv_row_2_scale(mtx + 3) << 3;
+   74              scalar |= inv_row_2_scale(mtx + 6) << 6;
+   75          
+   76          
+   77              return scalar;
+   78          }
+   79          
+   80          /* Handle sensor on/off combinations. */
+   81          
+   82          static void run_self_test(void)
+   83          {
+   84              int result;
+   85          //    char test_packet[4] = {0};
+   86              long gyro[3], accel[3];
+   87          
+   88              result = mpu_run_self_test(gyro, accel);
+   89              if (result == 0x7) {
+   90                  /* Test passed. We can trust the gyro data here, so let's push it down
+   91                   * to the DMP.
+   92                   */
+   93                  float sens;
+   94                  unsigned short accel_sens;
+   95                  mpu_get_gyro_sens(&sens);
+   96                  gyro[0] = (long)(gyro[0] * sens);
+*** ERROR C33 IN LINE 96 OF MPU6050\MPU6050.c: 'sens': invalid storage class
+   97                  gyro[1] = (long)(gyro[1] * sens);
+*** ERROR C33 IN LINE 97 OF MPU6050\MPU6050.c: 'sens': invalid storage class
+   98                  gyro[2] = (long)(gyro[2] * sens);
+*** ERROR C33 IN LINE 98 OF MPU6050\MPU6050.c: 'sens': invalid storage class
+   99                  dmp_set_gyro_bias(gyro);
+  100                  mpu_get_accel_sens(&accel_sens);
+  101                  accel[0] *= accel_sens;
+  102                  accel[1] *= accel_sens;
+  103                  accel[2] *= accel_sens;
+C251 COMPILER V5.60.0,  MPU6050                                                            12/06/26  21:36:31  PAGE 3   
+
+  104                  dmp_set_accel_bias(accel);
+  105              printf("setting bias succesfully ......\n");
+  106              }
+  107            else
+  108            {
+  109              printf("bias has not been modified ......\n");
+  110            }
+  111          
+  112              /* Report results. */
+  113          }
+  114          
+  115          int MPU_init(void)
+  116          {
+  117            if (mpu_init() != 0)
+  118              return 0;
+  119            printf("mpu initialization complete......\n");
+  120            //mpu_set_sensor
+  121            if(!mpu_set_sensors(INV_XYZ_GYRO | INV_XYZ_ACCEL))
+  122              printf("mpu_set_sensor complete ......\n");
+  123            else
+  124            {
+  125              printf("mpu_set_sensor come across error ......\n");
+  126              return 0;
+  127            }
+  128            //mpu_configure_fifo
+  129            if(!mpu_configure_fifo(INV_XYZ_GYRO | INV_XYZ_ACCEL))
+  130            {
+  131              printf("mpu_configure_fifo complete ......\n");
+  132            }
+  133            else
+  134            {
+  135              printf("mpu_configure_fifo come across error ......\n");
+  136              return 0;
+  137            }
+  138            //mpu_set_sample_rate
+  139            if(!mpu_set_sample_rate(DEFAULT_MPU_HZ))
+  140            {
+  141              printf("mpu_set_sample_rate complete ......\n");
+  142            }
+  143            else
+  144            {
+  145              printf("mpu_set_sample_rate error ......\n");
+  146              return 0;
+  147            }
+  148            //dmp_load_motion_driver_firmvare
+  149            if(!dmp_load_motion_driver_firmware())
+  150            {
+  151              printf("dmp_load_motion_driver_firmware complete ......\n");
+  152            }
+  153            else
+  154            {
+  155              printf("dmp_load_motion_driver_firmware come across error ......\n");
+  156              return 0;
+  157            }
+  158            //dmp_set_orientation
+  159            if(!dmp_set_orientation(inv_orientation_matrix_to_scalar(gyro_orientation)))
+  160            {
+  161              printf("dmp_set_orientation complete ......\n");
+  162            }
+  163            else
+  164            {
+  165              printf("dmp_set_orientation come across error ......\n");
+  166              return 0;
+  167            }
+  168            //dmp_enable_feature
+  169            if(!dmp_enable_feature(DMP_FEATURE_6X_LP_QUAT | DMP_FEATURE_TAP |
+C251 COMPILER V5.60.0,  MPU6050                                                            12/06/26  21:36:31  PAGE 4   
+
+  170                  DMP_FEATURE_ANDROID_ORIENT | DMP_FEATURE_SEND_RAW_ACCEL | DMP_FEATURE_SEND_CAL_GYRO |
+  171                  DMP_FEATURE_GYRO_CAL))
+  172            {
+  173              printf("dmp_enable_feature complete ......\n");
+  174            }
+  175            else
+  176            {
+  177              printf("dmp_enable_feature come across error ......\n");
+  178              return 0;
+  179            }
+  180            //dmp_set_fifo_rate
+  181            if(!dmp_set_fifo_rate(DEFAULT_MPU_HZ))
+  182            {
+  183              printf("dmp_set_fifo_rate complete ......\n");
+  184            }
+  185            else
+  186            {
+  187              printf("dmp_set_fifo_rate come across error ......\n");
+  188              return 0;
+  189            }
+  190            run_self_test();
+  191            if(!mpu_set_dmp_state(1))
+  192            {
+  193              printf("mpu_set_dmp_state complete ......\n");
+  194            }
+  195            else
+  196            {
+  197              printf("mpu_set_dmp_state come across error ......\n");
+  198              return 0;
+  199            }
+  200            
+  201            return 1;
+  202          }
+  203          
+  204          void MPU_getdata(void)
+  205          {
+  206            unsigned long sensor_timestamp;
+  207            short gyro[3], accel[3], sensors;
+  208            unsigned char more;
+  209            long quat[4];
+  210          
+  211            dmp_read_fifo(gyro, accel, quat, &sensor_timestamp, &sensors, &more);  
+  212            if (sensors & INV_WXYZ_QUAT )
+  213            {
+  214              // 四元数融合算法，计算三个姿态角，其中fAZ偏航角与之前的参考示例计算的angz夹角不同
+  215               q0 = quat[0] / q30;
+  216               q1 = quat[1] / q30;
+  217               q2 = quat[2] / q30;
+  218               q3 = quat[3] / q30;
+  219               fAX = asin(-2 * q1 * q3 + 2 * q0* q2)* 57.3; // pitch
+*** ERROR C33 IN LINE 219 OF MPU6050\MPU6050.c: 'q1': invalid storage class
+*** ERROR C33 IN LINE 219 OF MPU6050\MPU6050.c: 'q3': invalid storage class
+*** ERROR C33 IN LINE 219 OF MPU6050\MPU6050.c: 'q0': invalid storage class
+*** ERROR C33 IN LINE 219 OF MPU6050\MPU6050.c: 'q2': invalid storage class
+  220               fAY = atan2(2 * q2 * q3 + 2 * q0 * q1, -2 * q1 * q1 - 2 * q2* q2 + 1)* 57.3; // roll
+*** ERROR C33 IN LINE 220 OF MPU6050\MPU6050.c: 'q2': invalid storage class
+*** ERROR C33 IN LINE 220 OF MPU6050\MPU6050.c: 'q3': invalid storage class
+*** ERROR C33 IN LINE 220 OF MPU6050\MPU6050.c: 'q0': invalid storage class
+*** ERROR C33 IN LINE 220 OF MPU6050\MPU6050.c: 'q1': invalid storage class
+*** ERROR C25 IN LINE 220 OF MPU6050\MPU6050.c: syntax error near '-'
+*** ERROR C7 IN LINE 220 OF MPU6050\MPU6050.c: compilation aborted
+
+C251 COMPILATION COMPLETE.  0 WARNING(S),  31 ERROR(S)

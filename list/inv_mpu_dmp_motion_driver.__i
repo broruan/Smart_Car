@@ -1,0 +1,1 @@
+"MPU6050\inv_mpu_dmp_motion_driver.c" XSMALL INTR2 BROWSE INCDIR(../include) DEBUG PRINT(.\list\inv_mpu_dmp_motion_driver.lst) TABS (2) OBJECT(.\list\inv_mpu_dmp_motion_driver.obj)

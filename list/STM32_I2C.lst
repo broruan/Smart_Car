@@ -1,0 +1,66 @@
+C251 COMPILER V5.60.0,  STM32_I2C                                                          10/06/26  16:59:06  PAGE 1   
+
+
+C251 COMPILER V5.60.0, COMPILATION OF MODULE STM32_I2C
+OBJECT MODULE PLACED IN .\list\STM32_I2C.obj
+COMPILER INVOKED BY: C:\Keil_v5\C251\BIN\C251.EXE ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.c XSMALL INTR2 BROW
+                    -SE INCDIR(../include) DEBUG PRINT(.\list\STM32_I2C.lst) TABS(2) OBJECT(.\list\STM32_I2C.obj) 
+
+stmt  level    source
+
+    1          #include "STM32_I2C.h"
+*** ERROR C318 IN LINE 4 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: can't open file 'main.h'
+*** ERROR C25 IN LINE 32 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: syntax error near 'addr_'
+*** ERROR C42 IN LINE 32 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: 'i2cWriteBuffer': not in formal parame
+             -ter list
+*** WARNING C34 IN LINE 33 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: 'uint8_t': missing declaration speci
+             -fiers
+*** ERROR C42 IN LINE 33 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: 'uint8_t': not in formal parameter lis
+             -t
+*** ERROR C25 IN LINE 33 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: syntax error near 'i2cWrite'
+*** ERROR C25 IN LINE 33 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: syntax error near 'addr_'
+*** ERROR C42 IN LINE 33 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: 'i2cWrite': not in formal parameter li
+             -st
+*** WARNING C34 IN LINE 34 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: 'uint8_t': missing declaration speci
+             -fiers
+*** ERROR C42 IN LINE 34 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: 'uint8_t': not in formal parameter lis
+             -t
+*** ERROR C25 IN LINE 34 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: syntax error near 'i2cRead'
+*** ERROR C25 IN LINE 34 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: syntax error near 'addr_'
+*** ERROR C42 IN LINE 34 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: 'i2cRead': not in formal parameter lis
+             -t
+*** ERROR C42 IN LINE 35 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: 'i2cInit': not in formal parameter lis
+             -t
+*** WARNING C34 IN LINE 36 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: 'uint16_t': missing declaration spec
+             -ifiers
+*** ERROR C42 IN LINE 36 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: 'uint16_t': not in formal parameter li
+             -st
+*** ERROR C25 IN LINE 36 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: syntax error near 'i2cGetErrorCounter'
+*** ERROR C42 IN LINE 36 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: 'i2cGetErrorCounter': not in formal pa
+             -rameter list
+*** ERROR C29 IN LINE 37 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: formal/parameter has illegal storage c
+             -lass
+*** ERROR C33 IN LINE 37 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: 'i2cUnstick': invalid storage class
+*** WARNING C34 IN LINE 39 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: 'int8_t': missing declaration specif
+             -iers
+*** ERROR C42 IN LINE 39 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: 'int8_t': not in formal parameter list
+*** ERROR C25 IN LINE 39 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: syntax error near 'i2cwrite'
+*** ERROR C25 IN LINE 39 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: syntax error near 'addr'
+*** ERROR C42 IN LINE 39 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: 'i2cwrite': not in formal parameter li
+             -st
+*** WARNING C34 IN LINE 40 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: 'int8_t': missing declaration specif
+             -iers
+*** ERROR C42 IN LINE 40 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: 'int8_t': not in formal parameter list
+*** ERROR C25 IN LINE 40 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: syntax error near 'i2cread'
+*** ERROR C25 IN LINE 40 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: syntax error near 'addr'
+*** ERROR C42 IN LINE 40 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.h: 'i2cread': not in formal parameter lis
+             -t
+    2          #include "i2c.h"          // hi2c1
+*** ERROR C318 IN LINE 2 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.c: can't open file 'i2c.h'
+    3          
+    4          void i2cInit(void)              { /* MX_I2C1_Init() has already initialized hardware I2C1 */ }
+*** ERROR C42 IN LINE 4 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.c: 'i2cInit': not in formal parameter list
+*** ERROR C25 IN LINE 4 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.c: syntax error near '{'
+*** ERROR C7 IN LINE 4 OF ..\..\..\Documents\Servo\Drivers\MPU6050\STM32_I2C.c: compilation aborted
+
+C251 COMPILATION COMPLETE.  5 WARNING(S),  29 ERROR(S)

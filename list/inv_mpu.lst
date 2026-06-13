@@ -1,0 +1,83 @@
+C251 COMPILER V5.60.0,  inv_mpu                                                            12/06/26  21:36:15  PAGE 1   
+
+
+C251 COMPILER V5.60.0, COMPILATION OF MODULE inv_mpu
+OBJECT MODULE PLACED IN .\list\inv_mpu.obj
+COMPILER INVOKED BY: C:\Keil_v5\C251\BIN\C251.EXE MPU6050\inv_mpu.c XSMALL INTR2 BROWSE INCDIR(../include) DEBUG PRINT(.
+                    -\list\inv_mpu.lst) TABS(2) OBJECT(.\list\inv_mpu.obj) 
+
+stmt  level    source
+
+    1          /*
+    2           $License:
+    3              Copyright (C) 2011-2012 InvenSense Corporation, All Rights Reserved.
+    4              See included License.txt for License information.
+    5           $
+    6           */
+    7          /**
+    8           *  @addtogroup  DRIVERS Sensor Driver Layer
+    9           *  @brief       Hardware drivers to communicate with sensors via I2C.
+   10           *
+   11           *  @{
+   12           *      @file       inv_mpu.c
+   13           *      @brief      An I2C-based driver for Invensense gyroscopes.
+   14           *      @details    This driver currently works for the following devices:
+   15           *                  MPU6050
+   16           *                  MPU6500
+   17           *                  MPU9150 (or MPU6050 w/ AK8975 on the auxiliary bus)
+   18           *                  MPU9250 (or MPU6500 w/ AK8963 on the auxiliary bus)
+   19           */
+   20          #include <stdio.h>
+   21          #include <stdint.h>
+*** ERROR C318 IN LINE 21 OF MPU6050\inv_mpu.c: can't open file 'stdint.h'
+   22          #include <stdlib.h>
+   23          #include <string.h>
+   24          #include <math.h>
+   25          #include "main.h"
+*** ERROR C318 IN LINE 25 OF MPU6050\inv_mpu.c: can't open file 'main.h'
+   26          #include "inv_mpu.h"
+*** ERROR C25 IN LINE 102 OF MPU6050\inv_mpu.h: syntax error near ','
+*** ERROR C25 IN LINE 103 OF MPU6050\inv_mpu.h: syntax error near ','
+*** ERROR C25 IN LINE 104 OF MPU6050\inv_mpu.h: syntax error near ','
+*** ERROR C25 IN LINE 105 OF MPU6050\inv_mpu.h: syntax error near ','
+*** ERROR C25 IN LINE 106 OF MPU6050\inv_mpu.h: syntax error near ','
+*** ERROR C25 IN LINE 111 OF MPU6050\inv_mpu.h: syntax error near ','
+*** ERROR C25 IN LINE 116 OF MPU6050\inv_mpu.h: syntax error near ')'
+*** ERROR C25 IN LINE 118 OF MPU6050\inv_mpu.h: syntax error near ')'
+*** ERROR C25 IN LINE 123 OF MPU6050\inv_mpu.h: syntax error near ')'
+   27          #include "STM32_I2C.h"
+*** ERROR C318 IN LINE 27 OF MPU6050\inv_mpu.c: can't open file 'STM32_I2C.h'
+   28          /* The following functions must be defined for this platform:
+   29           * i2c_write(unsigned char slave_addr, unsigned char reg_addr,
+   30           *      unsigned char length, unsigned char const *data)
+   31           * i2c_read(unsigned char slave_addr, unsigned char reg_addr,
+   32           *      unsigned char length, unsigned char *data)
+   33           * delay_ms(unsigned long num_ms)
+   34           * get_ms(unsigned long *count)
+   35           * reg_int_cb(void (*cb)(void), unsigned char port, unsigned char pin)
+   36           * labs(long x)
+   37           * fabsf(float x)
+   38           * min(int a, int b)
+   39           */
+   40          #define MPU6050
+   41          #define MOTION_DRIVER_TARGET_MSP430
+   42          
+   43          #if defined MOTION_DRIVER_TARGET_MSP430
+   44          
+   45          void get_ms(unsigned long *time)
+   46          {
+C251 COMPILER V5.60.0,  inv_mpu                                                            12/06/26  21:36:15  PAGE 2   
+
+   47   1        time[0] = HAL_GetTick();
+*** WARNING C140 IN LINE 47 OF MPU6050\inv_mpu.c: 'HAL_GetTick' undefined; assuming 'extern int HAL_GetTick()'
+   48   1      }
+   49          void delay_us(uint32_t n)
+*** ERROR C25 IN LINE 49 OF MPU6050\inv_mpu.c: syntax error near 'n'
+   50          {
+*** WARNING C35 IN LINE 50 OF MPU6050\inv_mpu.c: 'delay_us': uses old-style declarator
+   51   1        uint8_t j;
+*** ERROR C67 IN LINE 51 OF MPU6050\inv_mpu.c: 'uint8_t': undefined identifier
+*** ERROR C25 IN LINE 51 OF MPU6050\inv_mpu.c: syntax error near 'j'
+*** ERROR C7 IN LINE 51 OF MPU6050\inv_mpu.c: compilation aborted
+
+C251 COMPILATION COMPLETE.  2 WARNING(S),  16 ERROR(S)

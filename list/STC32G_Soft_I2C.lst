@@ -1,0 +1,237 @@
+C251 COMPILER V5.60.0,  STC32G_Soft_I2C                                                    10/06/26  16:59:05  PAGE 1   
+
+
+C251 COMPILER V5.60.0, COMPILATION OF MODULE STC32G_Soft_I2C
+OBJECT MODULE PLACED IN .\list\STC32G_Soft_I2C.obj
+COMPILER INVOKED BY: C:\Keil_v5\C251\BIN\C251.EXE STC32G_Soft_I2C.c XSMALL INTR2 BROWSE INCDIR(../include) DEBUG PRINT(.
+                    -\list\STC32G_Soft_I2C.lst) TABS(2) OBJECT(.\list\STC32G_Soft_I2C.obj) 
+
+stmt  level    source
+
+    1          /*---------------------------------------------------------------------*/
+    2          /* --- Web: www.STCAI.com ---------------------------------------------*/
+    3          /*---------------------------------------------------------------------*/
+    4          
+    5          #include  "STC32G_Soft_I2C.h"
+    6          
+    7          sbit    SDA = P0^1; //定义SDA
+    8          sbit    SCL = P0^0; //定义SCL
+    9          
+   10          //========================================================================
+   11          // 函数: void I2C_Delay(void)
+   12          // 描述: I2C延时函数.
+   13          // 参数: none.
+   14          // 返回: none.
+   15          // 版本: V1.0, 2020-09-15
+   16          //========================================================================
+   17          void I2C_Delay(void) //for normal MCS51, delay (2 * dly + 4) T, for STC12Cxxxx delay (4 * dly + 10) T
+   18          {
+   19   1        u8  dly;
+   20   1        dly = MAIN_Fosc / 2000000UL;        //按2us计算
+   21   1        while(--dly);
+   22   1      }
+   23          
+   24          //========================================================================
+   25          // I2C总线函数
+   26          //========================================================================
+   27          void I2C_Start(void)         //start the I2C, SDA High-to-low when SCL is high
+   28          {
+   29   1        SDA = 1;
+   30   1        I2C_Delay();
+   31   1        SCL = 1;
+   32   1        I2C_Delay();
+   33   1        SDA = 0;
+   34   1        I2C_Delay();
+   35   1        SCL = 0;
+   36   1        I2C_Delay();
+   37   1      }       
+   38          
+   39          
+   40          void I2C_Stop(void)           //STOP the I2C, SDA Low-to-high when SCL is high
+   41          {
+   42   1        SDA = 0;
+   43   1        I2C_Delay();
+   44   1        SCL = 1;
+   45   1        I2C_Delay();
+   46   1        SDA = 1;
+   47   1        I2C_Delay();
+   48   1      }
+   49          
+   50          void S_ACK(void)              //Send ACK (LOW)
+   51          {
+   52   1        SDA = 0;
+   53   1        I2C_Delay();
+   54   1        SCL = 1;
+   55   1        I2C_Delay();
+   56   1        SCL = 0;
+   57   1        I2C_Delay();
+   58   1      }
+C251 COMPILER V5.60.0,  STC32G_Soft_I2C                                                    10/06/26  16:59:05  PAGE 2   
+
+   59          
+   60          void S_NoACK(void)           //Send No ACK (High)
+   61          {
+   62   1        SDA = 1;
+   63   1        I2C_Delay();
+   64   1        SCL = 1;
+   65   1        I2C_Delay();
+   66   1        SCL = 0;
+   67   1        I2C_Delay();
+   68   1      }
+   69                  
+   70          void I2C_Check_ACK(void)     //Check ACK, If F0=0, then right, if F0=1, then error
+   71          {
+   72   1        SDA = 1;
+   73   1        I2C_Delay();
+   74   1        SCL = 1;
+   75   1        I2C_Delay();
+   76   1        F0  = SDA;
+   77   1        SCL = 0;
+   78   1        I2C_Delay();
+   79   1      }
+   80          
+   81          //========================================================================
+   82          // 函数: void I2C_WriteAbyte(u8 dat)
+   83          // 描述: I2C发送一个字节数据函数.
+   84          // 参数: 发送的数据.
+   85          // 返回: none.
+   86          // 版本: V1.0, 2020-09-15
+   87          //========================================================================
+   88          void I2C_WriteAbyte(u8 dat)     //write a byte to I2C
+   89          {
+   90   1        u8 i;
+   91   1        i = 8;
+   92   1        do
+   93   1        {
+   94   2          if(dat & 0x80)  SDA = 1;
+   95   2          else            SDA = 0;
+   96   2          dat <<= 1;
+   97   2          I2C_Delay();
+   98   2          SCL = 1;
+   99   2          I2C_Delay();
+  100   2          SCL = 0;
+  101   2          I2C_Delay();
+  102   2        }
+  103   1        while(--i);
+  104   1      }
+  105          
+  106          //========================================================================
+  107          // 函数: u8 I2C_ReadAbyte(void)
+  108          // 描述: I2C读取一个字节数据函数.
+  109          // 参数: none.
+  110          // 返回: 读取数据.
+  111          // 版本: V1.0, 2020-09-15
+  112          //========================================================================
+  113          u8 I2C_ReadAbyte(void)          //read A byte from I2C
+  114          {
+  115   1        u8 i,dat;
+  116   1        i = 8;
+  117   1        SDA = 1;
+  118   1        do
+  119   1        {
+  120   2          SCL = 1;
+  121   2          I2C_Delay();
+  122   2          dat <<= 1;
+  123   2          if(SDA)     dat++;
+  124   2          SCL  = 0;
+C251 COMPILER V5.60.0,  STC32G_Soft_I2C                                                    10/06/26  16:59:05  PAGE 3   
+
+  125   2          I2C_Delay();
+  126   2        }
+  127   1        while(--i);
+  128   1        return(dat);
+  129   1      }
+  130          
+  131          //========================================================================
+  132          // 函数: void SI2C_WriteNbyte(u8 dev_addr, u8 mem_addr, u8 *p, u8 number)
+  133          // 描述: I2C写入数据函数.
+  134          // 参数: dev_addr: 设备地址, mem_addr: 存储地址, *p写入数据存储位置, number写入数据个数.
+  135          // 返回: none.
+  136          // 版本: V1.0, 2020-09-15
+  137          //========================================================================
+  138          void SI2C_WriteNbyte(u8 dev_addr, u8 mem_addr, u8 *p, u8 number)  /*  DeviceAddress,WordAddress,First Dat
+             -a Address,Byte lenth  */
+  139          {
+  140   1        I2C_Start();
+  141   1        I2C_WriteAbyte(dev_addr);
+  142   1        I2C_Check_ACK();
+  143   1        if(!F0)                                           //F0=0,right, F0=1,error
+  144   1        {
+  145   2          I2C_WriteAbyte(mem_addr);
+  146   2          I2C_Check_ACK();
+  147   2          if(!F0)
+  148   2          {
+  149   3            do
+  150   3            {
+  151   4              I2C_WriteAbyte(*p); p++;
+  152   4              I2C_Check_ACK();
+  153   4              if(F0)  break;
+  154   4            }
+  155   3            while(--number);
+  156   3          }
+  157   2        }
+  158   1        I2C_Stop();
+  159   1      }
+  160          
+  161          //========================================================================
+  162          // 函数: void SI2C_ReadNbyte(u8 dev_addr, u8 mem_addr, u8 *p, u8 number)
+  163          // 描述: I2C读取数据函数.
+  164          // 参数: dev_addr: 设备地址, mem_addr: 存储地址, *p读取数据存储位置, number读取数据个数.
+  165          // 返回: none.
+  166          // 版本: V1.0, 2020-09-15
+  167          //========================================================================
+  168          void SI2C_ReadNbyte(u8 dev_addr, u8 mem_addr, u8 *p, u8 number)  /*  DeviceAddress,WordAddress,First Data
+             - Address,Byte lenth  */
+  169          {
+  170   1        I2C_Start();
+  171   1        I2C_WriteAbyte(dev_addr);
+  172   1        I2C_Check_ACK();
+  173   1        if(!F0)
+  174   1        {
+  175   2          I2C_WriteAbyte(mem_addr);
+  176   2          I2C_Check_ACK();
+  177   2          if(!F0)
+  178   2          {
+  179   3            I2C_Start();
+  180   3            I2C_WriteAbyte(dev_addr|1);
+  181   3            I2C_Check_ACK();
+  182   3            if(!F0)
+  183   3            {
+  184   4              do
+  185   4              {
+  186   5                *p = I2C_ReadAbyte();   p++;
+  187   5                if(number != 1)     S_ACK();    //send ACK
+  188   5              }
+C251 COMPILER V5.60.0,  STC32G_Soft_I2C                                                    10/06/26  16:59:05  PAGE 4   
+
+  189   4              while(--number);
+  190   4              S_NoACK();          //send no ACK
+  191   4            }
+  192   3          }
+  193   2        }
+  194   1        I2C_Stop();
+  195   1      }
+
+
+Module Information          Static   Overlayable
+------------------------------------------------
+  code size            =       353     ------
+  ecode size           =    ------     ------
+  data size            =    ------     ------
+  idata size           =    ------     ------
+  pdata size           =    ------     ------
+  xdata size           =    ------     ------
+  xdata-const size     =    ------     ------
+  edata size           =    ------          6
+  bit size             =    ------     ------
+  ebit size            =    ------     ------
+  bitaddressable size  =    ------     ------
+  ebitaddressable size =    ------     ------
+  far data size        =    ------     ------
+  huge data size       =    ------     ------
+  const size           =    ------     ------
+  hconst size          =    ------     ------
+End of Module Information.
+
+
+C251 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
