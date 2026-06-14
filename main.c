@@ -116,16 +116,17 @@ bit Toggle_Start = 0;
 #define TOGGLE_TICKS 1000  // 左右轮反转延迟
 
 #define LINE_CTRL_DIVIDER      1  // Timer2每1次中断执行一次PID，1us*1=1us
-#define LINE_BASE_SPEED        80 // PID正常循迹基础速度百分比
-#define LINE_MAX_SPEED         85  // PWM输出限幅最大速度百分比
-#define LINE_SEARCH_SPEED      75  // 全白丢线后的低速搜索速度百分比
+#define LINE_BASE_SPEED        90 // PID正常循迹基础速度百分比
+#define LINE_MAX_SPEED         95  // PWM输出限幅最大速度百分比
+#define TURN_SPEED 					 	 76  // 转弯最大速度限制
+#define LINE_SEARCH_SPEED      77  // 全白丢线后的低速搜索速度百分比
 #define LINE_LOST_HOLD_TICKS   20000  // 丢线后先保持上次输出的时间，按100us循迹周期约8ms
-#define LINE_PID_KP            150  // PID比例系数，放大后由LINE_PID_SCALE缩放
-#define LINE_PID_KI            5 // PID积分系数，默认0避免低速抖动和积分饱和
-#define LINE_PID_KD            0  // PID微分系数，用于抑制转向过冲
+#define LINE_PID_KP            350  // PID比例系数，放大后由LINE_PID_SCALE缩放
+#define LINE_PID_KI            80 // PID积分系数，默认0避免低速抖动和积分饱和
+#define LINE_PID_KD            50  // PID微分系数，用于抑制转向过冲
 #define LINE_PID_SCALE         100  // PID定点缩放系数，输出=(KP*P+KI*I+KD*D)/100
 #define LINE_PID_I_LIMIT       100  // PID积分项限幅，防止长时间偏差导致积分过大
-#define LINE_STEER_SIGN        1  // 转向方向符号，若实车左右修正反了改为-1
+#define LINE_STEER_SIGN        1  // 转向方向符号，若实车左右修正反了改为-1          
 
 #define LINE_MASK_LOST         0x00  // 00000：全白/丢线，没有传感器检测到黑线
 #define LINE_MASK_CROSS        0x1f  // 11111：十字路口，五路传感器全部检测到黑线
@@ -365,7 +366,7 @@ void Motor_SetForward(void)
  * 参数：speed为待限幅速度百分比，可为负数或超过最大值。
  * 返回：限幅后的速度百分比，范围0到LINE_MAX_SPEED。
  */
-u8 LimitPercent(int16 speed)
+int8 LimitPercent(int16 speed)
 {
 //	if(speed < 0)
 //	{
@@ -375,7 +376,16 @@ u8 LimitPercent(int16 speed)
 	{
 		return LINE_MAX_SPEED;
 	}
-	return (u8)speed;
+	return (int8)speed;
+}
+
+int8 LimitTurnSpeed(int16 speed)
+{
+	if(speed > TURN_SPEED)
+	{
+		return TURN_SPEED;
+	}
+	return (int8)speed;
 }
 
 /*
@@ -412,8 +422,8 @@ void Motor_RunPercent(int16 left, int16 right)
         Toggle_Start = 0;
     }
 
-    Line_Last_Left = abs(LimitPercent(left));
-    Line_Last_Right = abs(LimitPercent(right));
+    Line_Last_Left = left < 0 ? abs(LimitTurnSpeed(left)) : abs(LimitPercent(left));
+    Line_Last_Right = right < 0 ? abs(LimitTurnSpeed(right)) : abs(LimitPercent(right));
     PWM_Run(Line_Last_Left, Line_Last_Right);
 }
 
@@ -447,12 +457,12 @@ bit ComputeLineError(u8 mask, int16 *error)
 
 	if(mask & 0x10)
 	{
-		sum -= 90;
+		sum -= 130;
 		count++;
 	}
 	if(mask & 0x08)
 	{
-		sum -= 30;
+		sum -= 40;
 		count++;
 	}
 	if(mask & 0x04)
@@ -466,7 +476,7 @@ bit ComputeLineError(u8 mask, int16 *error)
 	}
 	if(mask & 0x01)
 	{
-		sum += 90;
+		sum += 70;
 		count++;
 	}
 
