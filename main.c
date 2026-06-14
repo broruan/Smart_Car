@@ -113,16 +113,16 @@ bit Toggle_Start = 0;
 #define YOU_TICKS 1000  // T型右转保持时间，Timer2 100us tick，约100ms
 #define TOGGLE_TICKS 1000  // 左右轮反转延迟
 
-#define LINE_CTRL_DIVIDER      1  // Timer2每1次中断执行一次PID，100us*1=100us
-#define LINE_BASE_SPEED        75 // PID正常循迹基础速度百分比
-#define LINE_MAX_SPEED         85  // PWM输出限幅最大速度百分比
+#define LINE_CTRL_DIVIDER      1  // Timer2每1次中断执行一次PID，1us*1=1us
+#define LINE_BASE_SPEED        85 // PID正常循迹基础速度百分比
+#define LINE_MAX_SPEED         95  // PWM输出限幅最大速度百分比
 #define LINE_SEARCH_SPEED      75  // 全白丢线后的低速搜索速度百分比
-#define LINE_LOST_HOLD_TICKS   800  // 丢线后先保持上次输出的时间，按100us循迹周期约8ms
-#define LINE_PID_KP            80  // PID比例系数，放大后由LINE_PID_SCALE缩放
-#define LINE_PID_KI            0  // PID积分系数，默认0避免低速抖动和积分饱和
-#define LINE_PID_KD            0  // PID微分系数，用于抑制转向过冲
+#define LINE_LOST_HOLD_TICKS   15000  // 丢线后先保持上次输出的时间，按100us循迹周期约8ms
+#define LINE_PID_KP            150  // PID比例系数，放大后由LINE_PID_SCALE缩放
+#define LINE_PID_KI            60  // PID积分系数，默认0避免低速抖动和积分饱和
+#define LINE_PID_KD            50  // PID微分系数，用于抑制转向过冲
 #define LINE_PID_SCALE         100  // PID定点缩放系数，输出=(KP*P+KI*I+KD*D)/100
-#define LINE_PID_I_LIMIT       200  // PID积分项限幅，防止长时间偏差导致积分过大
+#define LINE_PID_I_LIMIT       100  // PID积分项限幅，防止长时间偏差导致积分过大
 #define LINE_STEER_SIGN        1  // 转向方向符号，若实车左右修正反了改为-1
 
 #define LINE_MASK_LOST         0x00  // 00000：全白/丢线，没有传感器检测到黑线
@@ -200,7 +200,7 @@ void Timer2_config(void)
     TIM_InitStructure.TIM_Mode      = TIM_16BitAutoReload;              // 16位自动重装
     TIM_InitStructure.TIM_ClkSource = TIM_CLOCK_1T;                     // 使用1T时钟（最快）
     TIM_InitStructure.TIM_ClkOut    = DISABLE;                          // 不输出高频脉冲
-		TIM_InitStructure.TIM_Value 		= (u16)(65536UL - (MAIN_Fosc / 10000L)); // 100us定时
+		TIM_InitStructure.TIM_Value 		= (u16)(65536UL - (MAIN_Fosc / 1000000UL)); // 1us定时
     TIM_InitStructure.TIM_PS        = 0;                                // 不预分频
     TIM_InitStructure.TIM_Run       = ENABLE;                           // 初始化后立即启动
 
@@ -445,12 +445,12 @@ bit ComputeLineError(u8 mask, int16 *error)
 
 	if(mask & 0x10)
 	{
-		sum -= 95;
+		sum -= 110;
 		count++;
 	}
 	if(mask & 0x08)
 	{
-		sum -= 30;
+		sum -= 60;
 		count++;
 	}
 	if(mask & 0x04)
@@ -459,7 +459,7 @@ bit ComputeLineError(u8 mask, int16 *error)
 	}
 	if(mask & 0x02)
 	{
-		sum += 30;
+		sum += 60;
 		count++;
 	}
 	if(mask & 0x01)
