@@ -1,4 +1,4 @@
-C251 COMPILER V5.60.0,  main                                                               14/06/26  09:42:26  PAGE 1   
+C251 COMPILER V5.60.0,  main                                                               14/06/26  11:33:04  PAGE 1   
 
 
 C251 COMPILER V5.60.0, COMPILATION OF MODULE main
@@ -30,929 +30,931 @@ stmt  level    source
    20          #include  "iic.h"
    21          #include  "font.h"
    22          #include  "oled.h"
-   23          
-   24          
+   23          //#include <math.h>
+   24          #include <stdlib.h>
    25          
    26          
-   27          /*************  功能说明  **************
+   27          
    28          
-   29          高级PWM定时器 PWM5,PWM6,PWM7,PWM8 每个通道都可独立实现PWM输出.
+   29          /*************  功能说明  **************
    30          
-   31          4个通道PWM根据需要设置对应输出口，可通过示波器观察输出的信号.
+   31          高级PWM定时器 PWM5,PWM6,PWM7,PWM8 每个通道都可独立实现PWM输出.
    32          
-   33          PWM周期和占空比可以自定义设置，最高可达65535.
+   33          4个通道PWM根据需要设置对应输出口，可通过示波器观察输出的信号.
    34          
-   35          下载时, 选择时钟 24MHZ (用户可在"config.h"修改频率).
+   35          PWM周期和占空比可以自定义设置，最高可达65535.
    36          
-   37          ******************************************/
+   37          下载时, 选择时钟 24MHZ (用户可在"config.h"修改频率).
    38          
-   39          sbit AIN1=P4^5;
-   40          sbit AIN2=P2^7;
-   41          sbit BIN1=P2^5;
-   42          sbit BIN2=P2^6;
-   43          sbit zuo2=P0^3;
-   44          sbit zuo1=P0^4;
-   45          sbit zhong=P0^2;
-   46          sbit you1=P0^1;
-   47          sbit you2=P0^0;
-   48          sbit LED1=P4^1;
-   49          sbit LED2=P4^2;
-   50          sbit LED3=P4^4;
-   51          sbit TRIG = P0^6;
-   52          sbit ECHO = P1^4;
-   53          sbit KEY1 = P2^2;
-   54          sbit KEY2 = P2^3;
-   55          sbit KEY3 = P2^4;
-   56          sbit KEY4 = P1^3;
-   57          sbit KEY5 = P1^7;
-   58          
-C251 COMPILER V5.60.0,  main                                                               14/06/26  09:42:26  PAGE 2   
+   39          ******************************************/
+   40          
+   41          sbit AIN1=P4^5;
+   42          sbit AIN2=P2^7;
+   43          sbit BIN1=P2^5;
+   44          sbit BIN2=P2^6;
+   45          sbit zuo2=P0^3;
+   46          sbit zuo1=P0^4;
+   47          sbit zhong=P0^2;
+   48          sbit you1=P0^1;
+   49          sbit you2=P0^0;
+   50          sbit LED1=P4^1;
+   51          sbit LED2=P4^2;
+   52          sbit LED3=P4^4;
+   53          sbit TRIG = P0^6;
+   54          sbit ECHO = P1^4;
+   55          sbit KEY1 = P2^2;
+   56          sbit KEY2 = P2^3;
+   57          sbit KEY3 = P2^4;
+   58          sbit KEY4 = P1^3;
+C251 COMPILER V5.60.0,  main                                                               14/06/26  11:33:04  PAGE 2   
 
-   59          volatile unsigned int time_us = 0;
-   60          bit measuring = 0;
-   61          u32 Flag = 0;
-   62          u32 n = 0;
-   63          
-   64          PWMx_Duty PWMB_Duty;
-   65          u16 PWM_Period = 2000; // 2000
-   66          bit PWM5_Flag;
-   67          bit PWM6_Flag;
-   68          
-   69          
-   70          /*************  本地函数声明  **************/
+   59          sbit KEY5 = P1^7;
+   60          
+   61          volatile unsigned int time_us = 0;
+   62          bit measuring = 0;
+   63          u32 Flag = 0;
+   64          u32 n = 0;
+   65          
+   66          PWMx_Duty PWMB_Duty;
+   67          u16 PWM_Period = 2000; // 2000
+   68          bit PWM5_Flag;
+   69          bit PWM6_Flag;
+   70          
    71          
-   72          void Motor_SetForward(void);
-   73          u8 LimitPercent(int16 speed);
-   74          void Motor_RunPercent(int16 left, int16 right);
-   75          u8 ReadLineMask(void);
-   76          bit ComputeLineError(u8 mask, int16 *error);
-   77          int16 LinePidUpdate(int16 error);
-   78          void ApplyLinePid(int16 error);
-   79          void LineLostSearch(void);
-   80          bit IsTStateMask(u8 mask);
-   81          void UpdateTState(u8 mask);
-   82          bit HandleSpecialLineState(u8 mask);
-   83          void UpdateTTimeAction(void);
-   84          void LineControlStep(void);
-   85          
-   86          
-   87          /*************  外部函数和变量声明 *****************/
+   72          /*************  本地函数声明  **************/
+   73          
+   74          void Motor_SetForward(void);
+   75          u8 LimitPercent(int16 speed);
+   76          void Motor_RunPercent(int16 left, int16 right);
+   77          u8 ReadLineMask(void);
+   78          bit ComputeLineError(u8 mask, int16 *error);
+   79          int16 LinePidUpdate(int16 error);
+   80          void ApplyLinePid(int16 error);
+   81          void LineLostSearch(void);
+   82          bit IsTStateMask(u8 mask);
+   83          void UpdateTState(u8 mask);
+   84          bit HandleSpecialLineState(u8 mask);
+   85          void UpdateTTimeAction(void);
+   86          void LineControlStep(void);
+   87          
    88          
-   89          #define T_STATE_TIME_TICKS 10000   // T状态延时计数阈值，按1ms循迹周期约10s
-   90          bit T_State_Last = 0;
-   91          bit T_Time_Enable = 0;
-   92          bit T_Time_Done = 0;
-   93          bit T_State_45 = 1;
-   94          u16 T_State_Count = 0;
-   95          u32 T_Time_Tick = 0;
-   96          bit Force_Turn_Enable = 0;
-   97          bit T_Left_Enable = 0;
-   98          bit T_you_Enable = 0;
-   99          u16 Force_Turn_Count = 0;
-  100          u16 dalay_Start_Count = 0;
-  101          u16 end_Count = 0;
-  102          u16 T_Left_Count = 0;
-  103          u16 U_Count = 0;
-  104          u16 Turn_you_Count = 0;
-  105          bit delay_Start = 0;  // 0:上电立即循迹；1:先按DELAY_START_TICKS停车等待
-  106          bit Toggle_Start = 0;
-  107          
-  108          #define FORCE_TURN_TICKS  3000   // 45度/急弯强制转向保持时间，Timer2 100us tick，约300ms
-  109          #define DELAY_START_TICKS 5000  // 开机停车等待时间，Timer2 100us tick，约500ms
-  110          #define END_TICKS 18000  // 终点/停止判定计数阈值，Timer2 100us tick，当前保留未启用
-  111          #define T_LEFT_TICKS 8000 // T型左转保持时间，Timer2 100us tick，当前保留未启用
-  112          #define U_TICKS 12000  // 掉头动作保持时间，Timer2 100us tick，当前保留未启用
-  113          #define YOU_TICKS 1000  // T型右转保持时间，Timer2 100us tick，约100ms
-  114          #define TOGGLE_TICKS 1000  // 左右轮反转延迟
-  115          
-  116          #define LINE_CTRL_DIVIDER      1  // Timer2每1次中断执行一次PID，1us*1=1us
-  117          #define LINE_BASE_SPEED        85 // PID正常循迹基础速度百分比
-  118          #define LINE_MAX_SPEED         95  // PWM输出限幅最大速度百分比
-  119          #define LINE_SEARCH_SPEED      75  // 全白丢线后的低速搜索速度百分比
-  120          #define LINE_LOST_HOLD_TICKS   15000  // 丢线后先保持上次输出的时间，按100us循迹周期约8ms
-  121          #define LINE_PID_KP            150  // PID比例系数，放大后由LINE_PID_SCALE缩放
-  122          #define LINE_PID_KI            60  // PID积分系数，默认0避免低速抖动和积分饱和
-  123          #define LINE_PID_KD            50  // PID微分系数，用于抑制转向过冲
-  124          #define LINE_PID_SCALE         100  // PID定点缩放系数，输出=(KP*P+KI*I+KD*D)/100
-C251 COMPILER V5.60.0,  main                                                               14/06/26  09:42:26  PAGE 3   
+   89          /*************  外部函数和变量声明 *****************/
+   90          
+   91          #define T_STATE_TIME_TICKS 10000   // T状态延时计数阈值，按1ms循迹周期约10s
+   92          bit T_State_Last = 0;
+   93          bit T_Time_Enable = 0;
+   94          bit T_Time_Done = 0;
+   95          bit T_State_45 = 1;
+   96          u16 T_State_Count = 0;
+   97          u32 T_Time_Tick = 0;
+   98          bit Force_Turn_Enable = 0;
+   99          bit T_Left_Enable = 0;
+  100          bit T_you_Enable = 0;
+  101          u16 Force_Turn_Count = 0;
+  102          u16 dalay_Start_Count = 0;
+  103          u16 end_Count = 0;
+  104          u16 T_Left_Count = 0;
+  105          u16 U_Count = 0;
+  106          u16 Turn_you_Count = 0;
+  107          bit delay_Start = 0;  // 0:上电立即循迹；1:先按DELAY_START_TICKS停车等待
+  108          bit Toggle_Start = 0;
+  109          
+  110          #define FORCE_TURN_TICKS  3000   // 45度/急弯强制转向保持时间，Timer2 100us tick，约300ms
+  111          #define DELAY_START_TICKS 5000  // 开机停车等待时间，Timer2 100us tick，约500ms
+  112          #define END_TICKS 18000  // 终点/停止判定计数阈值，Timer2 100us tick，当前保留未启用
+  113          #define T_LEFT_TICKS 8000 // T型左转保持时间，Timer2 100us tick，当前保留未启用
+  114          #define U_TICKS 12000  // 掉头动作保持时间，Timer2 100us tick，当前保留未启用
+  115          #define YOU_TICKS 1000  // T型右转保持时间，Timer2 100us tick，约100ms
+  116          #define TOGGLE_TICKS 1000  // 左右轮反转延迟
+  117          
+  118          #define LINE_CTRL_DIVIDER      1  // Timer2每1次中断执行一次PID，1us*1=1us
+  119          #define LINE_BASE_SPEED        80 // PID正常循迹基础速度百分比
+  120          #define LINE_MAX_SPEED         85  // PWM输出限幅最大速度百分比
+  121          #define LINE_SEARCH_SPEED      75  // 全白丢线后的低速搜索速度百分比
+  122          #define LINE_LOST_HOLD_TICKS   20000  // 丢线后先保持上次输出的时间，按100us循迹周期约8ms
+  123          #define LINE_PID_KP            150  // PID比例系数，放大后由LINE_PID_SCALE缩放
+  124          #define LINE_PID_KI            5 // PID积分系数，默认0避免低速抖动和积分饱和
+C251 COMPILER V5.60.0,  main                                                               14/06/26  11:33:04  PAGE 3   
 
-  125          #define LINE_PID_I_LIMIT       100  // PID积分项限幅，防止长时间偏差导致积分过大
-  126          #define LINE_STEER_SIGN        1  // 转向方向符号，若实车左右修正反了改为-1
-  127          
-  128          #define LINE_MASK_LOST         0x00  // 00000：全白/丢线，没有传感器检测到黑线
-  129          #define LINE_MASK_CROSS        0x1f  // 11111：十字路口，五路传感器全部检测到黑线
-  130          #define LINE_MASK_T_RIGHT      0x11  // 10001：T型右转触发模式，左右最外侧检测到黑线
-  131          #define LINE_MASK_45_RIGHT     0x07  // 00111：右侧45度/急弯触发模式
-  132          
-  133          int16 Line_Last_Error = 0;
-  134          int16 Line_Pid_Last_Error = 0;
-  135          int16 Line_Pid_Integral = 0;
-  136          u16 Line_Lost_Count = 0;
-  137          u16 Toggle_Count = 0;
-  138          u8 Line_Last_Left = LINE_BASE_SPEED;
-  139          u8 Line_Last_Right = LINE_BASE_SPEED;
-  140          /************************ IO口配置 ****************************/
-  141          /*
-  142           * 作用：预留GPIO集中配置入口；当前IO模式主要在main()中直接配置。
-  143           * 参数：无。
-  144           * 返回：无。
-  145           */
-  146          void  GPIO_config(void)
-  147          {
-  148   1      
-  149   1        
-  150   1      }
-  151          
-  152          /************************ 定时器配置 ****************************/
-  153          /*
-  154           * 作用：配置Timer0为1ms周期中断，用于通用毫秒节拍标志。
-  155           * 参数：无。
-  156           * 返回：无。
-  157           */
-  158          void  Timer_config(void)
-  159          {
-  160   1        TIM_InitTypeDef   TIM_InitStructure;          //结构定义
-  161   1        TIM_InitStructure.TIM_Mode      = TIM_16BitAutoReload;  //指定工作模式,   TIM_16BitAutoReload,TIM_16Bit,T
+  125          #define LINE_PID_KD            0  // PID微分系数，用于抑制转向过冲
+  126          #define LINE_PID_SCALE         100  // PID定点缩放系数，输出=(KP*P+KI*I+KD*D)/100
+  127          #define LINE_PID_I_LIMIT       100  // PID积分项限幅，防止长时间偏差导致积分过大
+  128          #define LINE_STEER_SIGN        1  // 转向方向符号，若实车左右修正反了改为-1
+  129          
+  130          #define LINE_MASK_LOST         0x00  // 00000：全白/丢线，没有传感器检测到黑线
+  131          #define LINE_MASK_CROSS        0x1f  // 11111：十字路口，五路传感器全部检测到黑线
+  132          #define LINE_MASK_T_RIGHT      0x11  // 10001：T型右转触发模式，左右最外侧检测到黑线
+  133          #define LINE_MASK_45_RIGHT     0x07  // 00111：右侧45度/急弯触发模式
+  134          
+  135          int16 Line_Last_Error = 0;
+  136          int16 Line_Pid_Last_Error = 0;
+  137          int16 Line_Pid_Integral = 0;
+  138          u16 Line_Lost_Count = 0;
+  139          u16 Toggle_Count = 0;
+  140          u8 Line_Last_Left = LINE_BASE_SPEED;
+  141          u8 Line_Last_Right = LINE_BASE_SPEED;
+  142          /************************ IO口配置 ****************************/
+  143          /*
+  144           * 作用：预留GPIO集中配置入口；当前IO模式主要在main()中直接配置。
+  145           * 参数：无。
+  146           * 返回：无。
+  147           */
+  148          void  GPIO_config(void)
+  149          {
+  150   1      
+  151   1        
+  152   1      }
+  153          
+  154          /************************ 定时器配置 ****************************/
+  155          /*
+  156           * 作用：配置Timer0为1ms周期中断，用于通用毫秒节拍标志。
+  157           * 参数：无。
+  158           * 返回：无。
+  159           */
+  160          void  Timer_config(void)
+  161          {
+  162   1        TIM_InitTypeDef   TIM_InitStructure;          //结构定义
+  163   1        TIM_InitStructure.TIM_Mode      = TIM_16BitAutoReload;  //指定工作模式,   TIM_16BitAutoReload,TIM_16Bit,T
              -IM_8BitAutoReload,TIM_16BitAutoReloadNoMask
-  162   1        TIM_InitStructure.TIM_ClkSource = TIM_CLOCK_1T;   //指定时钟源,     TIM_CLOCK_1T,TIM_CLOCK_12T,TIM_CLOCK_
+  164   1        TIM_InitStructure.TIM_ClkSource = TIM_CLOCK_1T;   //指定时钟源,     TIM_CLOCK_1T,TIM_CLOCK_12T,TIM_CLOCK_
              -Ext
-  163   1        TIM_InitStructure.TIM_ClkOut    = DISABLE;        //是否输出高速脉冲, ENABLE或DISABLE
-  164   1        TIM_InitStructure.TIM_Value     = (u16)(65536UL - (MAIN_Fosc / 1000UL));    //中断频率, 1000次/秒
-  165   1        TIM_InitStructure.TIM_PS        = 0;          //8位预分频器(n+1), 0~255
-  166   1        TIM_InitStructure.TIM_Run       = ENABLE;       //是否初始化后启动定时器, ENABLE或DISABLE
-  167   1        Timer_Inilize(Timer0,&TIM_InitStructure);       //初始化Timer0    Timer0,Timer1,Timer2,Timer3,Timer4
-  168   1        NVIC_Timer0_Init(ENABLE,Priority_0);    //中断使能, ENABLE/DISABLE; 优先级(低到高) Priority_0,Priority_1,P
+  165   1        TIM_InitStructure.TIM_ClkOut    = DISABLE;        //是否输出高速脉冲, ENABLE或DISABLE
+  166   1        TIM_InitStructure.TIM_Value     = (u16)(65536UL - (MAIN_Fosc / 1000UL));    //中断频率, 1000次/秒
+  167   1        TIM_InitStructure.TIM_PS        = 0;          //8位预分频器(n+1), 0~255
+  168   1        TIM_InitStructure.TIM_Run       = ENABLE;       //是否初始化后启动定时器, ENABLE或DISABLE
+  169   1        Timer_Inilize(Timer0,&TIM_InitStructure);       //初始化Timer0    Timer0,Timer1,Timer2,Timer3,Timer4
+  170   1        NVIC_Timer0_Init(ENABLE,Priority_0);    //中断使能, ENABLE/DISABLE; 优先级(低到高) Priority_0,Priority_1,P
              -riority_2,Priority_3
-  169   1      }
-  170          
-  171          /*
-  172           * 作用：配置Timer1为10us周期中断，给超声波测距计时使用。
-  173           * 参数：无。
-  174           * 返回：无。
-  175           */
-  176          void Timer1_config(void)
-  177          {
-  178   1          TIM_InitTypeDef TIM_InitStructure;
-  179   1      
-  180   1          TIM_InitStructure.TIM_Mode      = TIM_16BitAutoReload;              // 16位自动重装
-  181   1          TIM_InitStructure.TIM_ClkSource = TIM_CLOCK_1T;                     // 使用1T时钟（最快）
-  182   1          TIM_InitStructure.TIM_ClkOut    = DISABLE;                          // 不输出高频脉冲
-  183   1          TIM_InitStructure.TIM_Value     = (u16)(65536UL - (MAIN_Fosc / 100000UL)); // 10us定时
-  184   1          TIM_InitStructure.TIM_PS        = 0;                                // 不预分频
-  185   1          TIM_InitStructure.TIM_Run       = ENABLE;                           // 初始化后立即启动
-  186   1      
-  187   1          Timer_Inilize(Timer1, &TIM_InitStructure);                          // 初始化定时器1
-C251 COMPILER V5.60.0,  main                                                               14/06/26  09:42:26  PAGE 4   
+  171   1      }
+  172          
+  173          /*
+  174           * 作用：配置Timer1为10us周期中断，给超声波测距计时使用。
+  175           * 参数：无。
+  176           * 返回：无。
+  177           */
+  178          void Timer1_config(void)
+  179          {
+  180   1          TIM_InitTypeDef TIM_InitStructure;
+  181   1      
+  182   1          TIM_InitStructure.TIM_Mode      = TIM_16BitAutoReload;              // 16位自动重装
+  183   1          TIM_InitStructure.TIM_ClkSource = TIM_CLOCK_1T;                     // 使用1T时钟（最快）
+  184   1          TIM_InitStructure.TIM_ClkOut    = DISABLE;                          // 不输出高频脉冲
+  185   1          TIM_InitStructure.TIM_Value     = (u16)(65536UL - (MAIN_Fosc / 100000UL)); // 10us定时
+  186   1          TIM_InitStructure.TIM_PS        = 0;                                // 不预分频
+  187   1          TIM_InitStructure.TIM_Run       = ENABLE;                           // 初始化后立即启动
+C251 COMPILER V5.60.0,  main                                                               14/06/26  11:33:04  PAGE 4   
 
-  188   1          NVIC_Timer1_Init(ENABLE, Priority_0);                               // 开启中断，设置优先级为0
-  189   1      }
-  190          
-  191          /*
-  192           * 作用：配置Timer2为100us周期中断，作为循迹控制主循环节拍。
-  193           * 参数：无。
-  194           * 返回：无。
-  195           */
-  196          void Timer2_config(void)
-  197          {
-  198   1          TIM_InitTypeDef TIM_InitStructure;
-  199   1      
-  200   1          TIM_InitStructure.TIM_Mode      = TIM_16BitAutoReload;              // 16位自动重装
-  201   1          TIM_InitStructure.TIM_ClkSource = TIM_CLOCK_1T;                     // 使用1T时钟（最快）
-  202   1          TIM_InitStructure.TIM_ClkOut    = DISABLE;                          // 不输出高频脉冲
-  203   1          TIM_InitStructure.TIM_Value     = (u16)(65536UL - (MAIN_Fosc / 1000000UL)); // 1us定时
-  204   1          TIM_InitStructure.TIM_PS        = 0;                                // 不预分频
-  205   1          TIM_InitStructure.TIM_Run       = ENABLE;                           // 初始化后立即启动
-  206   1      
-  207   1          Timer_Inilize(Timer2, &TIM_InitStructure);                          // 初始化定时器2
-  208   1          NVIC_Timer2_Init(ENABLE, Priority_0);                               // 开启中断，设置优先级为0
-  209   1      }
-  210          
-  211          /***************  超声波函数 *****************/
-  212          /*
-  213           * 作用：Timer1中断服务函数；超声波ECHO测量期间累加10us计数。
-  214           * 参数：无；由TMR1_VECTOR硬件中断入口调用。
-  215           * 返回：无。
-  216           */
-  217          void Timer1_ISR_Handler (void) interrupt TMR1_VECTOR    //进中断时已经清除标志
-  218          {
-  219   1        if (measuring) time_us++;
-  220   1      }
-  221          
-  222          /*
-  223           * 作用：触发HC-SR04超声波模块并计算障碍物距离。
-  224           * 参数：无。
-  225           * 返回：距离值，单位mm；超时或无有效回波时返回0。
-  226           */
-  227          unsigned int Ultrasonic_GetDistance(void) 
-  228          {
-  229   1          unsigned int Distance_mm = 0;
-  230   1          TRIG = 0;
-  231   1          _nop_(); _nop_(); _nop_(); _nop_();
-  232   1          _nop_(); _nop_(); _nop_(); _nop_();
-  233   1          TRIG = 1;
-  234   1          _nop_(); _nop_(); _nop_(); _nop_();    // 等价大约10us
-  235   1          _nop_(); _nop_(); _nop_(); _nop_();
-  236   1          _nop_(); _nop_(); _nop_(); _nop_();
-  237   1          TRIG = 0;
-  238   1      
-  239   1          // 等待 ECHO 高电平开始
-  240   1          while (!ECHO);
-  241   1          
-  242   1          // 开始计时
-  243   1          time_us = 0;
-  244   1          measuring = 1;
-  245   1      
-  246   1          // 等待 ECHO 拉低（结束）
-  247   1          while (ECHO);
-  248   1      
-  249   1          measuring = 0;
-  250   1          if(time_us/100<38)                  //判断是否小于38毫秒，大于38毫秒的就是超时，直接调到下面返回0
-  251   1          {
-  252   2            Distance_mm=(time_us*346)/100;            //计算距离，25°C空气中的音速为346m/s   因为上面的time_end的单位是
+  188   1      
+  189   1          Timer_Inilize(Timer1, &TIM_InitStructure);                          // 初始化定时器1
+  190   1          NVIC_Timer1_Init(ENABLE, Priority_0);                               // 开启中断，设置优先级为0
+  191   1      }
+  192          
+  193          /*
+  194           * 作用：配置Timer2为100us周期中断，作为循迹控制主循环节拍。
+  195           * 参数：无。
+  196           * 返回：无。
+  197           */
+  198          void Timer2_config(void)
+  199          {
+  200   1          TIM_InitTypeDef TIM_InitStructure;
+  201   1      
+  202   1          TIM_InitStructure.TIM_Mode      = TIM_16BitAutoReload;              // 16位自动重装
+  203   1          TIM_InitStructure.TIM_ClkSource = TIM_CLOCK_1T;                     // 使用1T时钟（最快）
+  204   1          TIM_InitStructure.TIM_ClkOut    = DISABLE;                          // 不输出高频脉冲
+  205   1          TIM_InitStructure.TIM_Value     = (u16)(65536UL - (MAIN_Fosc / 1000000UL)); // 1us定时
+  206   1          TIM_InitStructure.TIM_PS        = 0;                                // 不预分频
+  207   1          TIM_InitStructure.TIM_Run       = ENABLE;                           // 初始化后立即启动
+  208   1      
+  209   1          Timer_Inilize(Timer2, &TIM_InitStructure);                          // 初始化定时器2
+  210   1          NVIC_Timer2_Init(ENABLE, Priority_0);                               // 开启中断，设置优先级为0
+  211   1      }
+  212          
+  213          /***************  超声波函数 *****************/
+  214          /*
+  215           * 作用：Timer1中断服务函数；超声波ECHO测量期间累加10us计数。
+  216           * 参数：无；由TMR1_VECTOR硬件中断入口调用。
+  217           * 返回：无。
+  218           */
+  219          void Timer1_ISR_Handler (void) interrupt TMR1_VECTOR    //进中断时已经清除标志
+  220          {
+  221   1        if (measuring) time_us++;
+  222   1      }
+  223          
+  224          /*
+  225           * 作用：触发HC-SR04超声波模块并计算障碍物距离。
+  226           * 参数：无。
+  227           * 返回：距离值，单位mm；超时或无有效回波时返回0。
+  228           */
+  229          unsigned int Ultrasonic_GetDistance(void) 
+  230          {
+  231   1          unsigned int Distance_mm = 0;
+  232   1          TRIG = 0;
+  233   1          _nop_(); _nop_(); _nop_(); _nop_();
+  234   1          _nop_(); _nop_(); _nop_(); _nop_();
+  235   1          TRIG = 1;
+  236   1          _nop_(); _nop_(); _nop_(); _nop_();    // 等价大约10us
+  237   1          _nop_(); _nop_(); _nop_(); _nop_();
+  238   1          _nop_(); _nop_(); _nop_(); _nop_();
+  239   1          TRIG = 0;
+  240   1      
+  241   1          // 等待 ECHO 高电平开始
+  242   1          while (!ECHO);
+  243   1          
+  244   1          // 开始计时
+  245   1          time_us = 0;
+  246   1          measuring = 1;
+  247   1      
+  248   1          // 等待 ECHO 拉低（结束）
+  249   1          while (ECHO);
+  250   1      
+  251   1          measuring = 0;
+  252   1          if(time_us/100<38)                  //判断是否小于38毫秒，大于38毫秒的就是超时，直接调到下面返回0
+  253   1          {
+C251 COMPILER V5.60.0,  main                                                               14/06/26  11:33:04  PAGE 5   
+
+  254   2            Distance_mm=(time_us*346)/100;            //计算距离，25°C空气中的音速为346m/s   因为上面的time_end的单位是
              -10微秒，所以要得出单位为毫米的距离结果，还得除以100
-C251 COMPILER V5.60.0,  main                                                               14/06/26  09:42:26  PAGE 5   
-
-  253   2          }
-  254   1          return Distance_mm;
-  255   1      }
-  256          
-  257          /***************  PWM初始化函数 *****************/
-  258          /*
-  259           * 作用：初始化PWMB的PWM5/PWM6通道，并映射到右/左电机PWM输出引脚。
-  260           * 参数：无。
-  261           * 返回：无。
-  262           */
-  263          void  PWM_config(void)
-  264          {
-  265   1        PWMx_InitDefine   PWMx_InitStructure;
-  266   1        
-  267   1      //  PWMB_Duty.PWM5_Duty = 128;
-  268   1      //  PWMB_Duty.PWM6_Duty = 256;
-  269   1      
-  270   1      
-  271   1        PWMx_InitStructure.PWM_Mode    =  CCMRn_PWM_MODE1;  //模式,   CCMRn_FREEZE,CCMRn_MATCH_VALID,CCMRn_MATCH_IN
+  255   2          }
+  256   1          return Distance_mm;
+  257   1      }
+  258          
+  259          /***************  PWM初始化函数 *****************/
+  260          /*
+  261           * 作用：初始化PWMB的PWM5/PWM6通道，并映射到右/左电机PWM输出引脚。
+  262           * 参数：无。
+  263           * 返回：无。
+  264           */
+  265          void  PWM_config(void)
+  266          {
+  267   1        PWMx_InitDefine   PWMx_InitStructure;
+  268   1        
+  269   1      //  PWMB_Duty.PWM5_Duty = 128;
+  270   1      //  PWMB_Duty.PWM6_Duty = 256;
+  271   1      
+  272   1      
+  273   1        PWMx_InitStructure.PWM_Mode    =  CCMRn_PWM_MODE1;  //模式,   CCMRn_FREEZE,CCMRn_MATCH_VALID,CCMRn_MATCH_IN
              -VALID,CCMRn_ROLLOVER,CCMRn_FORCE_INVALID,CCMRn_FORCE_VALID,CCMRn_PWM_MODE1,CCMRn_PWM_MODE2
-  272   1        PWMx_InitStructure.PWM_Duty    = PWMB_Duty.PWM5_Duty; //PWM占空比时间, 0~Period
-  273   1        PWMx_InitStructure.PWM_EnoSelect   = ENO5P;         //输出通道选择, ENO1P,ENO1N,ENO2P,ENO2N,ENO3P,ENO3N,ENO4
+  274   1        PWMx_InitStructure.PWM_Duty    = PWMB_Duty.PWM5_Duty; //PWM占空比时间, 0~Period
+  275   1        PWMx_InitStructure.PWM_EnoSelect   = ENO5P;         //输出通道选择, ENO1P,ENO1N,ENO2P,ENO2N,ENO3P,ENO3N,ENO4
              -P,ENO4N / ENO5P,ENO6P,ENO7P,ENO8P
-  274   1        PWM_Configuration(PWM5, &PWMx_InitStructure);       //初始化PWM,  PWMA,PWMB
-  275   1      
-  276   1        PWMx_InitStructure.PWM_Mode    =  CCMRn_PWM_MODE1;  //模式,   CCMRn_FREEZE,CCMRn_MATCH_VALID,CCMRn_MATCH_IN
+  276   1        PWM_Configuration(PWM5, &PWMx_InitStructure);       //初始化PWM,  PWMA,PWMB
+  277   1      
+  278   1        PWMx_InitStructure.PWM_Mode    =  CCMRn_PWM_MODE1;  //模式,   CCMRn_FREEZE,CCMRn_MATCH_VALID,CCMRn_MATCH_IN
              -VALID,CCMRn_ROLLOVER,CCMRn_FORCE_INVALID,CCMRn_FORCE_VALID,CCMRn_PWM_MODE1,CCMRn_PWM_MODE2
-  277   1        PWMx_InitStructure.PWM_Duty    = PWMB_Duty.PWM6_Duty; //PWM占空比时间, 0~Period
-  278   1        PWMx_InitStructure.PWM_EnoSelect   = ENO6P;         //输出通道选择, ENO1P,ENO1N,ENO2P,ENO2N,ENO3P,ENO3N,ENO4
+  279   1        PWMx_InitStructure.PWM_Duty    = PWMB_Duty.PWM6_Duty; //PWM占空比时间, 0~Period
+  280   1        PWMx_InitStructure.PWM_EnoSelect   = ENO6P;         //输出通道选择, ENO1P,ENO1N,ENO2P,ENO2N,ENO3P,ENO3N,ENO4
              -P,ENO4N / ENO5P,ENO6P,ENO7P,ENO8P
-  279   1        PWM_Configuration(PWM6, &PWMx_InitStructure);       //初始化PWM,  PWMA,PWMB
-  280   1      
-  281   1      
-  282   1        PWMx_InitStructure.PWM_Period   = PWM_Period; //2000              //周期时间,   0~65535
-  283   1        PWMx_InitStructure.PWM_DeadTime = 0;                //死区发生器设置, 0~255
-  284   1        PWMx_InitStructure.PWM_MainOutEnable= ENABLE;       //主输出使能, ENABLE,DISABLE
-  285   1        PWMx_InitStructure.PWM_CEN_Enable   = ENABLE;       //使能计数器, ENABLE,DISABLE
-  286   1        PWM_Configuration(PWMB, &PWMx_InitStructure);       //初始化PWM通用寄存器,  PWMA,PWMB
-  287   1      
-  288   1      
-  289   1          PWM6_USE_P21();
-  290   1          PWM5_USE_P20();
-  291   1        NVIC_PWM_Init(PWMB,DISABLE,Priority_0);
-  292   1      }
-  293          
-  294          /*
-  295           * 作用：设置左电机PWM占空比缓存值，实际更新由PWM_Run统一提交。
-  296           * 参数：pwm为左电机速度百分比，建议范围0-100。
-  297           * 返回：无。
-  298           */
-  299          void PWM_Left(int pwm)     //用0~100表示
-  300          {
-  301   1        
-  302   1        PWMB_Duty.PWM6_Duty = pwm*(PWM_Period/100);  //注意PWM_Period此时为100倍数 2000
+  281   1        PWM_Configuration(PWM6, &PWMx_InitStructure);       //初始化PWM,  PWMA,PWMB
+  282   1      
+  283   1      
+  284   1        PWMx_InitStructure.PWM_Period   = PWM_Period; //2000              //周期时间,   0~65535
+  285   1        PWMx_InitStructure.PWM_DeadTime = 0;                //死区发生器设置, 0~255
+  286   1        PWMx_InitStructure.PWM_MainOutEnable= ENABLE;       //主输出使能, ENABLE,DISABLE
+  287   1        PWMx_InitStructure.PWM_CEN_Enable   = ENABLE;       //使能计数器, ENABLE,DISABLE
+  288   1        PWM_Configuration(PWMB, &PWMx_InitStructure);       //初始化PWM通用寄存器,  PWMA,PWMB
+  289   1      
+  290   1      
+  291   1          PWM6_USE_P21();
+  292   1          PWM5_USE_P20();
+  293   1        NVIC_PWM_Init(PWMB,DISABLE,Priority_0);
+  294   1      }
+  295          
+  296          /*
+  297           * 作用：设置左电机PWM占空比缓存值，实际更新由PWM_Run统一提交。
+  298           * 参数：pwm为左电机速度百分比，建议范围0-100。
+  299           * 返回：无。
+  300           */
+  301          void PWM_Left(int pwm)     //用0~100表示
+  302          {
   303   1        
-  304   1      }
-  305          
-  306          /*
-  307           * 作用：设置右电机PWM占空比缓存值，实际更新由PWM_Run统一提交。
-  308           * 参数：pwm为右电机速度百分比，建议范围0-100。
-  309           * 返回：无。
-  310           */
-  311          void PWM_Right(int pwm)     //用0~100表示
-  312          {
-  313   1        
-  314   1        PWMB_Duty.PWM5_Duty = pwm*(PWM_Period/100);
-C251 COMPILER V5.60.0,  main                                                               14/06/26  09:42:26  PAGE 6   
+  304   1        PWMB_Duty.PWM6_Duty = pwm*(PWM_Period/100);  //注意PWM_Period此时为100倍数 2000
+  305   1        
+  306   1      }
+  307          
+  308          /*
+  309           * 作用：设置右电机PWM占空比缓存值，实际更新由PWM_Run统一提交。
+  310           * 参数：pwm为右电机速度百分比，建议范围0-100。
+  311           * 返回：无。
+  312           */
+  313          void PWM_Right(int pwm)     //用0~100表示
+  314          {
+C251 COMPILER V5.60.0,  main                                                               14/06/26  11:33:04  PAGE 6   
 
   315   1        
-  316   1      }
-  317          
-  318          
-  319          /*
-  320           * 作用：同时设置左右电机PWM并写入PWMB寄存器。
-  321           * 参数：pwm1为左电机速度百分比；pwm2为右电机速度百分比，建议范围0-100。
-  322           * 返回：无。
-  323           */
-  324          void PWM_Run(int pwm1,int pwm2)  //左右PWM
-  325          {
-  326   1        PWM_Left(pwm1);
-  327   1        PWM_Right(pwm2);
-  328   1        UpdatePwm(PWMB, &PWMB_Duty);
-  329   1      }
-  330          
-  331          /*
-  332           * 作用：电机PWM测试函数，按固定速度组合依次运行左右电机。
-  333           * 参数：无。
-  334           * 返回：无。
-  335           */
-  336          void test01(void)
-  337          {
-  338   1          PWM_Run(100,80);
-  339   1          delay_ms(1000);
-  340   1          PWM_Run(80,100);
+  316   1        PWMB_Duty.PWM5_Duty = pwm*(PWM_Period/100);
+  317   1        
+  318   1      }
+  319          
+  320          
+  321          /*
+  322           * 作用：同时设置左右电机PWM并写入PWMB寄存器。
+  323           * 参数：pwm1为左电机速度百分比；pwm2为右电机速度百分比，建议范围0-100。
+  324           * 返回：无。
+  325           */
+  326          void PWM_Run(int pwm1,int pwm2)  //左右PWM
+  327          {
+  328   1        PWM_Left(pwm1);
+  329   1        PWM_Right(pwm2);
+  330   1        UpdatePwm(PWMB, &PWMB_Duty);
+  331   1      }
+  332          
+  333          /*
+  334           * 作用：电机PWM测试函数，按固定速度组合依次运行左右电机。
+  335           * 参数：无。
+  336           * 返回：无。
+  337           */
+  338          void test01(void)
+  339          {
+  340   1          PWM_Run(100,80);
   341   1          delay_ms(1000);
-  342   1          PWM_Run(0,100);
+  342   1          PWM_Run(80,100);
   343   1          delay_ms(1000);
-  344   1          PWM_Run(100,0);
+  344   1          PWM_Run(0,100);
   345   1          delay_ms(1000);
-  346   1      }
-  347          
-  348          /*
-  349           * 作用：设置H桥方向脚，使左右电机进入前进方向。
-  350           * 参数：无。
-  351           * 返回：无。
-  352           */
-  353          void Motor_SetForward(void)
-  354          {
-  355   1        AIN1 = 0;
-  356   1        AIN2 = 1;
-  357   1        BIN1 = 1;
-  358   1        BIN2 = 0;
-  359   1      }
-  360          
-  361          /*
-  362           * 作用：将速度百分比限制在电机允许输出范围内。
-  363           * 参数：speed为待限幅速度百分比，可为负数或超过最大值。
-  364           * 返回：限幅后的速度百分比，范围0到LINE_MAX_SPEED。
-  365           */
-  366          u8 LimitPercent(int16 speed)
-  367          {
-  368   1        if(speed < 0)
-  369   1        {
-  370   2          return 0;
-  371   2        }
-  372   1        if(speed > LINE_MAX_SPEED)
-  373   1        {
-  374   2          return LINE_MAX_SPEED;
-  375   2        }
-  376   1        return (u8)speed;
-  377   1      }
-  378          
-  379          /*
-  380           * 作用：设置电机前进方向，限幅左右速度，并输出到PWM。
-C251 COMPILER V5.60.0,  main                                                               14/06/26  09:42:26  PAGE 7   
+  346   1          PWM_Run(100,0);
+  347   1          delay_ms(1000);
+  348   1      }
+  349          
+  350          /*
+  351           * 作用：设置H桥方向脚，使左右电机进入前进方向。
+  352           * 参数：无。
+  353           * 返回：无。
+  354           */
+  355          void Motor_SetForward(void)
+  356          {
+  357   1        AIN1 = 0;
+  358   1        AIN2 = 1;
+  359   1        BIN1 = 1;
+  360   1        BIN2 = 0;
+  361   1      }
+  362          
+  363          /*
+  364           * 作用：将速度百分比限制在电机允许输出范围内。
+  365           * 参数：speed为待限幅速度百分比，可为负数或超过最大值。
+  366           * 返回：限幅后的速度百分比，范围0到LINE_MAX_SPEED。
+  367           */
+  368          u8 LimitPercent(int16 speed)
+  369          {
+  370   1      //  if(speed < 0)
+  371   1      //  {
+  372   1      //    return 0;
+  373   1      //  }
+  374   1        if(speed > LINE_MAX_SPEED)
+  375   1        {
+  376   2          return LINE_MAX_SPEED;
+  377   2        }
+  378   1        return (u8)speed;
+  379   1      }
+  380          
+C251 COMPILER V5.60.0,  main                                                               14/06/26  11:33:04  PAGE 7   
 
-  381           * 参数：left为左电机速度百分比；right为右电机速度百分比，正常范围0-100，实际限幅到LINE_MAX_SPEED。
-  382           * 返回：无。
-  383           */
-  384          void Motor_RunPercent(int16 left, int16 right)
-  385          {
-  386   1          if(left < 0)
-  387   1          {
-  388   2              AIN1 = 1;
-  389   2              AIN2 = 0;
-  390   2              BIN1 = 1;
-  391   2              BIN2 = 0;
-  392   2              Toggle_Start = 1;
-  393   2              Toggle_Count = TOGGLE_TICKS;
-  394   2          }
-  395   1          else if(right < 0)
-  396   1          {
-  397   2              AIN1 = 0;
-  398   2              AIN2 = 1;
-  399   2              BIN1 = 0;
-  400   2              BIN2 = 1;
-  401   2              Toggle_Start = 1;
-  402   2              Toggle_Count = TOGGLE_TICKS;
-  403   2          }
-  404   1          else
-  405   1          {
-  406   2              AIN1 = 0;
-  407   2              AIN2 = 1;
-  408   2              BIN1 = 1;
-  409   2              BIN2 = 0;
-  410   2              Toggle_Start = 0;
-  411   2          }
-  412   1      
-  413   1          Line_Last_Left = left < 0 ? 75 : LimitPercent(left);
-  414   1          Line_Last_Right = right < 0 ? 75 : LimitPercent(right);
-  415   1          PWM_Run(Line_Last_Left, Line_Last_Right);
-  416   1      }
-  417          
-  418          /*
-  419           * 作用：读取5路循迹传感器并组合成位图。
-  420           * 参数：无。
-  421           * 返回：5位mask，bit4..bit0分别为zuo2、zuo1、zhong、you1、you2；1表示黑线，0表示白底。
-  422           */
-  423          u8 ReadLineMask(void)
-  424          {
-  425   1        u8 mask = 0;
-  426   1      
-  427   1        if(zuo2)  mask |= 0x10;
-  428   1        if(zuo1)  mask |= 0x08;
-  429   1        if(zhong) mask |= 0x04;
-  430   1        if(you1)  mask |= 0x02;
-  431   1        if(you2)  mask |= 0x01;
-  432   1      
-  433   1        return mask;
-  434   1      }
-  435          
-  436          /*
-  437           * 作用：根据传感器位图计算循迹位置误差。
-  438           * 参数：mask为5路传感器位图；error为输出参数，负数表示线偏左，正数表示线偏右。
-  439           * 返回：1表示成功计算误差；0表示无黑线，无法计算误差。
-  440           */
-  441          bit ComputeLineError(u8 mask, int16 *error)
-  442          {
-  443   1        int16 sum = 0;
-  444   1        u8 count = 0;
-  445   1      
-  446   1        if(mask & 0x10)
-C251 COMPILER V5.60.0,  main                                                               14/06/26  09:42:26  PAGE 8   
+  381          /*
+  382           * 作用：设置电机前进方向，限幅左右速度，并输出到PWM。
+  383           * 参数：left为左电机速度百分比；right为右电机速度百分比，正常范围0-100，实际限幅到LINE_MAX_SPEED。
+  384           * 返回：无。
+  385           */
+  386          void Motor_RunPercent(int16 left, int16 right)
+  387          {
+  388   1          if(left < 0)
+  389   1          {
+  390   2              AIN1 = 1;
+  391   2              AIN2 = 0;
+  392   2              BIN1 = 1;
+  393   2              BIN2 = 0;
+  394   2              Toggle_Start = 1;
+  395   2              Toggle_Count = TOGGLE_TICKS;
+  396   2          }
+  397   1          else if(right < 0)
+  398   1          {
+  399   2              AIN1 = 0;
+  400   2              AIN2 = 1;
+  401   2              BIN1 = 0;
+  402   2              BIN2 = 1;
+  403   2              Toggle_Start = 1;
+  404   2              Toggle_Count = TOGGLE_TICKS;
+  405   2          }
+  406   1          else
+  407   1          {
+  408   2              AIN1 = 0;
+  409   2              AIN2 = 1;
+  410   2              BIN1 = 1;
+  411   2              BIN2 = 0;
+  412   2              Toggle_Start = 0;
+  413   2          }
+  414   1      
+  415   1          Line_Last_Left = abs(LimitPercent(left));
+  416   1          Line_Last_Right = abs(LimitPercent(right));
+  417   1          PWM_Run(Line_Last_Left, Line_Last_Right);
+  418   1      }
+  419          
+  420          /*
+  421           * 作用：读取5路循迹传感器并组合成位图。
+  422           * 参数：无。
+  423           * 返回：5位mask，bit4..bit0分别为zuo2、zuo1、zhong、you1、you2；1表示黑线，0表示白底。
+  424           */
+  425          u8 ReadLineMask(void)
+  426          {
+  427   1        u8 mask = 0;
+  428   1      
+  429   1        if(zuo2)  mask |= 0x10;
+  430   1        if(zuo1)  mask |= 0x08;
+  431   1        if(zhong) mask |= 0x04;
+  432   1        if(you1)  mask |= 0x02;
+  433   1        if(you2)  mask |= 0x01;
+  434   1      
+  435   1        return mask;
+  436   1      }
+  437          
+  438          /*
+  439           * 作用：根据传感器位图计算循迹位置误差。
+  440           * 参数：mask为5路传感器位图；error为输出参数，负数表示线偏左，正数表示线偏右。
+  441           * 返回：1表示成功计算误差；0表示无黑线，无法计算误差。
+  442           */
+  443          bit ComputeLineError(u8 mask, int16 *error)
+  444          {
+  445   1        int16 sum = 0;
+  446   1        u8 count = 0;
+C251 COMPILER V5.60.0,  main                                                               14/06/26  11:33:04  PAGE 8   
 
-  447   1        {
-  448   2          sum -= 110;
-  449   2          count++;
-  450   2        }
-  451   1        if(mask & 0x08)
-  452   1        {
-  453   2          sum -= 60;
-  454   2          count++;
-  455   2        }
-  456   1        if(mask & 0x04)
-  457   1        {
-  458   2          count++;
-  459   2        }
-  460   1        if(mask & 0x02)
-  461   1        {
-  462   2          sum += 60;
-  463   2          count++;
-  464   2        }
-  465   1        if(mask & 0x01)
-  466   1        {
-  467   2          sum += 110;
-  468   2          count++;
-  469   2        }
-  470   1      
-  471   1        if(count == 0)
-  472   1        {
-  473   2          return 0;
-  474   2        }
-  475   1      
-  476   1        *error = sum / count;
-  477   1        return 1;
-  478   1      }
-  479          
-  480          /*
-  481           * 作用：根据当前循迹误差计算整数PID转向输出。
-  482           * 参数：error为当前位置误差，负数偏左，正数偏右。
-  483           * 返回：PID计算出的转向修正量，正负方向再由LINE_STEER_SIGN决定。
-  484           */
-  485          int16 LinePidUpdate(int16 error)
-  486          {
-  487   1        int32 output;
-  488   1        int16 derivative;
-  489   1      
-  490   1        Line_Pid_Integral += error;
-  491   1        if(Line_Pid_Integral > LINE_PID_I_LIMIT)
-  492   1        {
-  493   2          Line_Pid_Integral = LINE_PID_I_LIMIT;
-  494   2        }
-  495   1        else if(Line_Pid_Integral < -LINE_PID_I_LIMIT)
-  496   1        {
-  497   2          Line_Pid_Integral = -LINE_PID_I_LIMIT;
-  498   2        }
-  499   1      
-  500   1        derivative = error - Line_Pid_Last_Error;
-  501   1        Line_Pid_Last_Error = error;
-  502   1      
-  503   1        output = (int32)LINE_PID_KP * error;
-  504   1        output += (int32)LINE_PID_KI * Line_Pid_Integral;
-  505   1        output += (int32)LINE_PID_KD * derivative;
-  506   1        output /= LINE_PID_SCALE;
-  507   1      
-  508   1        return (int16)output;
-  509   1      }
-  510          
-  511          /*
-  512           * 作用：把循迹误差转换为左右电机差速并输出。
-C251 COMPILER V5.60.0,  main                                                               14/06/26  09:42:26  PAGE 9   
+  447   1      
+  448   1        if(mask & 0x10)
+  449   1        {
+  450   2          sum -= 90;
+  451   2          count++;
+  452   2        }
+  453   1        if(mask & 0x08)
+  454   1        {
+  455   2          sum -= 30;
+  456   2          count++;
+  457   2        }
+  458   1        if(mask & 0x04)
+  459   1        {
+  460   2          count++;
+  461   2        }
+  462   1        if(mask & 0x02)
+  463   1        {
+  464   2          sum += 30;
+  465   2          count++;
+  466   2        }
+  467   1        if(mask & 0x01)
+  468   1        {
+  469   2          sum += 90;
+  470   2          count++;
+  471   2        }
+  472   1      
+  473   1        if(count == 0)
+  474   1        {
+  475   2          return 0;
+  476   2        }
+  477   1      
+  478   1        *error = sum / count;
+  479   1        return 1;
+  480   1      }
+  481          
+  482          /*
+  483           * 作用：根据当前循迹误差计算整数PID转向输出。
+  484           * 参数：error为当前位置误差，负数偏左，正数偏右。
+  485           * 返回：PID计算出的转向修正量，正负方向再由LINE_STEER_SIGN决定。
+  486           */
+  487          int16 LinePidUpdate(int16 error)
+  488          {
+  489   1        int32 output;
+  490   1        int16 derivative;
+  491   1      
+  492   1        Line_Pid_Integral += error;
+  493   1        if(Line_Pid_Integral > LINE_PID_I_LIMIT)
+  494   1        {
+  495   2          Line_Pid_Integral = LINE_PID_I_LIMIT;
+  496   2        }
+  497   1        else if(Line_Pid_Integral < -LINE_PID_I_LIMIT)
+  498   1        {
+  499   2          Line_Pid_Integral = -LINE_PID_I_LIMIT;
+  500   2        }
+  501   1      
+  502   1        derivative = error - Line_Pid_Last_Error;
+  503   1        Line_Pid_Last_Error = error;
+  504   1      
+  505   1        output = (int32)LINE_PID_KP * error;
+  506   1        output += (int32)LINE_PID_KI * Line_Pid_Integral;
+  507   1        output += (int32)LINE_PID_KD * derivative;
+  508   1        output /= LINE_PID_SCALE;
+  509   1      
+  510   1        return (int16)output;
+  511   1      }
+  512          
+C251 COMPILER V5.60.0,  main                                                               14/06/26  11:33:04  PAGE 9   
 
-  513           * 参数：error为当前位置误差，负数偏左，正数偏右。
-  514           * 返回：无。
-  515           */
-  516          void ApplyLinePid(int16 error)
-  517          {
-  518   1        int16 steer;
-  519   1        int16 left;
-  520   1        int16 right;
-  521   1      
-  522   1        steer = LinePidUpdate(error) * LINE_STEER_SIGN; // sign可以不用改，默认为1
-  523   1        left = LINE_BASE_SPEED + steer;
-  524   1        right = LINE_BASE_SPEED - steer;
-  525   1      
-  526   1        Motor_RunPercent(left, right);
-  527   1      }
-  528          
-  529          /*
-  530           * 作用：处理全白丢线状态，先短暂保持上次输出，再按最后误差方向低速搜索。
-  531           * 参数：无；使用Line_Lost_Count和Line_Last_Error等全局状态。
-  532           * 返回：无。
-  533           */
-  534          void LineLostSearch(void)
-  535          {
-  536   1        Line_Pid_Integral = 0;
-  537   1      
-  538   1        if(Line_Lost_Count < LINE_LOST_HOLD_TICKS)
-  539   1        {
-  540   2          Motor_RunPercent(Line_Last_Left, Line_Last_Right);
-  541   2          return;
-  542   2        }
-  543   1      
-  544   1      //  if(Line_Last_Error < 0)
-  545   1      //  {
-  546   1      //    Motor_RunPercent(0, LINE_SEARCH_SPEED);
-  547   1      //  }
-  548   1      //  else if(Line_Last_Error > 0)
-  549   1      //  {
-  550   1      //    Motor_RunPercent(LINE_SEARCH_SPEED, 0);
-  551   1      //  }
-  552   1        else
-  553   1        {
-  554   2      //    AIN1=0;
-  555   2      //    AIN2=1;
-  556   2      //    BIN1=0;
-  557   2      //    BIN2=1;
-  558   2          Motor_RunPercent(LINE_SEARCH_SPEED, -LINE_SEARCH_SPEED);
-  559   2        }
-  560   1      }
-  561          
-  562          /*
-  563           * 作用：判断当前传感器位图是否属于需要计数的路口/特殊状态。
-  564           * 参数：mask为5路传感器位图，1表示黑线。
-  565           * 返回：1表示属于T/十字/急弯状态；0表示普通循迹状态。
-  566           */
-  567          bit IsTStateMask(u8 mask)
-  568          {
-  569   1        return (mask == LINE_MASK_CROSS) ||
-  570   1             (mask == LINE_MASK_T_RIGHT) ||
-  571   1             (mask == 0x1c) ||
-  572   1             (mask == 0x07);
-  573   1      }
-  574          
-  575          /*
-  576           * 作用：检测是否刚进入特殊路口状态，并更新路口计数和延时触发标志。
-  577           * 参数：mask为5路传感器位图，1表示黑线。
-  578           * 返回：无。
-C251 COMPILER V5.60.0,  main                                                               14/06/26  09:42:26  PAGE 10  
+  513          /*
+  514           * 作用：把循迹误差转换为左右电机差速并输出。
+  515           * 参数：error为当前位置误差，负数偏左，正数偏右。
+  516           * 返回：无。
+  517           */
+  518          void ApplyLinePid(int16 error)
+  519          {
+  520   1        int16 steer;
+  521   1        int16 left;
+  522   1        int16 right;
+  523   1      
+  524   1        steer = LinePidUpdate(error) * LINE_STEER_SIGN; // sign可以不用改，默认为1
+  525   1        left = LINE_BASE_SPEED + steer;
+  526   1        right = LINE_BASE_SPEED - steer;
+  527   1      
+  528   1        Motor_RunPercent(left, right);
+  529   1      }
+  530          
+  531          /*
+  532           * 作用：处理全白丢线状态，先短暂保持上次输出，再按最后误差方向低速搜索。
+  533           * 参数：无；使用Line_Lost_Count和Line_Last_Error等全局状态。
+  534           * 返回：无。
+  535           */
+  536          void LineLostSearch(void)
+  537          {
+  538   1        Line_Pid_Integral = 0;
+  539   1      
+  540   1        if(Line_Lost_Count < LINE_LOST_HOLD_TICKS)
+  541   1        {
+  542   2          Motor_RunPercent(Line_Last_Left, Line_Last_Right);
+  543   2          return;
+  544   2        }
+  545   1      
+  546   1      //  if(Line_Last_Error < 0)
+  547   1      //  {
+  548   1      //    Motor_RunPercent(0, LINE_SEARCH_SPEED);
+  549   1      //  }
+  550   1      //  else if(Line_Last_Error > 0)
+  551   1      //  {
+  552   1      //    Motor_RunPercent(LINE_SEARCH_SPEED, 0);
+  553   1      //  }
+  554   1        else
+  555   1        {
+  556   2      //    AIN1=0;
+  557   2      //    AIN2=1;
+  558   2      //    BIN1=0;
+  559   2      //    BIN2=1;
+  560   2          Motor_RunPercent(LINE_SEARCH_SPEED, -LINE_SEARCH_SPEED);
+  561   2        }
+  562   1      }
+  563          
+  564          /*
+  565           * 作用：判断当前传感器位图是否属于需要计数的路口/特殊状态。
+  566           * 参数：mask为5路传感器位图，1表示黑线。
+  567           * 返回：1表示属于T/十字/急弯状态；0表示普通循迹状态。
+  568           */
+  569          bit IsTStateMask(u8 mask)
+  570          {
+  571   1        return (mask == LINE_MASK_CROSS) ||
+  572   1             (mask == LINE_MASK_T_RIGHT) ||
+  573   1             (mask == 0x1c) ||
+  574   1             (mask == 0x07);
+  575   1      }
+  576          
+  577          /*
+  578           * 作用：检测是否刚进入特殊路口状态，并更新路口计数和延时触发标志。
+C251 COMPILER V5.60.0,  main                                                               14/06/26  11:33:04  PAGE 10  
 
-  579           */
-  580          void UpdateTState(u8 mask)
-  581          {
-  582   1        bit T_State_Now;
-  583   1      
-  584   1        T_State_Now = IsTStateMask(mask);
+  579           * 参数：mask为5路传感器位图，1表示黑线。
+  580           * 返回：无。
+  581           */
+  582          void UpdateTState(u8 mask)
+  583          {
+  584   1        bit T_State_Now;
   585   1      
-  586   1        if(T_State_Now && !T_State_Last)
-  587   1        {
-  588   2          T_State_Count++;
-  589   2          T_Time_Tick = 0;
-  590   2          T_Time_Enable = 1;
-  591   2          T_Time_Done = 0;
-  592   2        }
-  593   1      
-  594   1        if(!T_State_Now)
-  595   1        {
-  596   2          T_State_Last = 0;
-  597   2        }
-  598   1        else
-  599   1        {
-  600   2          T_State_Last = 1;
-  601   2        }
-  602   1      }
-  603          
-  604          /*
-  605           * 作用：优先处理十字、T型右转和45度急弯等特殊循迹状态。
-  606           * 参数：mask为5路传感器位图，1表示黑线。
-  607           * 返回：1表示已处理特殊状态；0表示应继续走普通PID循迹。
-  608           */
-  609          bit HandleSpecialLineState(u8 mask)
-  610          {
-  611   1        if(mask == LINE_MASK_CROSS)
-  612   1        {
-  613   2          Motor_RunPercent(LINE_BASE_SPEED, LINE_BASE_SPEED);
-  614   2          return 1;
-  615   2        }
-  616   1      
-  617   1        if(mask == LINE_MASK_T_RIGHT)
-  618   1        {
-  619   2          T_you_Enable = 1;
-  620   2          Turn_you_Count = YOU_TICKS;
-  621   2          Motor_RunPercent(LINE_BASE_SPEED, LINE_BASE_SPEED);
-  622   2          return 1;
-  623   2        }
-  624   1      
-  625   1        if(mask == LINE_MASK_45_RIGHT)
-  626   1        {
-  627   2          Force_Turn_Enable = 1;
-  628   2          Force_Turn_Count = FORCE_TURN_TICKS;
-  629   2          Motor_RunPercent(85, 0);
-  630   2          return 1;
-  631   2        }
-  632   1      
-  633   1        return 0;
-  634   1      }
-  635          
-  636          /*
-  637           * 作用：处理进入T状态后一段时间触发的一次性动作。
-  638           * 参数：无；使用T_Time_Enable、T_Time_Tick等全局状态。
-  639           * 返回：无。
-  640           */
-  641          void UpdateTTimeAction(void)
-  642          {
-  643   1        if(T_Time_Enable && !T_Time_Done)
-  644   1        {
-C251 COMPILER V5.60.0,  main                                                               14/06/26  09:42:26  PAGE 11  
+  586   1        T_State_Now = IsTStateMask(mask);
+  587   1      
+  588   1        if(T_State_Now && !T_State_Last)
+  589   1        {
+  590   2          T_State_Count++;
+  591   2          T_Time_Tick = 0;
+  592   2          T_Time_Enable = 1;
+  593   2          T_Time_Done = 0;
+  594   2        }
+  595   1      
+  596   1        if(!T_State_Now)
+  597   1        {
+  598   2          T_State_Last = 0;
+  599   2        }
+  600   1        else
+  601   1        {
+  602   2          T_State_Last = 1;
+  603   2        }
+  604   1      }
+  605          
+  606          /*
+  607           * 作用：优先处理十字、T型右转和45度急弯等特殊循迹状态。
+  608           * 参数：mask为5路传感器位图，1表示黑线。
+  609           * 返回：1表示已处理特殊状态；0表示应继续走普通PID循迹。
+  610           */
+  611          bit HandleSpecialLineState(u8 mask)
+  612          {
+  613   1        if(mask == LINE_MASK_CROSS)
+  614   1        {
+  615   2          Motor_RunPercent(LINE_BASE_SPEED, LINE_BASE_SPEED);
+  616   2          return 1;
+  617   2        }
+  618   1      
+  619   1        if(mask == LINE_MASK_T_RIGHT)
+  620   1        {
+  621   2          T_you_Enable = 1;
+  622   2          Turn_you_Count = YOU_TICKS;
+  623   2          Motor_RunPercent(LINE_BASE_SPEED, LINE_BASE_SPEED);
+  624   2          return 1;
+  625   2        }
+  626   1      
+  627   1        if(mask == LINE_MASK_45_RIGHT)
+  628   1        {
+  629   2          Force_Turn_Enable = 1;
+  630   2          Force_Turn_Count = FORCE_TURN_TICKS;
+  631   2          Motor_RunPercent(85, 0);
+  632   2          return 1;
+  633   2        }
+  634   1      
+  635   1        return 0;
+  636   1      }
+  637          
+  638          /*
+  639           * 作用：处理进入T状态后一段时间触发的一次性动作。
+  640           * 参数：无；使用T_Time_Enable、T_Time_Tick等全局状态。
+  641           * 返回：无。
+  642           */
+  643          void UpdateTTimeAction(void)
+  644          {
+C251 COMPILER V5.60.0,  main                                                               14/06/26  11:33:04  PAGE 11  
 
-  645   2          T_Time_Tick++;
-  646   2      
-  647   2          if(T_Time_Tick >= T_STATE_TIME_TICKS)
-  648   2          {
-  649   3            T_Time_Done = 1;
-  650   3            T_Time_Enable = 0;
-  651   3            Motor_RunPercent(70, 70);
-  652   3          }
-  653   2        }
-  654   1      }
-  655          
-  656          /*
-  657           * 作用：执行一次完整循迹控制步骤，包括读传感器、特殊状态处理、丢线处理和PID输出。
-  658           * 参数：无。
-  659           * 返回：无。
-  660           */
-  661          void LineControlStep(void)
-  662          {
-  663   1        u8 mask;
-  664   1        int16 error;
-  665   1      
-  666   1        mask = ReadLineMask();
-  667   1        UpdateTState(mask);
-  668   1      
-  669   1        if(HandleSpecialLineState(mask))
-  670   1        {
-  671   2          Line_Lost_Count = 0;
-  672   2          Line_Pid_Integral = 0;
-  673   2          return;
-  674   2        }
-  675   1      
-  676   1        if(mask == LINE_MASK_LOST)
-  677   1        {
-  678   2          Line_Lost_Count++;
-  679   2          LineLostSearch();
-  680   2          return;
-  681   2        }
-  682   1      
-  683   1        Line_Lost_Count = 0;
-  684   1        if(ComputeLineError(mask, &error))
-  685   1        {
-  686   2          Line_Last_Error = error;
-  687   2          ApplyLinePid(error);
-  688   2        }
-  689   1      }
-  690          
-  691          /*
-  692           * 作用：Timer2中断服务函数；以100us节拍调度强制转向、T型转向和循迹控制。
-  693           * 参数：无；由TMR2_VECTOR硬件中断入口调用。
-  694           * 返回：无。
-  695           */
-  696          void Timer2_ISR_Handler (void) interrupt TMR2_VECTOR
-  697          {
-  698   1        static u16 delay_Start_Count = DELAY_START_TICKS;
-  699   1        static u8 line_ctrl_tick = 0;
-  700   1      
-  701   1        if(Toggle_Start)
-  702   1        {
-  703   2          if(Toggle_Count > 0)
-  704   2          {
-  705   3            Toggle_Count--;
-  706   3          }
-  707   2          else
-  708   2          {
-  709   3            Toggle_Start = 0;
-  710   3          }
-C251 COMPILER V5.60.0,  main                                                               14/06/26  09:42:26  PAGE 12  
+  645   1        if(T_Time_Enable && !T_Time_Done)
+  646   1        {
+  647   2          T_Time_Tick++;
+  648   2      
+  649   2          if(T_Time_Tick >= T_STATE_TIME_TICKS)
+  650   2          {
+  651   3            T_Time_Done = 1;
+  652   3            T_Time_Enable = 0;
+  653   3            Motor_RunPercent(70, 70);
+  654   3          }
+  655   2        }
+  656   1      }
+  657          
+  658          /*
+  659           * 作用：执行一次完整循迹控制步骤，包括读传感器、特殊状态处理、丢线处理和PID输出。
+  660           * 参数：无。
+  661           * 返回：无。
+  662           */
+  663          void LineControlStep(void)
+  664          {
+  665   1        u8 mask;
+  666   1        int16 error;
+  667   1      
+  668   1        mask = ReadLineMask();
+  669   1        UpdateTState(mask);
+  670   1      
+  671   1        if(HandleSpecialLineState(mask))
+  672   1        {
+  673   2          Line_Lost_Count = 0;
+  674   2          Line_Pid_Integral = 0;
+  675   2          return;
+  676   2        }
+  677   1      
+  678   1        if(mask == LINE_MASK_LOST)
+  679   1        {
+  680   2          Line_Lost_Count++;
+  681   2          LineLostSearch();
+  682   2          return;
+  683   2        }
+  684   1      
+  685   1        Line_Lost_Count = 0;
+  686   1        if(ComputeLineError(mask, &error))
+  687   1        {
+  688   2          Line_Last_Error = error;
+  689   2          ApplyLinePid(error);
+  690   2        }
+  691   1      }
+  692          
+  693          /*
+  694           * 作用：Timer2中断服务函数；以100us节拍调度强制转向、T型转向和循迹控制。
+  695           * 参数：无；由TMR2_VECTOR硬件中断入口调用。
+  696           * 返回：无。
+  697           */
+  698          void Timer2_ISR_Handler (void) interrupt TMR2_VECTOR
+  699          {
+  700   1        static u16 delay_Start_Count = DELAY_START_TICKS;
+  701   1        static u8 line_ctrl_tick = 0;
+  702   1      
+  703   1        if(Toggle_Start)
+  704   1        {
+  705   2          if(Toggle_Count > 0)
+  706   2          {
+  707   3            Toggle_Count--;
+  708   3          }
+  709   2          else
+  710   2          {
+C251 COMPILER V5.60.0,  main                                                               14/06/26  11:33:04  PAGE 12  
 
-  711   2          return;
-  712   2        }
-  713   1        if(delay_Start)
-  714   1        {
-  715   2          PWM_Run(0, 0);
-  716   2          if(delay_Start_Count > 0)
-  717   2          {
-  718   3            delay_Start_Count--;
-  719   3          }
-  720   2          else
-  721   2          {
-  722   3            delay_Start = 0;
-  723   3          }
-  724   2          return;
-  725   2        }
-  726   1      
-  727   1        if(Force_Turn_Enable)
-  728   1        {
-  729   2          Motor_RunPercent(85, 0);
-  730   2          if(Force_Turn_Count > 0)
-  731   2          {
-  732   3            Force_Turn_Count--;
-  733   3          }
-  734   2          else
-  735   2          {
-  736   3            Force_Turn_Enable = 0;
-  737   3          }
-  738   2          return;
-  739   2        }
-  740   1      
-  741   1        if(T_you_Enable)
-  742   1        {
-  743   2          Motor_RunPercent(85, 45);
-  744   2          if(Turn_you_Count > 0)
-  745   2          {
-  746   3            Turn_you_Count--;
-  747   3          }
-  748   2          else
-  749   2          {
-  750   3            T_you_Enable = 0;
-  751   3          }
-  752   2          return;
-  753   2        }
-  754   1      
-  755   1        if(T_Left_Enable)
-  756   1        {
-  757   2          Motor_RunPercent(0, 85);
-  758   2          if(T_Left_Count > 0)
-  759   2          {
-  760   3            T_Left_Count--;
-  761   3          }
-  762   2          else
-  763   2          {
-  764   3            T_Left_Enable = 0;
-  765   3          }
-  766   2          return;
-  767   2        }
-  768   1      
-  769   1        UpdateTTimeAction();
+  711   3            Toggle_Start = 0;
+  712   3          }
+  713   2          return;
+  714   2        }
+  715   1        if(delay_Start)
+  716   1        {
+  717   2          PWM_Run(0, 0);
+  718   2          if(delay_Start_Count > 0)
+  719   2          {
+  720   3            delay_Start_Count--;
+  721   3          }
+  722   2          else
+  723   2          {
+  724   3            delay_Start = 0;
+  725   3          }
+  726   2          return;
+  727   2        }
+  728   1      
+  729   1        if(Force_Turn_Enable)
+  730   1        {
+  731   2          Motor_RunPercent(85, 0);
+  732   2          if(Force_Turn_Count > 0)
+  733   2          {
+  734   3            Force_Turn_Count--;
+  735   3          }
+  736   2          else
+  737   2          {
+  738   3            Force_Turn_Enable = 0;
+  739   3          }
+  740   2          return;
+  741   2        }
+  742   1      
+  743   1        if(T_you_Enable)
+  744   1        {
+  745   2          Motor_RunPercent(85, 45);
+  746   2          if(Turn_you_Count > 0)
+  747   2          {
+  748   3            Turn_you_Count--;
+  749   3          }
+  750   2          else
+  751   2          {
+  752   3            T_you_Enable = 0;
+  753   3          }
+  754   2          return;
+  755   2        }
+  756   1      
+  757   1        if(T_Left_Enable)
+  758   1        {
+  759   2          Motor_RunPercent(0, 85);
+  760   2          if(T_Left_Count > 0)
+  761   2          {
+  762   3            T_Left_Count--;
+  763   3          }
+  764   2          else
+  765   2          {
+  766   3            T_Left_Enable = 0;
+  767   3          }
+  768   2          return;
+  769   2        }
   770   1      
-  771   1        line_ctrl_tick++;
-  772   1        if(line_ctrl_tick >= LINE_CTRL_DIVIDER)
-  773   1        {
-  774   2          line_ctrl_tick = 0;
-  775   2          LineControlStep();
-  776   2        }
-C251 COMPILER V5.60.0,  main                                                               14/06/26  09:42:26  PAGE 13  
+  771   1        UpdateTTimeAction();
+  772   1      
+  773   1        line_ctrl_tick++;
+  774   1        if(line_ctrl_tick >= LINE_CTRL_DIVIDER)
+  775   1        {
+  776   2          line_ctrl_tick = 0;
+C251 COMPILER V5.60.0,  main                                                               14/06/26  11:33:04  PAGE 13  
 
-  777   1      
-  778   1        Flag += 1;
-  779   1      }
-  780          
-  781          /******************** main **************************/
-  782          /*
-  783           * 作用：系统入口函数，初始化时钟访问、IO、定时器、PWM和OLED，然后开启中断进入空循环。
-  784           * 参数：无。
-  785           * 返回：无。
-  786           */
-  787          void main(void)
-  788          {
-  789   1      //  unsigned char i;
-  790   1        WTST = 0;   //设置程序指令延时参数，赋值为0可将CPU执行指令的速度设置为最快
-  791   1        EAXSFR();   //扩展SFR(XFR)访问使能 
-  792   1        CKCON = 0;      //提高访问XRAM速度
-  793   1      
-  794   1        P2M1=0x00;
-  795   1        P2M0=0xFF;
-  796   1        P2M0 &= ~(1 << 2);  // M0=0   p2.2
-  797   1        P2M0 &= ~(1 << 3);  // M0=0   p2.3
-  798   1        P2M0 &= ~(1 << 4);  // M0=0   p2.4  
-  799   1        P0M1=0x00;
-  800   1        P0M0=0x00;
-  801   1        P1M1=0x00;
-  802   1        P1M0=0x00;
-  803   1        P4M1=0x00;
-  804   1        P4M0=0xFF;  
-  805   1        P1M1 |= (1 << 4);   // M1=1
-  806   1        P1M0 &= ~(1 << 4);  // M0=0 
-  807   1        
-  808   1        Timer_config();
-  809   1        Timer1_config();
-  810   1        Timer2_config();
-  811   1        PWM_config();
-  812   1        oled_Init();
-  813   1        
-  814   1        EA = 1;
+  777   2          LineControlStep();
+  778   2        }
+  779   1      
+  780   1        Flag += 1;
+  781   1      }
+  782          
+  783          /******************** main **************************/
+  784          /*
+  785           * 作用：系统入口函数，初始化时钟访问、IO、定时器、PWM和OLED，然后开启中断进入空循环。
+  786           * 参数：无。
+  787           * 返回：无。
+  788           */
+  789          void main(void)
+  790          {
+  791   1      //  unsigned char i;
+  792   1        WTST = 0;   //设置程序指令延时参数，赋值为0可将CPU执行指令的速度设置为最快
+  793   1        EAXSFR();   //扩展SFR(XFR)访问使能 
+  794   1        CKCON = 0;      //提高访问XRAM速度
+  795   1      
+  796   1        P2M1=0x00;
+  797   1        P2M0=0xFF;
+  798   1        P2M0 &= ~(1 << 2);  // M0=0   p2.2
+  799   1        P2M0 &= ~(1 << 3);  // M0=0   p2.3
+  800   1        P2M0 &= ~(1 << 4);  // M0=0   p2.4  
+  801   1        P0M1=0x00;
+  802   1        P0M0=0x00;
+  803   1        P1M1=0x00;
+  804   1        P1M0=0x00;
+  805   1        P4M1=0x00;
+  806   1        P4M0=0xFF;  
+  807   1        P1M1 |= (1 << 4);   // M1=1
+  808   1        P1M0 &= ~(1 << 4);  // M0=0 
+  809   1        
+  810   1        Timer_config();
+  811   1        Timer1_config();
+  812   1        Timer2_config();
+  813   1        PWM_config();
+  814   1        oled_Init();
   815   1        
-  816   1        AIN1=0;
-  817   1        AIN2=1;
-  818   1        BIN1=1;
-  819   1        BIN2=0;
-  820   1      
-  821   1        TRIG = 0;
-  822   1        ECHO = 0;
-  823   1        time_us = 0;
-  824   1        while (1)
-  825   1        {
-  826   2      //      unsigned int d = Ultrasonic_GetDistance();
-  827   2      //      oled_clear();
-  828   2      //      oled_ShowNum(56,2,d,5,16);
-  829   2      //      oled_ShowNum(10,2,1,2,16);    
-  830   2      //      delay_ms(300);  
-  831   2      
-  832   2      //    if(KEY4 == 0)
-  833   2      //    {
-  834   2      //      LED1=0;
-  835   2      //      delay_ms(1000);
-  836   2      //      LED1=1;
+  816   1        EA = 1;
+  817   1        
+  818   1        AIN1=0;
+  819   1        AIN2=1;
+  820   1        BIN1=1;
+  821   1        BIN2=0;
+  822   1      
+  823   1        TRIG = 0;
+  824   1        ECHO = 0;
+  825   1        time_us = 0;
+  826   1        while (1)
+  827   1        {
+  828   2      //      unsigned int d = Ultrasonic_GetDistance();
+  829   2      //      oled_clear();
+  830   2      //      oled_ShowNum(56,2,d,5,16);
+  831   2      //      oled_ShowNum(10,2,1,2,16);    
+  832   2      //      delay_ms(300);  
+  833   2      
+  834   2      //    if(KEY4 == 0)
+  835   2      //    {
+  836   2      //      LED1=0;
   837   2      //      delay_ms(1000);
-  838   2      //    }
-  839   2      //    if(KEY5 == 0)
-  840   2      //    {
-  841   2      //      LED2=0;
-  842   2      //      delay_ms(1000);
-C251 COMPILER V5.60.0,  main                                                               14/06/26  09:42:26  PAGE 14  
+  838   2      //      LED1=1;
+  839   2      //      delay_ms(1000);
+  840   2      //    }
+  841   2      //    if(KEY5 == 0)
+  842   2      //    {
+C251 COMPILER V5.60.0,  main                                                               14/06/26  11:33:04  PAGE 14  
 
-  843   2      //      LED2=1;
+  843   2      //      LED2=0;
   844   2      //      delay_ms(1000);
-  845   2      //    }
-  846   2      //    if(KEY3 == 0)
-  847   2      //    {
-  848   2      //      LED3=0;
-  849   2      //      delay_ms(1000);
-  850   2      //      LED3=1;
+  845   2      //      LED2=1;
+  846   2      //      delay_ms(1000);
+  847   2      //    }
+  848   2      //    if(KEY3 == 0)
+  849   2      //    {
+  850   2      //      LED3=0;
   851   2      //      delay_ms(1000);
-  852   2      //    }
-  853   2      //    for(i=10;i>0;i--)
-  854   2      //    {
-  855   2      //      oled_clear();
-  856   2      //      oled_ShowNum(10,2,i,2,16);    
-  857   2      //      delay_ms(1000);
-  858   2      //    }
-  859   2      
-  860   2      
+  852   2      //      LED3=1;
+  853   2      //      delay_ms(1000);
+  854   2      //    }
+  855   2      //    for(i=10;i>0;i--)
+  856   2      //    {
+  857   2      //      oled_clear();
+  858   2      //      oled_ShowNum(10,2,i,2,16);    
+  859   2      //      delay_ms(1000);
+  860   2      //    }
   861   2      
-  862   2      //    if(T0_1ms)
-  863   2      //    {
-  864   2      //      
-  865   2      //      PWMB_Duty.PWM5_Duty = 2047;
-  866   2      //      PWMB_Duty.PWM6_Duty = 1;
-  867   2      //      T0_1ms = 0;
-  868   2            
-  869   2      //      if(!PWM5_Flag)
-  870   2      //      {
-  871   2      //        PWMB_Duty.PWM5_Duty++;
-  872   2      //        if(PWMB_Duty.PWM5_Duty >= 2047) PWM5_Flag = 1;
-  873   2      //      }
-  874   2      //      else
-  875   2      //      {
-  876   2      //        PWMB_Duty.PWM5_Duty--;
-  877   2      //        if(PWMB_Duty.PWM5_Duty <= 0) PWM5_Flag = 0;
-  878   2      //      }
-  879   2      //      if(!PWM6_Flag)
-  880   2      //      {
-  881   2      //        PWMB_Duty.PWM6_Duty++;
-  882   2      //        if(PWMB_Duty.PWM6_Duty >= 2047) PWM6_Flag = 1;
-  883   2      //      }
-  884   2      //      else
-  885   2      //      {
-  886   2      //        PWMB_Duty.PWM6_Duty--;
-  887   2      //        if(PWMB_Duty.PWM6_Duty <= 0) PWM6_Flag = 0;
-  888   2      //      }
-  889   2            
-  890   2            
-  891   2          }
-  892   1        }
-  893          
-  894          
+  862   2      
+  863   2      
+  864   2      //    if(T0_1ms)
+  865   2      //    {
+  866   2      //      
+  867   2      //      PWMB_Duty.PWM5_Duty = 2047;
+  868   2      //      PWMB_Duty.PWM6_Duty = 1;
+  869   2      //      T0_1ms = 0;
+  870   2            
+  871   2      //      if(!PWM5_Flag)
+  872   2      //      {
+  873   2      //        PWMB_Duty.PWM5_Duty++;
+  874   2      //        if(PWMB_Duty.PWM5_Duty >= 2047) PWM5_Flag = 1;
+  875   2      //      }
+  876   2      //      else
+  877   2      //      {
+  878   2      //        PWMB_Duty.PWM5_Duty--;
+  879   2      //        if(PWMB_Duty.PWM5_Duty <= 0) PWM5_Flag = 0;
+  880   2      //      }
+  881   2      //      if(!PWM6_Flag)
+  882   2      //      {
+  883   2      //        PWMB_Duty.PWM6_Duty++;
+  884   2      //        if(PWMB_Duty.PWM6_Duty >= 2047) PWM6_Flag = 1;
+  885   2      //      }
+  886   2      //      else
+  887   2      //      {
+  888   2      //        PWMB_Duty.PWM6_Duty--;
+  889   2      //        if(PWMB_Duty.PWM6_Duty <= 0) PWM6_Flag = 0;
+  890   2      //      }
+  891   2            
+  892   2            
+  893   2          }
+  894   1        }
   895          
   896          
+  897          
+  898          
 
 
 Module Information          Static   Overlayable
 ------------------------------------------------
-  code size            =      1505     ------
+  code size            =      1462     ------
   ecode size           =    ------     ------
   data size            =    ------     ------
   idata size           =    ------     ------
   pdata size           =    ------     ------
   xdata size           =    ------     ------
   xdata-const size     =    ------     ------
+C251 COMPILER V5.60.0,  main                                                               14/06/26  11:33:04  PAGE 15  
+
   edata size           =        61         32
   bit size             =        12          1
-C251 COMPILER V5.60.0,  main                                                               14/06/26  09:42:26  PAGE 15  
-
   ebit size            =    ------     ------
   bitaddressable size  =    ------     ------
   ebitaddressable size =    ------     ------
