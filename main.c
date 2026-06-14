@@ -118,11 +118,11 @@ bit Toggle_Start = 0;
 #define LINE_CTRL_DIVIDER      1  // Timer2每1次中断执行一次PID，1us*1=1us
 #define LINE_BASE_SPEED        90 // PID正常循迹基础速度百分比
 #define LINE_MAX_SPEED         95  // PWM输出限幅最大速度百分比
-#define TURN_SPEED 					 	 76  // 转弯最大速度限制
+#define TURN_SPEED 					 	 70  // 转弯最大速度限制
 #define LINE_SEARCH_SPEED      77  // 全白丢线后的低速搜索速度百分比
 #define LINE_LOST_HOLD_TICKS   20000  // 丢线后先保持上次输出的时间，按100us循迹周期约8ms
 #define LINE_PID_KP            350  // PID比例系数，放大后由LINE_PID_SCALE缩放
-#define LINE_PID_KI            80 // PID积分系数，默认0避免低速抖动和积分饱和
+#define LINE_PID_KI            50 // PID积分系数，默认0避免低速抖动和积分饱和
 #define LINE_PID_KD            50  // PID微分系数，用于抑制转向过冲
 #define LINE_PID_SCALE         100  // PID定点缩放系数，输出=(KP*P+KI*I+KD*D)/100
 #define LINE_PID_I_LIMIT       100  // PID积分项限幅，防止长时间偏差导致积分过大
@@ -457,12 +457,12 @@ bit ComputeLineError(u8 mask, int16 *error)
 
 	if(mask & 0x10)
 	{
-		sum -= 130;
+		sum -= 120;
 		count++;
 	}
 	if(mask & 0x08)
 	{
-		sum -= 40;
+		sum -= 50;
 		count++;
 	}
 	if(mask & 0x04)
